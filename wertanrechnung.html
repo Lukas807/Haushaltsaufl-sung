@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wertanrechnung bei Haushaltsauflösung | Wirlösenauf.de Hannover</title>
+  <meta name="description" content="Was ist Wertanrechnung? So funktioniert die faire Preisermittlung bei Wirlösenauf.de – Sie zahlen nur was wirklich anfällt." />
+  <link rel="canonical" href="https://wirlösenauf.de/wertanrechnung/" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Was ist Wertanrechnung bei einer Haushaltsauflösung?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Bei der Wertanrechnung bewertet unser Team verwertbare Gegenstände wie Möbel, Elektronik oder Antiquitäten und zieht deren Marktwert vom Gesamtpreis ab – Sie zahlen am Ende deutlich weniger."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Welche Gegenstände werden bei der Wertanrechnung berücksichtigt?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Angerechnet werden u. a. Möbel in gutem Zustand, funktionstüchtige Elektrogeräte, Antiquitäten, Schmuck, Sammlerstücke, Bücher und Werkzeug. Eine kostenlose Besichtigung klärt den genauen Umfang."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wie viel kann ich durch Wertanrechnung sparen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Die Ersparnis hängt vom Inhalt des Haushalts ab. In vielen Fällen reduziert sich der Preis um 20–50 %. Bei hochwertigen Beständen kann die Auflösung sogar kostenneutral sein."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wie läuft die Wertanrechnung bei Wirlösenauf.de ab?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Wir besichtigen den Haushalt kostenlos, bewerten verwertbare Gegenstände transparent und erstellen ein schriftliches Festpreisangebot inklusive aller Abzüge – klar und verständlich."
+        }
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Wirlösenauf.de",
+    "url": "https://wirlösenauf.de",
+    "telephone": "0172 6030946",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Hannover",
+      "addressRegion": "Niedersachsen",
+      "addressCountry": "DE"
+    }
+  }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --green-deep:   #1B5E20;
+      --green-main:   #2E7D32;
+      --green-mid:    #388E3C;
+      --green-light:  #4CAF50;
+      --green-pale:   #C8E6C9;
+      --green-bg:     #F1F8F1;
+      --off-white:    #FAFEFA;
+      --text-dark:    #111811;
+      --text-mid:     #3a4a3a;
+      --text-muted:   #6b7c6b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--text-dark);
+      background: var(--off-white);
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4 {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif;
+      line-height: 1.15;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px; height: 72px;
+      background: rgba(250,254,250,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--green-pale);
+    }
+    .nav-logo img { height: 44px; width: auto; display: block; }
+    .nav-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--green-main); color: #fff;
+      font-size: 14px; font-weight: 700; padding: 10px 22px;
+      border-radius: 50px; text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--green-deep); }
+
+    /* BREADCRUMB */
+    .breadcrumb {
+      padding: 12px 48px;
+      background: var(--green-bg);
+      border-bottom: 1px solid var(--green-pale);
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    .breadcrumb a { color: var(--green-main); text-decoration: none; font-weight: 600; }
+    .breadcrumb a:hover { text-decoration: underline; }
+
+    /* HERO */
+    .page-hero {
+      background: var(--green-deep);
+      padding: 80px 48px 72px;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 80% 20%, rgba(76,175,80,0.25) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .page-hero-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .page-label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #81C784;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 5px 14px;
+      border-radius: 50px;
+      margin-bottom: 20px;
+    }
+    .page-hero h1 {
+      font-size: clamp(28px, 4vw, 50px);
+      font-weight: 900;
+      letter-spacing: -0.025em;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+    .page-hero p {
+      font-size: 18px;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.7;
+      max-width: 640px;
+    }
+
+    /* CONTENT */
+    .content-section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 80px 48px;
+    }
+    .content-section h2 {
+      font-size: clamp(22px, 2.8vw, 34px);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+    }
+    .content-section p {
+      color: var(--text-mid);
+      margin-bottom: 18px;
+      line-height: 1.8;
+    }
+    .content-section ul {
+      list-style: none;
+      margin-bottom: 28px;
+    }
+    .content-section ul li {
+      padding: 10px 0 10px 28px;
+      position: relative;
+      border-bottom: 1px solid var(--green-pale);
+      color: var(--text-mid);
+      font-size: 16px;
+    }
+    .content-section ul li:last-child { border-bottom: none; }
+    .content-section ul li::before {
+      content: '✓';
+      position: absolute; left: 0;
+      color: var(--green-main);
+      font-weight: 900;
+      font-size: 15px;
+    }
+
+    /* SECTION ALT */
+    .section-alt {
+      background: var(--green-bg);
+    }
+
+    /* EXAMPLE CARD */
+    .example-card {
+      background: #fff;
+      border: 1.5px solid var(--green-pale);
+      border-radius: 20px;
+      padding: 36px;
+      margin-bottom: 28px;
+      box-shadow: 0 4px 20px rgba(46,125,50,0.07);
+    }
+    .example-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--green-pale);
+      font-size: 15px;
+    }
+    .example-row:last-child { border-bottom: none; }
+    .example-row .label { color: var(--text-mid); }
+    .example-row .value { font-weight: 700; color: var(--text-dark); }
+    .example-row.total .label { font-weight: 800; font-size: 16px; color: var(--text-dark); }
+    .example-row.total .value { font-size: 22px; color: var(--green-main); }
+    .example-row.savings .value { color: #d32f2f; font-size: 15px; }
+
+    /* CTA BUTTON */
+    .btn-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--green-main);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 16px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: background 0.25s, transform 0.2s;
+      margin-top: 24px;
+    }
+    .btn-cta:hover {
+      background: var(--green-deep);
+      transform: translateY(-2px);
+    }
+    .btn-cta-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      border: 2px solid var(--green-main);
+      color: var(--green-main);
+      font-size: 15px;
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: background 0.25s, color 0.25s;
+      margin-top: 16px;
+      margin-left: 16px;
+    }
+    .btn-cta-outline:hover { background: var(--green-main); color: #fff; }
+
+    /* TRUST BAR */
+    .trust-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 32px;
+      margin-top: 28px;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-mid);
+    }
+    .trust-item svg { color: var(--green-main); }
+
+    /* FAQ */
+    .faq-item {
+      border-bottom: 1.5px solid var(--green-pale);
+      padding: 24px 0;
+    }
+    .faq-item:first-child { border-top: 1.5px solid var(--green-pale); }
+    .faq-q {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+    .faq-a {
+      font-size: 16px;
+      color: var(--text-mid);
+      line-height: 1.75;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--green-deep);
+      color: rgba(255,255,255,0.85);
+      padding: 40px 48px;
+      text-align: center;
+      font-size: 14px;
+    }
+    footer a { color: #81C784; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 768px) {
+      nav, .breadcrumb, .page-hero, .content-section, footer { padding-left: 20px; padding-right: 20px; }
+      .content-section { padding-top: 48px; padding-bottom: 48px; }
+      .btn-cta-outline { margin-left: 0; margin-top: 12px; }
+    }
+  
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 15px; font-weight: 600; color: var(--text-mid); text-decoration: none; transition: color 0.2s ease; }
+    .nav-links a:hover { color: var(--green-main); }
+    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; border-radius: 8px; align-items: center; justify-content: center; }
+    .mobile-nav { position: fixed; top: 72px; left: 0; right: 0; background: rgba(255,255,255,0.98); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 2px solid var(--green-pale); box-shadow: 0 8px 32px rgba(27,94,32,0.12); z-index: 98; overflow: hidden; max-height: 0; opacity: 0; pointer-events: none; transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1), opacity 0.25s ease; display: none; }
+    .mobile-nav.open { max-height: 480px; opacity: 1; pointer-events: auto; }
+    .mobile-nav ul { list-style: none; padding: 8px 24px 24px; }
+    .mobile-nav li { border-bottom: 1px solid var(--green-pale); }
+    .mobile-nav li:last-child { border-bottom: none; }
+    .mobile-nav li a { display: flex; align-items: center; padding: 15px 0; font-size: 17px; font-weight: 700; color: var(--text-dark); text-decoration: none; min-height: 48px; transition: color 0.2s ease; }
+    .mobile-nav li a:hover { color: var(--green-main); }
+    .mobile-nav .mobile-nav-cta { display: flex; align-items: center; justify-content: center; margin: 12px 0 4px; background: var(--green-main); color: #fff !important; padding: 14px 28px; border-radius: 50px; font-size: 17px; font-weight: 800; text-decoration: none; min-height: 48px; box-shadow: 0 4px 16px rgba(46,125,50,0.35); }
+    @media (max-width: 768px) { nav, .site-nav { padding: 0 20px !important; } .nav-links { display: none !important; } .nav-cta { display: none !important; } .nav-hamburger { display: flex !important; } .mobile-nav { display: block; } }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="brand_assets/Logo/Logo%20Font.png" alt="Wirlösenauf.de – Haushaltsauflösung Hannover" loading="eager" fetchpriority="high" />
+    </a>
+    
+    <ul class="nav-links">
+      <li><a href="index.html#leistungen">Leistungen</a></li>
+      <li><a href="wertanrechnung.html">Wertanrechnung</a></li>
+      <li><a href="index.html#ablauf">Ablauf</a></li>
+      <li><a href="index.html#vorteile">Vorteile</a></li>
+      <li><a href="index.html#bewertungen">Bewertungen</a></li>
+    </ul>
+    <a href="tel:+4917260309946" class="nav-cta">📞 Kostenlos anrufen</a>
+    <button class="nav-hamburger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-nav">
+      <svg width="28" height="28" fill="none" viewBox="0 0 24 24">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke="#2E7D32" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </nav>
+  <div id="mobile-nav" class="mobile-nav" role="navigation" aria-label="Mobiles Menü">
+    <ul>
+      <li><a href="index.html#leistungen">Leistungen</a></li>
+      <li><a href="wertanrechnung.html">♻️ Wertanrechnung</a></li>
+      <li><a href="index.html#ablauf">Ablauf</a></li>
+      <li><a href="index.html#vorteile">Vorteile</a></li>
+      <li><a href="index.html#bewertungen">Bewertungen</a></li>
+      <li><a href="tel:+4917260309946" class="mobile-nav-cta">📞 Kostenlos anrufen</a></li>
+    </ul>
+  </div>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <a href="index.html">Startseite</a> › Wertanrechnung
+  </div>
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <div class="page-label">Faire Preisermittlung</div>
+      <h1>Wertanrechnung: So sparen Sie bei Ihrer Haushaltsauflösung</h1>
+      <p>Verwertbare Gegenstände aus Ihrem Haushalt werden fair bewertet und direkt vom Preis abgezogen — transparent, schriftlich und ohne versteckte Kosten.</p>
+    </div>
+  </section>
+
+  <!-- ── WAS BEDEUTET WERTANRECHNUNG ── -->
+  <section class="content-section">
+    <h2>Was bedeutet Wertanrechnung?</h2>
+    <p>
+      Bei einer Haushaltsauflösung fallen nicht nur Arbeit und Entsorgungskosten an — viele Haushalte enthalten Gegenstände, die noch einen echten Marktwert haben.
+      Möbel in gutem Zustand, Elektrogeräte, Antiquitäten, Sammlerstücke oder Werkzeug können weiterverkauft oder weiterverwendet werden.
+    </p>
+    <p>
+      Wirlösenauf.de bewertet diese Gegenstände <strong>vor Ort und kostenlos</strong>, schätzt ihren realistischen Marktwert ein und <strong>rechnet diesen Betrag direkt von Ihrem Festpreis ab</strong>.
+      Sie zahlen am Ende nur das, was tatsächlich anfällt — kein Cent mehr.
+    </p>
+    <p>
+      Das ist unser Grundsatz: Ehrlich, transparent und fair. Deshalb vertrauen uns bereits über 124 Familien in Niedersachsen.
+    </p>
+    <a href="tel:+4917260309946" class="btn-cta">
+      📞 Kostenlose Besichtigung vereinbaren
+    </a>
+    <a href="../index.html#kontakt" class="btn-cta-outline">Angebot anfordern →</a>
+  </section>
+
+  <!-- ── WELCHE GEGENSTÄNDE WERDEN ANGERECHNET ── -->
+  <section class="section-alt">
+    <div class="content-section">
+      <h2>Welche Gegenstände werden angerechnet?</h2>
+      <p>
+        Grundsätzlich kann alles angerechnet werden, das einen Wiederverkaufswert hat. Unsere erfahrenen Mitarbeiter erkennen auf den ersten Blick, was werthaltig ist.
+        Typische Kategorien sind:
+      </p>
+      <ul>
+        <li>Massivholzmöbel, Polstermöbel und Designerstücke in gutem Zustand</li>
+        <li>Funktionsfähige Elektrogeräte (Waschmaschine, Kühlschrank, TV, Hifi)</li>
+        <li>Antiquitäten, Kunst, Bilder und Skulpturen</li>
+        <li>Schmuck, Uhren und Silberbesteck</li>
+        <li>Sammlungen (Briefmarken, Münzen, Bücher, Vinyl)</li>
+        <li>Werkzeug, Maschinen und Gartengeräte</li>
+        <li>Wertvolle Teppiche und Textilien</li>
+        <li>Fahrräder, E-Bikes und Sportgeräte</li>
+      </ul>
+      <p style="font-size:15px; color:var(--text-muted);">
+        Nicht angerechnet werden stark beschädigte, verschlissene oder hygienisch bedenkliche Gegenstände.
+        Was nicht angerechnet werden kann, wird ordnungsgemäß und umweltgerecht entsorgt.
+      </p>
+      <a href="tel:+4917260309946" class="btn-cta">📞 Jetzt unverbindlich anfragen</a>
+    </div>
+  </section>
+
+  <!-- ── RECHENBEISPIEL ── -->
+  <section class="content-section">
+    <h2>Rechenbeispiel: So sieht Ihre Ersparnis aus</h2>
+    <p>
+      Damit Sie eine realistische Vorstellung bekommen: Hier ein typisches Beispiel für eine 3-Zimmer-Wohnung in Hannover.
+    </p>
+
+    <div class="example-card">
+      <p style="font-weight:800; font-size:15px; color:var(--green-main); margin-bottom:16px; letter-spacing:0.04em; text-transform:uppercase;">Beispiel: 3-Zimmer-Wohnung, 75 m²</p>
+
+      <div class="example-row">
+        <span class="label">Grundpreis Entrümpelung &amp; Entsorgung</span>
+        <span class="value">980 €</span>
+      </div>
+      <div class="example-row">
+        <span class="label">Wertanrechnung Wohnzimmergarnitur (Eiche massiv)</span>
+        <span class="value savings">− 180 €</span>
+      </div>
+      <div class="example-row">
+        <span class="label">Wertanrechnung Kühlschrank &amp; Waschmaschine</span>
+        <span class="value savings">− 120 €</span>
+      </div>
+      <div class="example-row">
+        <span class="label">Wertanrechnung Antiquitäten &amp; Bilder</span>
+        <span class="value savings">− 90 €</span>
+      </div>
+      <div class="example-row total">
+        <span class="label">Ihr tatsächlicher Endpreis</span>
+        <span class="value">590 €</span>
+      </div>
+    </div>
+
+    <p style="font-size:15px; color:var(--text-muted);">
+      * Alle Preise sind Beispielwerte. Der tatsächliche Preis wird nach kostenloser Besichtigung vor Ort als verbindlicher Festpreis schriftlich angeboten.
+    </p>
+    <a href="tel:+4917260309946" class="btn-cta">📞 Mein persönliches Angebot anfragen</a>
+  </section>
+
+  <!-- ── JETZT KOSTENLOSE BESICHTIGUNG ── -->
+  <section class="section-alt">
+    <div class="content-section" style="text-align:center; max-width:720px;">
+      <h2>Jetzt kostenlose Besichtigung vereinbaren</h2>
+      <p>
+        Wir kommen zu Ihnen, bewerten den Haushalt vor Ort — kostenlos und unverbindlich — und erstellen ein schriftliches Festpreisangebot inklusive aller Wertanrechnungen.
+        Kein Risiko, keine Überraschungen.
+      </p>
+
+      <div class="trust-bar" style="justify-content:center;">
+        <div class="trust-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Kostenlose Besichtigung
+        </div>
+        <div class="trust-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Schriftlicher Festpreis
+        </div>
+        <div class="trust-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+          24h Einsatzbereitschaft
+        </div>
+        <div class="trust-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+          124+ zufriedene Kunden
+        </div>
+      </div>
+
+      <div style="margin-top:32px; display:flex; flex-wrap:wrap; gap:16px; justify-content:center;">
+        <a href="tel:+4917260309946" class="btn-cta" style="margin-top:0;">📞 0172 6030946</a>
+        <a href="https://wa.me/4917260309946?text=Hallo%2C%20ich%20m%C3%B6chte%20eine%20kostenlose%20Besichtigung%20f%C3%BCr%20eine%20Haushaltsaufl%C3%B6sung%20vereinbaren." target="_blank" rel="noopener" class="btn-cta-outline" style="margin-top:0; margin-left:0;">WhatsApp schreiben</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FAQ ── -->
+  <section class="content-section">
+    <h2>Häufige Fragen zur Wertanrechnung</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">Was ist Wertanrechnung bei einer Haushaltsauflösung?</div>
+      <div class="faq-a">Bei der Wertanrechnung bewertet unser Team verwertbare Gegenstände wie Möbel, Elektronik oder Antiquitäten und zieht deren Marktwert vom Gesamtpreis ab – Sie zahlen am Ende deutlich weniger.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Welche Gegenstände werden bei der Wertanrechnung berücksichtigt?</div>
+      <div class="faq-a">Angerechnet werden u. a. Möbel in gutem Zustand, funktionstüchtige Elektrogeräte, Antiquitäten, Schmuck, Sammlerstücke, Bücher und Werkzeug. Eine kostenlose Besichtigung klärt den genauen Umfang.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Wie viel kann ich durch Wertanrechnung sparen?</div>
+      <div class="faq-a">Die Ersparnis hängt vom Inhalt des Haushalts ab. In vielen Fällen reduziert sich der Preis um 20–50 %. Bei hochwertigen Beständen kann die Auflösung sogar kostenneutral sein.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Wie läuft die Wertanrechnung bei Wirlösenauf.de ab?</div>
+      <div class="faq-a">Wir besichtigen den Haushalt kostenlos, bewerten verwertbare Gegenstände transparent und erstellen ein schriftliches Festpreisangebot inklusive aller Abzüge – klar und verständlich.</div>
+    </div>
+
+    <a href="../index.html" class="btn-cta" style="margin-top:32px;">← Zurück zur Startseite</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p style="margin-bottom:8px;">
+      © 2025 <a href="../index.html">wirlösenauf.de</a> – Haushaltsauflösung Hannover &amp; Niedersachsen
+    </p>
+    <p>
+      <a href="tel:+4917260309946">0172 6030946</a> &nbsp;·&nbsp;
+      <a href="../index.html">Impressum</a> &nbsp;·&nbsp;
+      <a href="../index.html">Datenschutz</a>
+    </p>
+  </footer>
+
+
+  <script>
+  (function() {
+    var btn = document.querySelector('.nav-hamburger');
+    var menu = document.getElementById('mobile-nav');
+    if (!btn || !menu) return;
+    btn.addEventListener('click', function() {
+      var open = menu.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(open));
+    });
+    menu.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', function() {
+        menu.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      });
+    });
+  })();
+  </script>
+</body>
+</html>

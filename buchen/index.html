@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <link rel="icon" type="image/png" href="../favicon.png" />
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Besichtigungstermin buchen – Wirlösenauf.de</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <style>
+    :root {
+      --green-deep:  #1B5E20;
+      --green-main:  #2E7D32;
+      --green-mid:   #388E3C;
+      --green-light: #4CAF50;
+      --green-pale:  #C8E6C9;
+      --green-bg:    #F1F8F1;
+      --off-white:   #FAFEFA;
+      --text-dark:   #111811;
+      --text-mid:    #3a4a3a;
+      --text-muted:  #6b7c6b;
+      --error:       #C62828;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+      background: var(--green-bg);
+      color: var(--text-dark);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: rgba(250,254,250,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(46,125,50,0.10);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 32px; height: 64px; position: sticky; top: 0; z-index: 100;
+    }
+    .nav-logo img { height: 44px; width: auto; display: block; }
+    .nav-back {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: var(--green-main); font-size: 14px; font-weight: 500;
+      text-decoration: none; padding: 7px 14px;
+      border: 1.5px solid var(--green-pale); border-radius: 8px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .nav-back:hover { background: var(--green-bg); border-color: var(--green-light); }
+
+    /* ── MAIN WRAPPER ── */
+    main {
+      flex: 1;
+      max-width: 640px;
+      width: 100%;
+      margin: 40px auto 60px;
+      padding: 0 20px;
+    }
+
+    /* ── PAGE HEADER ── */
+    .page-header { text-align: center; margin-bottom: 36px; }
+    .page-badge {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--green-main); background: #fff;
+      border: 1px solid var(--green-pale); border-radius: 100px;
+      padding: 4px 14px; margin-bottom: 14px;
+    }
+    .page-header h1 {
+      font-size: clamp(24px, 5vw, 36px); font-weight: 800;
+      letter-spacing: -0.03em; line-height: 1.2;
+      color: var(--text-dark); margin-bottom: 10px;
+    }
+    .page-header p {
+      font-size: 16px; color: var(--text-muted); line-height: 1.6;
+    }
+
+    /* ── PROGRESS INDICATOR ── */
+    .progress-wrap {
+      display: flex; align-items: center;
+      justify-content: center; gap: 0;
+      margin-bottom: 32px;
+    }
+    .prog-step {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 600; color: var(--text-muted);
+      transition: color 0.3s;
+    }
+    .prog-step.active { color: var(--green-main); }
+    .prog-step.done { color: var(--green-light); }
+    .prog-num {
+      width: 28px; height: 28px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 800;
+      background: var(--green-pale); color: var(--text-muted);
+      transition: background 0.3s, color 0.3s;
+      flex-shrink: 0;
+    }
+    .prog-step.active .prog-num { background: var(--green-main); color: #fff; }
+    .prog-step.done .prog-num { background: var(--green-light); color: #fff; }
+    .prog-line {
+      width: 60px; height: 2px;
+      background: var(--green-pale); border-radius: 2px; margin: 0 8px;
+      transition: background 0.3s;
+    }
+    .prog-line.done { background: var(--green-light); }
+
+    /* ── CARD ── */
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 36px 40px;
+      box-shadow: 0 4px 32px rgba(27,94,32,0.08), 0 1px 4px rgba(0,0,0,0.04);
+      border: 1px solid rgba(200,230,201,0.5);
+    }
+    .card-title {
+      font-size: 20px; font-weight: 800; color: var(--text-dark);
+      margin-bottom: 6px;
+    }
+    .card-sub {
+      font-size: 14px; color: var(--text-muted); margin-bottom: 28px; line-height: 1.5;
+    }
+
+    /* ── FORM FIELDS ── */
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+    label {
+      font-size: 13px; font-weight: 600; color: var(--text-mid);
+      letter-spacing: 0.01em;
+    }
+    label span.req { color: var(--green-main); }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="date"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 11px 14px;
+      font-size: 15px;
+      font-family: inherit;
+      color: var(--text-dark);
+      background: var(--off-white);
+      border: 2px solid var(--green-pale);
+      border-radius: 10px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--green-main);
+      box-shadow: 0 0 0 3px rgba(46,125,50,0.10);
+      background: #fff;
+    }
+    input.invalid, textarea.invalid, select.invalid {
+      border-color: var(--error);
+    }
+    textarea { min-height: 90px; resize: vertical; line-height: 1.6; }
+
+    /* ── DATE + TIME ROW ── */
+    input[type="date"] { cursor: pointer; }
+
+    /* ── TIME SLOTS ── */
+    .time-slots { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .time-slot { position: relative; }
+    .time-slot input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
+    .time-slot label {
+      display: flex; flex-direction: column; align-items: flex-start;
+      padding: 11px 14px; border-radius: 10px;
+      border: 2px solid var(--green-pale); background: var(--off-white);
+      cursor: pointer; transition: border-color 0.2s, background 0.2s;
+      font-size: 13px; font-weight: 600; color: var(--text-mid);
+      letter-spacing: 0;
+    }
+    .time-slot label small {
+      font-size: 11px; font-weight: 400; color: var(--text-muted); margin-top: 2px;
+    }
+    .time-slot input:checked + label {
+      border-color: var(--green-main);
+      background: var(--green-bg);
+      color: var(--green-deep);
+    }
+    .time-slot label:hover { border-color: var(--green-mid); background: var(--green-bg); }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px; background: var(--green-pale); margin: 24px 0;
+    }
+
+    /* ── OBJECT TYPE GRID ── */
+    .obj-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 4px;
+    }
+    .obj-card { position: relative; }
+    .obj-card input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
+    .obj-card label {
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center; gap: 6px;
+      padding: 14px 8px; border-radius: 12px;
+      border: 2px solid var(--green-pale); background: var(--off-white);
+      cursor: pointer; transition: border-color 0.2s, background 0.2s;
+      font-size: 12px; font-weight: 600; color: var(--text-mid);
+      letter-spacing: 0;
+    }
+    .obj-card label .obj-icon { font-size: 24px; line-height: 1; }
+    .obj-card input:checked + label {
+      border-color: var(--green-main);
+      background: var(--green-bg);
+      color: var(--green-deep);
+    }
+    .obj-card label:hover { border-color: var(--green-mid); background: var(--green-bg); }
+
+    /* ── SLIDER ── */
+    .slider-row {
+      display: flex; align-items: center; gap: 14px;
+    }
+    input[type="range"] {
+      flex: 1; -webkit-appearance: none; height: 6px;
+      background: var(--green-pale); border-radius: 3px; outline: none;
+      border: none; padding: 0;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none; width: 22px; height: 22px;
+      background: var(--green-main); border-radius: 50%;
+      border: 3px solid #fff;
+      box-shadow: 0 2px 8px rgba(46,125,50,0.3);
+      cursor: pointer;
+    }
+    .slider-val {
+      min-width: 60px; text-align: center;
+      font-size: 15px; font-weight: 700; color: var(--green-deep);
+      background: var(--green-bg); border-radius: 8px;
+      padding: 6px 10px; border: 1.5px solid var(--green-pale);
+    }
+
+    /* ── FULLNESS OPTIONS ── */
+    .fullness-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    .fill-opt { position: relative; }
+    .fill-opt input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
+    .fill-opt label {
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center; gap: 4px;
+      padding: 10px 6px; border-radius: 10px;
+      border: 2px solid var(--green-pale); background: var(--off-white);
+      cursor: pointer; transition: border-color 0.2s, background 0.2s;
+      font-size: 12px; font-weight: 600; color: var(--text-mid);
+      letter-spacing: 0;
+    }
+    .fill-opt label .fill-icon { font-size: 20px; }
+    .fill-opt input:checked + label {
+      border-color: var(--green-main);
+      background: var(--green-bg);
+      color: var(--green-deep);
+    }
+    .fill-opt label:hover { border-color: var(--green-mid); background: var(--green-bg); }
+
+    /* ── CHECKBOXES ── */
+    .checks-row { display: flex; flex-wrap: wrap; gap: 10px; }
+    .check-item { position: relative; }
+    .check-item input[type="checkbox"] { position: absolute; opacity: 0; width: 0; height: 0; }
+    .check-item label {
+      display: flex; align-items: center; gap: 6px;
+      padding: 8px 14px; border-radius: 50px;
+      border: 2px solid var(--green-pale); background: var(--off-white);
+      cursor: pointer; transition: border-color 0.2s, background 0.2s;
+      font-size: 13px; font-weight: 500; color: var(--text-mid);
+      letter-spacing: 0;
+    }
+    .check-item input:checked + label {
+      border-color: var(--green-main);
+      background: var(--green-bg);
+      color: var(--green-deep);
+      font-weight: 600;
+    }
+    .check-item label:hover { border-color: var(--green-mid); background: var(--green-bg); }
+
+    /* ── BUTTONS ── */
+    .btn-row { display: flex; gap: 12px; margin-top: 28px; }
+    .btn-primary {
+      flex: 1;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 14px 24px; border-radius: 12px;
+      background: var(--green-main); color: #fff;
+      font-size: 16px; font-weight: 700; font-family: inherit;
+      border: none; cursor: pointer;
+      box-shadow: 0 4px 16px rgba(46,125,50,0.25);
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    }
+    .btn-primary:hover { background: var(--green-deep); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(46,125,50,0.32); }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-back {
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+      padding: 14px 20px; border-radius: 12px;
+      background: transparent; color: var(--text-mid);
+      font-size: 15px; font-weight: 600; font-family: inherit;
+      border: 2px solid var(--green-pale); cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .btn-back:hover { background: var(--green-bg); border-color: var(--green-light); }
+
+    /* ── SUCCESS PANEL ── */
+    #panel-success {
+      display: none;
+      text-align: center; padding: 20px 0;
+    }
+    .success-icon {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: var(--green-bg); border: 3px solid var(--green-pale);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 34px; margin: 0 auto 24px;
+    }
+    #panel-success h2 {
+      font-size: 26px; font-weight: 800; color: var(--text-dark);
+      margin-bottom: 12px;
+    }
+    #panel-success p {
+      font-size: 16px; color: var(--text-mid); line-height: 1.65;
+      margin-bottom: 10px;
+    }
+    .success-summary {
+      background: var(--green-bg); border: 1px solid var(--green-pale);
+      border-radius: 14px; padding: 18px 22px; margin: 24px 0;
+      text-align: left;
+    }
+    .success-summary .sum-row {
+      display: flex; gap: 10px; font-size: 14px;
+      color: var(--text-mid); padding: 5px 0;
+      border-bottom: 1px solid var(--green-pale);
+    }
+    .success-summary .sum-row:last-child { border-bottom: none; }
+    .success-summary .sum-row strong { color: var(--green-deep); min-width: 130px; }
+    .btn-home {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 24px; border-radius: 10px;
+      background: var(--green-main); color: #fff;
+      font-size: 15px; font-weight: 700; text-decoration: none;
+      margin-top: 8px;
+      transition: background 0.2s;
+    }
+    .btn-home:hover { background: var(--green-deep); }
+
+    /* ── TRUST STRIP ── */
+    .trust-strip {
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 16px;
+      margin-top: 24px;
+    }
+    .trust-chip {
+      display: flex; align-items: center; gap: 7px;
+      font-size: 13px; font-weight: 500; color: var(--text-muted);
+    }
+    .trust-chip svg { flex-shrink: 0; }
+
+    /* ── ERROR MSG ── */
+    .form-error {
+      display: none;
+      padding: 12px 16px;
+      background: #FFEBEE;
+      border: 1px solid #FFCDD2;
+      border-radius: 10px;
+      font-size: 14px;
+      color: var(--error);
+      margin-bottom: 16px;
+    }
+
+    /* ── STEP PANELS ── */
+    .step-panel { display: none; }
+    .step-panel.active { display: block; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      nav { padding: 0 16px; }
+      main { margin: 28px auto 48px; }
+      .card { padding: 24px 20px; }
+      .form-row { grid-template-columns: 1fr; }
+      .obj-grid { grid-template-columns: repeat(3, 1fr); }
+      .time-slots { grid-template-columns: 1fr 1fr; }
+      .fullness-row { grid-template-columns: repeat(2, 1fr); }
+      .btn-row { flex-direction: column-reverse; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="nav-logo">
+      <picture>
+        <source media="(max-width: 767px)" srcset="../brand_assets/Logo/Logo%20Symbol.png" />
+        <img src="../brand_assets/Logo/Logo%20Font.png" alt="Wirlösenauf.de" loading="eager" />
+      </picture>
+    </a>
+    <a href="/" class="nav-back">← Zur Hauptseite</a>
+  </nav>
+
+  <main>
+
+    <!-- HEADER -->
+    <div class="page-header">
+      <div class="page-badge">Kostenlose Besichtigung</div>
+      <h1>Termin online buchen</h1>
+      <p>Wir kommen zu Ihnen — unverbindlich, schnell und unkompliziert.</p>
+    </div>
+
+    <!-- PROGRESS -->
+    <div class="progress-wrap" id="progress-wrap">
+      <div class="prog-step active" id="prog-1">
+        <div class="prog-num">1</div>
+        <span>Ihr Termin</span>
+      </div>
+      <div class="prog-line" id="prog-line-1"></div>
+      <div class="prog-step" id="prog-2">
+        <div class="prog-num">2</div>
+        <span>Was entrümpeln?</span>
+      </div>
+    </div>
+
+    <!-- CARD -->
+    <div class="card">
+
+      <!-- ═══════════════════════════════════════
+           STEP 1 — Termin & Kontaktdaten
+      ═══════════════════════════════════════ -->
+      <div class="step-panel active" id="panel-1">
+        <div class="card-title">Ihre Kontaktdaten &amp; Wunschtermin</div>
+        <div class="card-sub">Alle Felder sind Pflichtfelder, sofern nicht anders angegeben.</div>
+
+        <div class="form-error" id="err-1">Bitte füllen Sie alle Pflichtfelder aus.</div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="vorname">Vorname <span class="req">*</span></label>
+            <input type="text" id="vorname" name="vorname" placeholder="Max" autocomplete="given-name" />
+          </div>
+          <div class="form-group">
+            <label for="nachname">Nachname <span class="req">*</span></label>
+            <input type="text" id="nachname" name="nachname" placeholder="Mustermann" autocomplete="family-name" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="telefon">Telefon <span class="req">*</span></label>
+            <input type="tel" id="telefon" name="telefon" placeholder="0172 000 0000" autocomplete="tel" />
+          </div>
+          <div class="form-group">
+            <label for="email">E-Mail <span class="req">*</span></label>
+            <input type="email" id="email" name="email" placeholder="max@beispiel.de" autocomplete="email" />
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="form-group">
+          <label for="adresse">Adresse des Objekts <span class="req">*</span></label>
+          <input type="text" id="adresse" name="adresse" placeholder="Musterstraße 12, 30159 Hannover" autocomplete="street-address" />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="datum">Wunschdatum <span class="req">*</span></label>
+            <input type="date" id="datum" name="datum" />
+          </div>
+          <div class="form-group">
+            <label>Bevorzugte Uhrzeit <span class="req">*</span></label>
+            <div class="time-slots">
+              <div class="time-slot">
+                <input type="radio" name="uhrzeit" id="t1" value="Vormittags (8–12 Uhr)" />
+                <label for="t1">Vormittags<small>8:00 – 12:00 Uhr</small></label>
+              </div>
+              <div class="time-slot">
+                <input type="radio" name="uhrzeit" id="t2" value="Nachmittags (12–16 Uhr)" />
+                <label for="t2">Nachmittags<small>12:00 – 16:00 Uhr</small></label>
+              </div>
+              <div class="time-slot">
+                <input type="radio" name="uhrzeit" id="t3" value="Spätnachmittag (16–18 Uhr)" />
+                <label for="t3">Spätnachmittag<small>16:00 – 18:00 Uhr</small></label>
+              </div>
+              <div class="time-slot">
+                <input type="radio" name="uhrzeit" id="t4" value="Flexibel / nach Absprache" />
+                <label for="t4">Flexibel<small>nach Absprache</small></label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top:4px;">
+          <label for="beschreibung">Anmerkungen <span style="font-weight:400; color:var(--text-muted);">(optional)</span></label>
+          <textarea id="beschreibung" name="beschreibung" placeholder="z. B. Zugang nur über Hinterhof, bitte am Nachmittag klingeln…"></textarea>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn-primary" onclick="goStep2()">
+            Weiter: Was wird entrümpelt?
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════
+           STEP 2 — Rechner / Objekt-Info
+      ═══════════════════════════════════════ -->
+      <div class="step-panel" id="panel-2">
+        <div class="card-title">Was soll entrümpelt werden?</div>
+        <div class="card-sub">Diese Angaben helfen uns, uns optimal auf Ihren Besichtigungstermin vorzubereiten.</div>
+
+        <div class="form-error" id="err-2">Bitte wählen Sie mindestens einen Objekttyp und einen Füllgrad aus.</div>
+
+        <!-- Objekttyp -->
+        <div class="form-group">
+          <label>Art des Objekts <span class="req">*</span></label>
+          <div class="obj-grid">
+            <div class="obj-card">
+              <input type="radio" name="objekttyp" id="obj-wohnung" value="Wohnung" />
+              <label for="obj-wohnung"><span class="obj-icon">🏠</span>Wohnung</label>
+            </div>
+            <div class="obj-card">
+              <input type="radio" name="objekttyp" id="obj-haus" value="Haus" />
+              <label for="obj-haus"><span class="obj-icon">🏡</span>Haus</label>
+            </div>
+            <div class="obj-card">
+              <input type="radio" name="objekttyp" id="obj-keller" value="Keller" />
+              <label for="obj-keller"><span class="obj-icon">📦</span>Keller</label>
+            </div>
+            <div class="obj-card">
+              <input type="radio" name="objekttyp" id="obj-dachboden" value="Dachboden" />
+              <label for="obj-dachboden"><span class="obj-icon">🏚️</span>Dachboden</label>
+            </div>
+            <div class="obj-card">
+              <input type="radio" name="objekttyp" id="obj-garage" value="Garage" />
+              <label for="obj-garage"><span class="obj-icon">🚗</span>Garage</label>
+            </div>
+            <div class="obj-card">
+              <input type="radio" name="objekttyp" id="obj-buero" value="Büro / Gewerbe" />
+              <label for="obj-buero"><span class="obj-icon">🏢</span>Büro</label>
+            </div>
+            <div class="obj-card">
+              <input type="radio" name="objekttyp" id="obj-lager" value="Lagerhalle" />
+              <label for="obj-lager"><span class="obj-icon">🏭</span>Lagerhalle</label>
+            </div>
+            <div class="obj-card">
+              <input type="radio" name="objekttyp" id="obj-garten" value="Gartenhaus" />
+              <label for="obj-garten"><span class="obj-icon">🌿</span>Gartenhäuschen</label>
+            </div>
+            <div class="obj-card">
+              <input type="radio" name="objekttyp" id="obj-sonstiges" value="Sonstiges" />
+              <label for="obj-sonstiges"><span class="obj-icon">📋</span>Sonstiges</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Größe -->
+        <div class="form-group" style="margin-top:8px;">
+          <label>Ungefähre Fläche / Größe</label>
+          <div class="slider-row">
+            <input type="range" id="flaeche" name="flaeche" min="10" max="300" step="5" value="60" oninput="document.getElementById('flaeche-val').textContent=this.value+' m²'" />
+            <div class="slider-val" id="flaeche-val">60 m²</div>
+          </div>
+        </div>
+
+        <!-- Füllgrad -->
+        <div class="form-group" style="margin-top:8px;">
+          <label>Füllgrad <span class="req">*</span></label>
+          <div class="fullness-row">
+            <div class="fill-opt">
+              <input type="radio" name="fuellgrad" id="f1" value="Wenig befüllt (kaum Möbel)" />
+              <label for="f1"><span class="fill-icon">📭</span>Wenig befüllt</label>
+            </div>
+            <div class="fill-opt">
+              <input type="radio" name="fuellgrad" id="f2" value="Normal befüllt" />
+              <label for="f2"><span class="fill-icon">📬</span>Normal</label>
+            </div>
+            <div class="fill-opt">
+              <input type="radio" name="fuellgrad" id="f3" value="Sehr voll (viele Möbel)" />
+              <label for="f3"><span class="fill-icon">📦</span>Sehr voll</label>
+            </div>
+            <div class="fill-opt">
+              <input type="radio" name="fuellgrad" id="f4" value="Extrem voll (Messie / Vollvermüllung)" />
+              <label for="f4"><span class="fill-icon">🗄️</span>Extrem voll</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Extras -->
+        <div class="form-group" style="margin-top:8px;">
+          <label>Zusätzliche Leistungen <span style="font-weight:400; color:var(--text-muted);">(optional, Mehrfachauswahl)</span></label>
+          <div class="checks-row">
+            <div class="check-item">
+              <input type="checkbox" id="ex-keller" name="extras" value="Keller" />
+              <label for="ex-keller">📦 Keller zusätzlich</label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="ex-dach" name="extras" value="Dachboden" />
+              <label for="ex-dach">🏚️ Dachboden zusätzlich</label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="ex-garage" name="extras" value="Garage" />
+              <label for="ex-garage">🚗 Garage zusätzlich</label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="ex-reinigung" name="extras" value="Endreinigung" />
+              <label for="ex-reinigung">🧹 Endreinigung</label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="ex-sperr" name="extras" value="Sperrmüll-Abholung" />
+              <label for="ex-sperr">🚛 Sperrmüll-Abholung</label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="ex-etage" name="extras" value="Mehr als 2 Etagen (kein Aufzug)" />
+              <label for="ex-etage">🏗️ Kein Aufzug</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sonstiges -->
+        <div class="form-group" style="margin-top:8px;">
+          <label for="sonstiges">Besonderheiten oder Wertgegenstände <span style="font-weight:400; color:var(--text-muted);">(optional)</span></label>
+          <textarea id="sonstiges" name="sonstiges" placeholder="z. B. Antiquitäten, Klavier, besondere Entsorgung, …"></textarea>
+        </div>
+
+        <!-- Rechtliche Zustimmungen -->
+        <div style="margin-top:20px; padding:18px 20px; background:var(--green-bg); border:1px solid var(--green-pale); border-radius:12px; display:flex; flex-direction:column; gap:12px;">
+          <label style="display:flex; align-items:flex-start; gap:10px; cursor:pointer; font-size:13px; color:var(--text-mid); line-height:1.5; font-weight:400; letter-spacing:0;">
+            <input type="checkbox" id="consent-agb" style="margin-top:2px; width:16px; height:16px; flex-shrink:0; accent-color:var(--green-main);" />
+            <span>Ich habe die <a href="../agb/" target="_blank" style="color:var(--green-main); font-weight:600;">AGB</a> gelesen und stimme ihnen zu. <strong style="color:var(--green-deep);">*</strong></span>
+          </label>
+          <label style="display:flex; align-items:flex-start; gap:10px; cursor:pointer; font-size:13px; color:var(--text-mid); line-height:1.5; font-weight:400; letter-spacing:0;">
+            <input type="checkbox" id="consent-widerruf" style="margin-top:2px; width:16px; height:16px; flex-shrink:0; accent-color:var(--green-main);" />
+            <span>Ich bitte ausdrücklich um den <strong>vorzeitigen Beginn der Dienstleistung</strong> und erkenne an, dass mein <a href="../widerruf/" target="_blank" style="color:var(--green-main); font-weight:600;">Widerrufsrecht</a> bei vollständiger Leistungserbringung erlischt. <strong style="color:var(--green-deep);">*</strong></span>
+          </label>
+          <label style="display:flex; align-items:flex-start; gap:10px; cursor:pointer; font-size:13px; color:var(--text-mid); line-height:1.5; font-weight:400; letter-spacing:0;">
+            <input type="checkbox" id="consent-datenschutz" style="margin-top:2px; width:16px; height:16px; flex-shrink:0; accent-color:var(--green-main);" />
+            <span>Ich habe die <a href="../datenschutz/" target="_blank" style="color:var(--green-main); font-weight:600;">Datenschutzerklärung</a> zur Kenntnis genommen und stimme der Verarbeitung meiner Daten zur Terminvereinbarung zu. <strong style="color:var(--green-deep);">*</strong></span>
+          </label>
+          <p style="font-size:11px; color:var(--text-muted); margin:0;">* Pflichtfelder</p>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn-back" onclick="goStep1()">
+            ← Zurück
+          </button>
+          <button class="btn-primary" onclick="submitForm()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+            Anfrage absenden
+          </button>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════
+           SUCCESS PANEL
+      ═══════════════════════════════════════ -->
+      <div id="panel-success">
+        <div class="success-icon">✅</div>
+        <h2>Anfrage eingegangen!</h2>
+        <p>Vielen Dank, <strong id="sum-name"></strong>. Wir haben Ihre Anfrage erhalten und melden uns <strong>innerhalb von 24 Stunden</strong> bei Ihnen zur Terminbestätigung.</p>
+
+        <div class="success-summary">
+          <div class="sum-row"><strong>📅 Wunschtermin:</strong> <span id="sum-datum"></span></div>
+          <div class="sum-row"><strong>🕐 Uhrzeit:</strong> <span id="sum-uhrzeit"></span></div>
+          <div class="sum-row"><strong>📍 Adresse:</strong> <span id="sum-adresse"></span></div>
+          <div class="sum-row"><strong>🏠 Objekt:</strong> <span id="sum-objekt"></span></div>
+          <div class="sum-row"><strong>📱 Wir erreichen Sie:</strong> <span id="sum-kontakt"></span></div>
+        </div>
+
+        <p style="font-size:14px; color:var(--text-muted);">Sollten Sie Fragen haben, erreichen Sie uns jederzeit unter <a href="tel:+4917260309946" style="color:var(--green-main); font-weight:600;">0172 6030946</a>.</p>
+
+        <div style="margin-top:24px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+          <a href="/" class="btn-home">← Zur Hauptseite</a>
+          <a href="https://wa.me/4917260309946?text=Ich%20habe%20gerade%20online%20einen%20Besichtigungstermin%20angefragt." target="_blank" rel="noopener"
+             style="display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:10px;background:#25D366;color:#fff;font-size:15px;font-weight:700;text-decoration:none;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Via WhatsApp bestätigen
+          </a>
+        </div>
+      </div>
+
+    </div><!-- .card -->
+
+    <!-- TRUST STRIP -->
+    <div class="trust-strip">
+      <div class="trust-chip">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green-main)" stroke-width="2.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Unverbindlich & kostenlos
+      </div>
+      <div class="trust-chip">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green-main)" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Antwort innerhalb 24h
+      </div>
+      <div class="trust-chip">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green-main)" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.02 1.22 2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+        0172 6030946
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer style="background:var(--green-deep);color:rgba(255,255,255,0.7);text-align:center;padding:24px;font-size:13px;">
+    <div>© 2025 wirlösenauf.de. Alle Rechte vorbehalten.</div>
+    <div style="margin-top:8px;">
+      <a href="/impressum/" style="color:rgba(255,255,255,0.6);text-decoration:none;margin:0 10px;">Impressum</a>
+      <a href="/datenschutz/" style="color:rgba(255,255,255,0.6);text-decoration:none;margin:0 10px;">Datenschutz</a>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    'use strict';
+
+    // ── Formspree endpoint — HIER DEINE FORMSPREE URL EINTRAGEN ──────────────
+    // 1. Gehe zu https://formspree.io und erstelle ein kostenloses Konto
+    // 2. Erstelle ein neues Formular, gib deine E-Mail-Adresse an
+    // 3. Ersetze XXXXXXXX unten mit deiner Formular-ID (z.B. "xpzgwkqr")
+    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mbdzekdg';
+    // ─────────────────────────────────────────────────────────────────────────
+
+    // Set min date to today
+    const dateInput = document.getElementById('datum');
+    const today = new Date();
+    const pad = n => String(n).padStart(2, '0');
+    dateInput.min = `${today.getFullYear()}-${pad(today.getMonth()+1)}-${pad(today.getDate())}`;
+    // Set default to next weekday
+    const next = new Date(today);
+    next.setDate(next.getDate() + (next.getDay() === 6 ? 2 : next.getDay() === 0 ? 1 : 1));
+    dateInput.value = `${next.getFullYear()}-${pad(next.getMonth()+1)}-${pad(next.getDate())}`;
+
+    // ── Navigation ─────────────────────────────────────────────────────────
+    window.goStep2 = function () {
+      const err = document.getElementById('err-1');
+      err.style.display = 'none';
+
+      // Validate step 1
+      const fields = ['vorname','nachname','telefon','email','adresse','datum'];
+      let valid = true;
+      fields.forEach(id => {
+        const el = document.getElementById(id);
+        if (!el.value.trim()) { el.classList.add('invalid'); valid = false; }
+        else el.classList.remove('invalid');
+      });
+      const uhrzeit = document.querySelector('input[name="uhrzeit"]:checked');
+      if (!uhrzeit) {
+        document.querySelectorAll('.time-slot label').forEach(l => l.style.borderColor = '#FFCDD2');
+        valid = false;
+      }
+      if (!valid) {
+        err.style.display = 'block';
+        err.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      document.getElementById('panel-1').classList.remove('active');
+      document.getElementById('panel-2').classList.add('active');
+      document.getElementById('prog-1').classList.remove('active');
+      document.getElementById('prog-1').classList.add('done');
+      document.getElementById('prog-line-1').classList.add('done');
+      document.getElementById('prog-2').classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    window.goStep1 = function () {
+      document.getElementById('panel-2').classList.remove('active');
+      document.getElementById('panel-1').classList.add('active');
+      document.getElementById('prog-2').classList.remove('active');
+      document.getElementById('prog-1').classList.remove('done');
+      document.getElementById('prog-1').classList.add('active');
+      document.getElementById('prog-line-1').classList.remove('done');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    // ── Submit ──────────────────────────────────────────────────────────────
+    window.submitForm = function () {
+      const err = document.getElementById('err-2');
+      err.style.display = 'none';
+
+      // Validate step 2
+      const objekttyp = document.querySelector('input[name="objekttyp"]:checked');
+      const fuellgrad = document.querySelector('input[name="fuellgrad"]:checked');
+      const consentAgb = document.getElementById('consent-agb').checked;
+      const consentWiderruf = document.getElementById('consent-widerruf').checked;
+      const consentDatenschutz = document.getElementById('consent-datenschutz').checked;
+      if (!objekttyp || !fuellgrad) {
+        err.textContent = 'Bitte wählen Sie mindestens einen Objekttyp und einen Füllgrad aus.';
+        err.style.display = 'block';
+        err.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+      if (!consentAgb || !consentWiderruf || !consentDatenschutz) {
+        err.textContent = 'Bitte bestätigen Sie AGB, Widerrufsrecht und Datenschutzerklärung.';
+        err.style.display = 'block';
+        err.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      // Collect extras
+      const extras = [...document.querySelectorAll('input[name="extras"]:checked')].map(c => c.value);
+
+      // Format date nicely
+      const rawDate = document.getElementById('datum').value;
+      const dateObj = new Date(rawDate + 'T12:00:00');
+      const niceDate = dateObj.toLocaleDateString('de-DE', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+
+      // Build payload
+      const payload = {
+        '📋 BESICHTIGUNGSANFRAGE': '──────────────────────────',
+        'Vorname': document.getElementById('vorname').value.trim(),
+        'Nachname': document.getElementById('nachname').value.trim(),
+        'Telefon': document.getElementById('telefon').value.trim(),
+        'E-Mail': document.getElementById('email').value.trim(),
+        'Adresse des Objekts': document.getElementById('adresse').value.trim(),
+        'Wunschdatum': niceDate,
+        'Bevorzugte Uhrzeit': document.querySelector('input[name="uhrzeit"]:checked').value,
+        'Anmerkungen (Termin)': document.getElementById('beschreibung').value.trim() || '–',
+        '📦 OBJEKT-INFO': '──────────────────────────',
+        'Objekttyp': objekttyp.value,
+        'Ungefähre Fläche': document.getElementById('flaeche-val').textContent,
+        'Füllgrad': fuellgrad.value,
+        'Zusatzleistungen': extras.length ? extras.join(', ') : '–',
+        'Besonderheiten': document.getElementById('sonstiges').value.trim() || '–',
+      };
+
+      // Show loading state
+      const btn = document.querySelector('#panel-2 .btn-primary');
+      const origText = btn.innerHTML;
+      btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="animation:spin 1s linear infinite"><path d="M21 12a9 9 0 11-3.5-7"/></svg> Wird gesendet…';
+      btn.disabled = true;
+
+      fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(res => {
+        if (res.ok) {
+          showSuccess(payload, niceDate);
+        } else {
+          throw new Error('server error');
+        }
+      })
+      .catch(() => {
+        // Fallback: show success anyway (offline mode / endpoint not set up yet)
+        // In production: show error instead
+        if (FORMSPREE_ENDPOINT.includes('XXXXXXXX')) {
+          // Dev mode — show success for testing
+          showSuccess(payload, niceDate);
+        } else {
+          btn.innerHTML = origText;
+          btn.disabled = false;
+          err.textContent = 'Fehler beim Senden. Bitte rufen Sie uns direkt an: 0172 6030946';
+          err.style.display = 'block';
+        }
+      });
+    };
+
+    function showSuccess(payload, niceDate) {
+      // Fill summary
+      document.getElementById('sum-name').textContent = payload['Vorname'] + ' ' + payload['Nachname'];
+      document.getElementById('sum-datum').textContent = niceDate;
+      document.getElementById('sum-uhrzeit').textContent = payload['Bevorzugte Uhrzeit'];
+      document.getElementById('sum-adresse').textContent = payload['Adresse des Objekts'];
+      document.getElementById('sum-objekt').textContent = payload['Objekttyp'] + ', ' + payload['Ungefähre Fläche'] + ', ' + payload['Füllgrad'];
+      document.getElementById('sum-kontakt').textContent = payload['Telefon'] + ' / ' + payload['E-Mail'];
+
+      // Hide steps, show success
+      document.getElementById('panel-2').classList.remove('active');
+      document.getElementById('progress-wrap').style.display = 'none';
+      document.getElementById('panel-success').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ── Remove invalid state on input ──────────────────────────────────────
+    document.querySelectorAll('input, textarea').forEach(el => {
+      el.addEventListener('input', () => el.classList.remove('invalid'));
+    });
+    document.querySelectorAll('.time-slot input').forEach(el => {
+      el.addEventListener('change', () => {
+        document.querySelectorAll('.time-slot label').forEach(l => l.style.borderColor = '');
+      });
+    });
+
+  })();
+
+  // Spinner animation for loading state
+  const style = document.createElement('style');
+  style.textContent = '@keyframes spin { to { transform: rotate(360deg); } }';
+  document.head.appendChild(style);
+  </script>
+
+</body>
+</html>

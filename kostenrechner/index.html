@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <link rel="icon" type="image/png" href="../favicon.png" />
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Haushaltsauflösung Hannover Kosten berechnen – Entrümpelung Preis | Wirlösenauf.de</title>
+  <meta name="description" content="Was kostet eine Haushaltsauflösung in Hannover? Berechne jetzt kostenlos deinen Preis – Entrümpelung Kosten, Wohnung räumen lassen Preis, Festpreis & kostenlose Besichtigung." />
+  <link rel="canonical" href="https://wirlösenauf.de/kostenrechner" />
+
+  <style>
+    :root {
+      --green-deep:   #1B5E20;
+      --green-main:   #2E7D32;
+      --green-mid:    #388E3C;
+      --green-light:  #4CAF50;
+      --green-pale:   #C8E6C9;
+      --green-bg:     #F1F8F1;
+      --off-white:    #FAFEFA;
+      --text-dark:    #111811;
+      --text-mid:     #3a4a3a;
+      --text-muted:   #6b7c6b;
+      --wa-green:     #25D366;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--text-dark);
+      background: var(--off-white);
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif;
+      line-height: 1.12;
+      letter-spacing: -0.025em;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 2px solid var(--green-pale);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 72px;
+      box-shadow: 0 2px 24px rgba(30,94,32,0.08);
+    }
+    .nav-logo img { height: 42px; width: auto; }
+    .nav-right { display: flex; align-items: center; gap: 16px; }
+    .nav-home {
+      font-size: 14px; font-weight: 600; color: var(--text-mid);
+      transition: color 0.2s;
+    }
+    .nav-home:hover { color: var(--green-main); }
+    .nav-cta {
+      background: var(--green-main); color: #fff;
+      padding: 10px 22px; border-radius: 50px;
+      font-size: 14px; font-weight: 700;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 16px rgba(46,125,50,0.35);
+    }
+    .nav-cta:hover { background: var(--green-deep); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(46,125,50,0.45); }
+    .nav-cta:active { transform: translateY(0); }
+    .nav-cta:focus-visible { outline: 2px solid var(--green-light); outline-offset: 3px; }
+
+    /* ── HERO ── */
+    .hero {
+      background: radial-gradient(ellipse at 50% 0%, #2d6a31 0%, #1B5E20 50%, #0d3b12 100%);
+      padding: 100px 48px 80px;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    .hero-grain {
+      position: absolute; inset: 0; pointer-events: none;
+      opacity: 0.045;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    .hero-blob {
+      position: absolute;
+      border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+      background: var(--green-light);
+      opacity: 0.1;
+    }
+    .hero-blob-1 { width: 460px; height: 460px; top: -180px; right: -100px; }
+    .hero-blob-2 { width: 300px; height: 300px; bottom: -120px; left: -60px; }
+
+    .hero-inner {
+      position: relative; z-index: 1;
+      max-width: 800px; margin: 0 auto;
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.88);
+      font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; padding: 7px 16px; border-radius: 50px;
+      margin-bottom: 24px;
+    }
+    .hero-badge-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--green-pale);
+      animation: dot-pulse 2s ease-in-out infinite;
+    }
+    @keyframes dot-pulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:.5;transform:scale(1.4);} }
+
+    .hero h1 {
+      font-size: clamp(26px, 4.5vw, 52px);
+      font-weight: 900; color: #fff; margin-bottom: 16px;
+    }
+    .hero-sub {
+      font-size: clamp(15px, 1.8vw, 18px);
+      color: rgba(255,255,255,0.72); margin-bottom: 40px;
+    }
+
+    /* ── CALCULATOR CARD ── */
+    .calc-wrap {
+      background: var(--green-bg);
+      padding: 56px 48px;
+    }
+    .calc-center {
+      max-width: 640px; margin: 0 auto;
+    }
+
+    .calc-card {
+      background: linear-gradient(160deg, #1a5c1f, #174f1c);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 28px;
+      padding: 32px 28px;
+      box-shadow: 0 32px 80px rgba(27,94,32,0.45), 0 8px 24px rgba(0,0,0,0.25);
+    }
+    .calc-title {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif;
+      font-size: 22px; font-weight: 800; color: #fff;
+      margin-bottom: 4px; letter-spacing: -0.02em;
+    }
+    .calc-subtitle {
+      font-size: 13px; color: rgba(255,255,255,0.5);
+      margin-bottom: 20px; font-weight: 500;
+    }
+    /* progress */
+    .calc-progress-bar { display: flex; gap: 5px; margin-bottom: 20px; }
+    .calc-progress-seg { flex:1; height:3px; border-radius:3px; background:rgba(255,255,255,0.12); transition:background 0.3s ease; }
+    .calc-progress-seg.active { background:var(--green-light); }
+    /* panels */
+    .calc-step-panel { display:none; }
+    .calc-step-panel.active { display:block; }
+    .calc-panel-label { font-size:11px; font-weight:800; letter-spacing:0.09em; text-transform:uppercase; color:#A5D6A7; margin-bottom:14px; }
+    /* object grid */
+    .calc-obj-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:9px; margin-bottom:16px; }
+    .calc-obj-card {
+      background:rgba(255,255,255,0.07); border:1.5px solid rgba(255,255,255,0.12);
+      border-radius:14px; padding:13px 8px; text-align:center; cursor:pointer;
+      color:rgba(255,255,255,0.78); font-size:12px; font-weight:700;
+      transition:background .2s, border-color .2s, transform .15s;
+    }
+    .calc-obj-card .obj-icon { font-size:22px; display:block; margin-bottom:4px; }
+    .calc-obj-card:hover { background:rgba(76,175,80,0.15); border-color:rgba(76,175,80,0.4); color:#fff; transform:translateY(-2px); }
+    .calc-obj-card.active { background:rgba(76,175,80,0.22); border-color:var(--green-light); color:#fff; box-shadow:0 3px 12px rgba(76,175,80,0.35); }
+    .calc-obj-card:focus-visible { outline:2px solid var(--green-light); outline-offset:2px; }
+    /* area */
+    .calc-area-display { text-align:center; font-size:36px; font-weight:900; color:#fff; font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",system-ui,sans-serif; line-height:1; margin-bottom:4px; }
+    .calc-area-unit { font-size:16px; font-weight:600; color:rgba(255,255,255,0.45); }
+    .calc-slider { width:100%; appearance:none; -webkit-appearance:none; height:4px; border-radius:4px; background:rgba(255,255,255,0.15); outline:none; margin:14px 0 10px; cursor:pointer; }
+    .calc-slider::-webkit-slider-thumb { -webkit-appearance:none; width:24px; height:24px; border-radius:50%; background:var(--green-light); cursor:pointer; box-shadow:0 2px 10px rgba(76,175,80,0.5); transition:transform .15s; }
+    .calc-slider::-webkit-slider-thumb:hover { transform:scale(1.15); }
+    .calc-quick-btns { display:flex; gap:6px; flex-wrap:wrap; justify-content:center; margin-bottom:4px; }
+    .calc-quick-btn { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.13); color:rgba(255,255,255,0.7); font-size:12px; font-weight:700; padding:6px 13px; border-radius:50px; cursor:pointer; transition:background .18s, border-color .18s, color .18s; }
+    .calc-quick-btn:hover { background:rgba(76,175,80,0.18); border-color:rgba(76,175,80,0.4); color:#fff; }
+    /* condition */
+    .calc-cond-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:14px; }
+    .calc-cond-card { background:rgba(255,255,255,0.07); border:1.5px solid rgba(255,255,255,0.12); border-radius:14px; padding:11px 7px; text-align:center; cursor:pointer; color:rgba(255,255,255,0.78); font-size:12px; font-weight:700; transition:background .2s, border-color .2s, transform .15s; }
+    .calc-cond-card .cond-icon { font-size:20px; display:block; margin-bottom:4px; }
+    .calc-cond-card:hover { background:rgba(76,175,80,0.15); border-color:rgba(76,175,80,0.4); color:#fff; transform:translateY(-2px); }
+    .calc-cond-card.active { background:rgba(76,175,80,0.22); border-color:var(--green-light); color:#fff; }
+    .calc-cond-card:focus-visible, .calc-floor-card:focus-visible { outline:2px solid var(--green-light); outline-offset:2px; }
+    .calc-cond-card small { font-size:10px; opacity:.55; display:block; line-height:1.3; }
+    /* floor */
+    .calc-floor-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:7px; margin-bottom:10px; }
+    .calc-floor-grid--3col { grid-template-columns:repeat(3,1fr); }
+    .calc-floor-card { background:rgba(255,255,255,0.07); border:1.5px solid rgba(255,255,255,0.12); border-radius:12px; padding:9px 7px; text-align:center; cursor:pointer; color:rgba(255,255,255,0.75); font-size:12px; font-weight:700; transition:background .2s, border-color .2s; }
+    .calc-floor-card:hover { background:rgba(76,175,80,0.15); border-color:rgba(76,175,80,0.4); color:#fff; }
+    .calc-floor-card.active { background:rgba(76,175,80,0.22); border-color:var(--green-light); color:#fff; }
+    /* toggle */
+    .calc-lkw-toggle { display:flex; align-items:center; gap:9px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:11px; padding:8px 13px; cursor:pointer; color:rgba(255,255,255,0.65); font-size:12px; font-weight:600; transition:background .2s; width:100%; text-align:left; appearance:none; -webkit-appearance:none; }
+    .calc-lkw-toggle.active { background:rgba(255,165,0,0.15); border-color:rgba(255,165,0,0.4); color:#FFD580; }
+    .calc-lkw-toggle:focus-visible { outline:2px solid var(--green-light); outline-offset:2px; }
+    /* extras */
+    .calc-extra-grid { display:grid; grid-template-columns:1fr 1fr; gap:7px; margin-bottom:12px; }
+    .calc-extra-check { display:flex; align-items:center; gap:8px; background:rgba(255,255,255,0.06); border:1.5px solid rgba(255,255,255,0.10); border-radius:11px; padding:8px 10px; cursor:pointer; color:rgba(255,255,255,0.7); font-size:12px; font-weight:700; transition:background .2s, border-color .2s, color .2s; justify-content:flex-start; }
+    .calc-extra-check:hover { background:rgba(76,175,80,0.12); border-color:rgba(76,175,80,0.35); color:#fff; }
+    .calc-extra-check.active { background:rgba(76,175,80,0.18); border-color:var(--green-light); color:#fff; }
+    .calc-extra-check:focus-visible { outline:2px solid var(--green-light); outline-offset:2px; }
+    .calc-extra-chk { width:16px; height:16px; border-radius:4px; border:1.5px solid rgba(255,255,255,0.3); background:transparent; flex-shrink:0; display:flex; align-items:center; justify-content:center; transition:background .2s, border-color .2s; }
+    .calc-extra-check.active .calc-extra-chk { background:var(--green-light); border-color:var(--green-light); }
+    .calc-extra-chk::after { content:''; display:none; width:4px; height:8px; border:2px solid #fff; border-top:none; border-left:none; transform:rotate(45deg) translateY(-1px); }
+    .calc-extra-check.active .calc-extra-chk::after { display:block; }
+    .calc-extra-price { margin-left:auto; font-size:10px; font-weight:600; color:rgba(255,255,255,0.4); white-space:nowrap; flex-shrink:0; }
+    /* mattress */
+    .calc-mattress-row { display:flex; align-items:center; gap:10px; margin-bottom:14px; font-size:13px; font-weight:700; color:rgba(255,255,255,0.7); }
+    .calc-mattress-btn { width:28px; height:28px; border-radius:50%; border:1.5px solid rgba(255,255,255,0.2); background:rgba(255,255,255,0.07); color:#fff; font-size:16px; line-height:1; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background .15s; appearance:none; -webkit-appearance:none; flex-shrink:0; }
+    .calc-mattress-btn:hover { background:rgba(76,175,80,0.25); }
+    .calc-mattress-btn:focus-visible { outline:2px solid var(--green-light); outline-offset:2px; }
+    .calc-mattress-count { min-width:20px; text-align:center; color:#fff; font-size:16px; }
+    /* wertanrechnung */
+    .calc-wa-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:6px; margin-bottom:16px; }
+    .calc-wa-btn { background:rgba(255,255,255,0.07); border:1.5px solid rgba(255,255,255,0.12); border-radius:10px; padding:8px 3px; text-align:center; cursor:pointer; color:rgba(255,255,255,0.75); font-size:11px; font-weight:700; transition:background .2s, border-color .2s; line-height:1.3; }
+    .calc-wa-btn:hover { background:rgba(76,175,80,0.15); border-color:rgba(76,175,80,0.4); color:#fff; }
+    .calc-wa-btn.active { background:rgba(76,175,80,0.22); border-color:var(--green-light); color:#fff; }
+    .calc-wa-btn:focus-visible { outline:2px solid var(--green-light); outline-offset:2px; }
+    .calc-wa-btn small { font-size:9px; opacity:.65; display:block; }
+    /* price result */
+    .calc-price-range {
+      background: linear-gradient(135deg, rgba(76,175,80,0.22) 0%, rgba(46,125,50,0.14) 100%);
+      border: 1px solid rgba(76,175,80,0.38);
+      border-radius: 18px; padding: 18px 20px; margin-bottom: 12px;
+    }
+    .calc-range-label { font-size:11px; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-bottom:4px; }
+    .calc-range-value { font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",system-ui,sans-serif; font-size:28px; font-weight:900; color:#fff; line-height:1.1; transition:opacity .25s, transform .25s; }
+    .calc-range-value.updating { opacity:0; transform:translateY(5px); }
+    .calc-range-note { font-size:11px; color:rgba(255,255,255,0.32); margin-top:4px; }
+    /* benefits */
+    .calc-benefits { list-style:none; padding:0; margin:0 0 12px; }
+    .calc-benefits li { font-size:12px; font-weight:600; color:rgba(255,255,255,0.65); padding:3px 0; }
+    .calc-disclaimer { font-size:11px; color:rgba(255,255,255,0.3); margin:6px 0 0; line-height:1.55; }
+    /* section sub */
+    .calc-section-sub { font-size:11px; font-weight:700; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.06em; margin:0 0 9px; }
+    /* nav buttons */
+    .calc-btn-row { display:flex; gap:8px; margin-top:6px; }
+    .calc-btn-back { flex:0 0 auto; padding:13px 18px; background:rgba(255,255,255,0.08); border:1.5px solid rgba(255,255,255,0.14); border-radius:50px; color:rgba(255,255,255,0.7); font-size:14px; font-weight:700; cursor:pointer; transition:background .2s; appearance:none; }
+    .calc-btn-back:hover { background:rgba(255,255,255,0.14); color:#fff; }
+    .calc-btn-back:focus-visible { outline:2px solid var(--green-light); outline-offset:3px; }
+    .calc-btn-next { flex:1; padding:13px; background:var(--green-light); border:none; border-radius:50px; color:#fff; font-size:15px; font-weight:800; cursor:pointer; transition:background .2s, transform .15s, box-shadow .2s; box-shadow:0 4px 18px rgba(76,175,80,0.4); appearance:none; }
+    .calc-btn-next:hover { background:var(--green-deep); transform:translateY(-1px); box-shadow:0 8px 24px rgba(46,125,50,0.45); }
+    .calc-btn-next:active { transform:translateY(0); }
+    .calc-btn-next:focus-visible { outline:2px solid #fff; outline-offset:3px; }
+    .calc-cta-btn { display:block; flex:1; background:var(--green-light); color:#fff; font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",system-ui,sans-serif; font-size:14px; font-weight:800; padding:13px 16px; border-radius:50px; border:none; cursor:pointer; text-align:center; text-decoration:none; transition:background .2s, transform .15s, box-shadow .2s; box-shadow:0 6px 24px rgba(76,175,80,0.4); }
+    .calc-cta-btn:hover { background:var(--green-deep); transform:translateY(-2px); box-shadow:0 10px 32px rgba(46,125,50,0.5); }
+    .calc-cta-btn:active { transform:translateY(0); }
+    .calc-cta-btn:focus-visible { outline:2px solid #fff; outline-offset:3px; }
+
+    /* ── TRUST CHIPS ── */
+    .trust-strip {
+      background: #fff;
+      border-bottom: 1px solid var(--green-pale);
+      padding: 20px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .trust-chip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-mid);
+    }
+    .trust-chip-check {
+      width: 22px; height: 22px;
+      background: var(--green-main);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* ── EXPLANATION ── */
+    .explain {
+      padding: 72px 48px;
+      background: var(--off-white);
+      text-align: center;
+    }
+    .explain-inner { max-width: 680px; margin: 0 auto; }
+    .section-eyebrow {
+      display: block;
+      font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--green-main); margin-bottom: 12px;
+    }
+    .explain h2 {
+      font-size: clamp(24px, 3.5vw, 36px);
+      font-weight: 900; color: var(--text-dark); margin-bottom: 20px;
+    }
+    .explain p {
+      font-size: 16px; color: var(--text-muted); line-height: 1.7;
+      margin-bottom: 12px;
+    }
+
+    /* ── WHY US ── */
+    .why {
+      padding: 72px 48px;
+      background: var(--green-bg);
+    }
+    .why-inner { max-width: 1000px; margin: 0 auto; }
+    .why-header { margin-bottom: 48px; }
+    .why-header h2 {
+      font-size: clamp(24px, 3.5vw, 38px);
+      font-weight: 900; color: var(--text-dark); margin-bottom: 8px;
+    }
+    .why-header p { color: var(--text-muted); font-size: 16px; }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .why-card {
+      background: #fff;
+      border: 1px solid var(--green-pale);
+      border-radius: 20px;
+      padding: 28px 24px;
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      box-shadow: 0 2px 12px rgba(46,125,50,0.06);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .why-card:hover {
+      box-shadow: 0 8px 32px rgba(46,125,50,0.12);
+      transform: translateY(-2px);
+    }
+    .why-card-icon {
+      width: 48px; height: 48px;
+      background: var(--green-bg);
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    .why-card-title {
+      font-size: 16px; font-weight: 800; color: var(--text-dark); margin-bottom: 4px;
+    }
+    .why-card-text {
+      font-size: 14px; color: var(--text-muted); line-height: 1.6;
+    }
+
+    /* ── PROCESS ── */
+    .process {
+      padding: 72px 48px;
+      background: var(--off-white);
+    }
+    .process-inner { max-width: 1000px; margin: 0 auto; }
+    .process-header { margin-bottom: 48px; }
+    .process-header h2 {
+      font-size: clamp(24px, 3.5vw, 38px);
+      font-weight: 900; color: var(--text-dark); margin-bottom: 8px;
+    }
+    .process-header p { color: var(--text-muted); font-size: 16px; }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      position: relative;
+    }
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 28px; left: 14%; right: 14%;
+      height: 2px;
+      background: var(--green-pale);
+    }
+    .process-step {
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center; position: relative; z-index: 1;
+      padding: 0 8px;
+    }
+    .process-step-num {
+      width: 56px; height: 56px;
+      background: #fff;
+      border: 2px solid var(--green-pale);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 16px rgba(46,125,50,0.1);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      flex-shrink: 0;
+    }
+    .process-step:hover .process-step-num {
+      border-color: var(--green-light);
+      box-shadow: 0 8px 28px rgba(46,125,50,0.18);
+    }
+    .process-step-badge {
+      position: absolute;
+      top: -4px; right: calc(50% - 36px);
+      width: 22px; height: 22px;
+      background: var(--green-main);
+      color: #fff; font-size: 11px; font-weight: 800;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .process-step-title {
+      font-size: 15px; font-weight: 800; color: var(--text-dark); margin-bottom: 6px;
+    }
+    .process-step-text {
+      font-size: 13px; color: var(--text-muted); line-height: 1.55;
+    }
+
+    /* ── FINAL CTA ── */
+    .final-cta {
+      padding: 96px 48px;
+      background: var(--green-deep);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .final-cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(76,175,80,0.2), transparent 65%);
+    }
+    .final-cta-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+    .final-cta h2 {
+      font-size: clamp(26px, 4.5vw, 44px);
+      font-weight: 900; color: #fff; margin-bottom: 16px;
+    }
+    .final-cta p {
+      font-size: 16px; color: rgba(255,255,255,0.7); line-height: 1.65;
+      margin-bottom: 36px; max-width: 460px; margin-left: auto; margin-right: auto;
+    }
+    .final-actions { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+    .btn-primary-lg {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #fff; color: var(--green-deep);
+      font-size: 16px; font-weight: 800; padding: 17px 36px; border-radius: 50px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+      transition: background 0.2s, transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s;
+    }
+    .btn-primary-lg:hover { background: var(--green-pale); transform: translateY(-3px); box-shadow: 0 16px 44px rgba(0,0,0,0.28); }
+    .btn-primary-lg:active { transform: translateY(0); }
+    .btn-primary-lg:focus-visible { outline: 2px solid rgba(255,255,255,0.6); outline-offset: 4px; }
+    .btn-wa-cta {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--wa-green); color: #fff;
+      font-size: 15px; font-weight: 700; padding: 15px 30px; border-radius: 50px;
+      box-shadow: 0 6px 24px rgba(37,211,102,0.4);
+      transition: background 0.2s, transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s;
+    }
+    .btn-wa-cta:hover { background: #1aab52; transform: translateY(-3px); box-shadow: 0 12px 36px rgba(37,211,102,0.5); }
+    .btn-wa-cta:active { transform: translateY(0); }
+    .btn-wa-cta:focus-visible { outline: 2px solid rgba(255,255,255,0.5); outline-offset: 4px; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 28px 48px;
+      background: #0d3b12;
+      text-align: center;
+    }
+    footer p { font-size: 13px; color: rgba(255,255,255,0.4); }
+    footer a { color: rgba(255,255,255,0.55); transition: color 0.2s; }
+    footer a:hover { color: rgba(255,255,255,0.9); }
+
+    /* ── FLOATING WA ── */
+    .wa-float { position:fixed; bottom:28px; right:28px; z-index:90; display:flex; align-items:center; gap:0; text-decoration:none; }
+    .wa-float-label { background:#fff; color:#111811; font-size:13px; font-weight:700; padding:10px 18px 10px 16px; border-radius:50px 0 0 50px; box-shadow:0 4px 20px rgba(0,0,0,0.12); white-space:nowrap; transform:translateX(16px); opacity:0; transition:transform .3s, opacity .3s; pointer-events:none; }
+    .wa-float:hover .wa-float-label { transform:translateX(0); opacity:1; }
+    .wa-float-btn { width:60px; height:60px; background:var(--wa-green); border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 20px rgba(37,211,102,0.5),0 2px 8px rgba(0,0,0,0.15); position:relative; transition:transform .3s cubic-bezier(0.34,1.56,0.64,1),box-shadow .25s; z-index:1; }
+    .wa-float:hover .wa-float-btn { transform:scale(1.1); box-shadow:0 8px 32px rgba(37,211,102,0.6),0 2px 8px rgba(0,0,0,0.15); }
+    .wa-float-btn::before { content:''; position:absolute; inset:-6px; border-radius:50%; background:rgba(37,211,102,0.28); animation:wa-pulse 2.4s ease-in-out infinite; pointer-events:none; }
+    .wa-float-btn::after { content:''; position:absolute; inset:-14px; border-radius:50%; background:rgba(37,211,102,0.12); animation:wa-pulse 2.4s ease-in-out infinite .5s; pointer-events:none; }
+    @keyframes wa-pulse { 0%,100%{transform:scale(1);opacity:1;} 70%{transform:scale(1.2);opacity:0;} }
+
+    /* ── FADE UP ── */
+    .fade-up { opacity:0; transform:translateY(24px); transition:opacity .6s ease, transform .6s ease; }
+    .fade-up.visible { opacity:1; transform:translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .process-steps { grid-template-columns: repeat(2,1fr); }
+      .process-steps::before { display:none; }
+      .why-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; height: 64px; }
+      .nav-home { display: none; }
+      .hero { padding: 86px 20px 56px; }
+      .calc-wrap { padding: 40px 20px; }
+      .calc-card { padding: 24px 18px; }
+      .calc-obj-grid { grid-template-columns: repeat(3,1fr); gap:7px; }
+      .trust-strip { padding: 16px 20px; gap: 16px; }
+      .explain, .why, .process, .final-cta { padding: 56px 20px; }
+      footer { padding: 24px 20px; }
+      .process-steps { grid-template-columns: 1fr; }
+      .wa-float { bottom:20px; right:20px; }
+      .btn-primary-lg, .btn-wa-cta { width:100%; justify-content:center; }
+    }
+    @media (max-width: 480px) {
+      .calc-wa-grid { grid-template-columns: repeat(3,1fr); }
+      .calc-extra-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <a href="../" class="nav-logo">
+      <picture>
+        <source media="(max-width:767px)" srcset="../brand_assets/Logo/Logo%20Symbol.png" />
+        <img src="../brand_assets/Logo/Logo%20Font.png" alt="Wirlösenauf.de" loading="eager" />
+      </picture>
+    </a>
+    <div class="nav-right">
+      <a href="../" class="nav-home">← Zur Hauptseite</a>
+      <a href="tel:+4917260309946" class="nav-cta">📞 Kostenlos anrufen</a>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-grain"></div>
+    <div class="hero-blob hero-blob-1"></div>
+    <div class="hero-blob hero-blob-2"></div>
+    <div class="hero-inner">
+      <div class="hero-badge">
+        <div class="hero-badge-dot"></div>
+        Haushaltsauflösung &amp; Entrümpelung Hannover
+      </div>
+      <h1>Was kostet eine Haushaltsauflösung<br>in Hannover?</h1>
+      <p class="hero-sub">Berechne deinen Preis in unter 30&nbsp;Sekunden – kostenlos &amp; unverbindlich.</p>
+    </div>
+  </section>
+
+  <!-- ── CALCULATOR ── -->
+  <div class="calc-wrap" id="rechner">
+    <div class="calc-center">
+      <div class="calc-card" id="calcWizard">
+        <div class="calc-title">Kostenrechner</div>
+        <div class="calc-subtitle">Preisspanne in wenigen Schritten · Kostenlos &amp; unverbindlich</div>
+
+        <div class="calc-progress-bar" role="progressbar" aria-label="Wizard-Fortschritt">
+          <div class="calc-progress-seg active" id="cps1"></div>
+          <div class="calc-progress-seg" id="cps2"></div>
+          <div class="calc-progress-seg" id="cps3"></div>
+          <div class="calc-progress-seg" id="cps4"></div>
+        </div>
+
+        <!-- Schritt 1 -->
+        <div class="calc-step-panel active" id="calcPanel1">
+          <div class="calc-panel-label">Schritt 1 — Was soll aufgelöst werden?</div>
+          <div class="calc-obj-grid" role="group" aria-label="Objekttyp auswählen">
+            <div class="calc-obj-card active" role="button" tabindex="0" data-obj="wohnung"><span class="obj-icon">🏢</span>Wohnung</div>
+            <div class="calc-obj-card" role="button" tabindex="0" data-obj="haus"><span class="obj-icon">🏠</span>Haus</div>
+            <div class="calc-obj-card" role="button" tabindex="0" data-obj="garage"><span class="obj-icon">🚗</span>Garage</div>
+            <div class="calc-obj-card" role="button" tabindex="0" data-obj="keller"><span class="obj-icon">🪜</span>Keller</div>
+            <div class="calc-obj-card" role="button" tabindex="0" data-obj="dachboden"><span class="obj-icon">🔺</span>Dachboden</div>
+            <div class="calc-obj-card" role="button" tabindex="0" data-obj="buero"><span class="obj-icon">💼</span>Büro / Unternehmen</div>
+            <div class="calc-obj-card" role="button" tabindex="0" data-obj="lagerhalle"><span class="obj-icon">🏭</span>Lagerhalle</div>
+            <div class="calc-obj-card" role="button" tabindex="0" data-obj="gartenhaus"><span class="obj-icon">🌿</span>Gartenhaus / Schuppen</div>
+            <div class="calc-obj-card" role="button" tabindex="0" data-obj="gewerbe"><span class="obj-icon">🏪</span>Gewerbefläche / Laden</div>
+          </div>
+          <div class="calc-btn-row">
+            <button class="calc-btn-next" id="calcNext1" type="button">Weiter →</button>
+          </div>
+        </div>
+
+        <!-- Schritt 2 -->
+        <div class="calc-step-panel" id="calcPanel2">
+          <div class="calc-panel-label" id="calcPanel2Label">Schritt 2 — Wie groß ist die Fläche?</div>
+          <div class="calc-area-display"><span id="calcAreaVal">70</span> <span class="calc-area-unit">m²</span></div>
+          <input type="range" class="calc-slider" id="calcAreaSlider" min="10" max="200" step="5" value="70" aria-label="Fläche in m²">
+          <div class="calc-quick-btns" id="calcQuickBtns"></div>
+          <div class="calc-btn-row" style="margin-top:16px">
+            <button class="calc-btn-back" id="calcBack2" type="button">← Zurück</button>
+            <button class="calc-btn-next" id="calcNext2" type="button">Weiter →</button>
+          </div>
+        </div>
+
+        <!-- Schritt 3 -->
+        <div class="calc-step-panel" id="calcPanel3">
+          <div class="calc-panel-label" id="calcPanel3Label">Schritt 3 — Details</div>
+          <div id="calcStep3Content"></div>
+          <div class="calc-btn-row" style="margin-top:14px">
+            <button class="calc-btn-back" id="calcBack3" type="button">← Zurück</button>
+            <button class="calc-btn-next" id="calcNext3" type="button">Weiter →</button>
+          </div>
+        </div>
+
+        <!-- Schritt 4 -->
+        <div class="calc-step-panel" id="calcPanel4">
+          <div class="calc-panel-label">Schritt 4 — Zusatzleistungen &amp; Ergebnis</div>
+          <div class="calc-extra-grid">
+            <div class="calc-extra-check" role="checkbox" tabindex="0" aria-checked="false" data-extra="200"><div class="calc-extra-chk"></div><span>☣️ Sondermüll</span><span class="calc-extra-price">+200 €</span></div>
+            <div class="calc-extra-check" role="checkbox" tabindex="0" aria-checked="false" data-extra="150"><div class="calc-extra-chk"></div><span>🔌 Elektroschrott</span><span class="calc-extra-price">+150 €</span></div>
+            <div class="calc-extra-check" role="checkbox" tabindex="0" aria-checked="false" data-extra="350"><div class="calc-extra-chk"></div><span>🍳 Küche demontieren</span><span class="calc-extra-price">+350 €</span></div>
+            <div class="calc-extra-check" role="checkbox" tabindex="0" aria-checked="false" data-extra="250"><div class="calc-extra-chk"></div><span>🧹 Endreinigung</span><span class="calc-extra-price">+250 €</span></div>
+            <div class="calc-extra-check" role="checkbox" tabindex="0" aria-checked="false" data-extra="200"><div class="calc-extra-chk"></div><span>🏋️ Schwerlast</span><span class="calc-extra-price">+200 €</span></div>
+          </div>
+          <div class="calc-mattress-row">
+            <span>🛏️ Matratzen:</span>
+            <button type="button" class="calc-mattress-btn" id="calcMatMinus" aria-label="Matratze entfernen">−</button>
+            <span class="calc-mattress-count" id="calcMattressCount">0</span>
+            <button type="button" class="calc-mattress-btn" id="calcMatPlus" aria-label="Matratze hinzufügen">+</button>
+            <span style="color:rgba(255,255,255,0.38);font-size:11px">(25 €/Stück)</span>
+          </div>
+          <p class="calc-section-sub">Verwertbare Gegenstände vorhanden?</p>
+          <div class="calc-wa-grid" role="group" aria-label="Wertanrechnung">
+            <div class="calc-wa-btn active" role="button" tabindex="0" data-wa="0">Keine</div>
+            <div class="calc-wa-btn" role="button" tabindex="0" data-wa="100">Wenige<small>−100 €</small></div>
+            <div class="calc-wa-btn" role="button" tabindex="0" data-wa="300">Einige<small>−300 €</small></div>
+            <div class="calc-wa-btn" role="button" tabindex="0" data-wa="600">Viele<small>−600 €</small></div>
+            <div class="calc-wa-btn" role="button" tabindex="0" data-wa="1200">Sehr viele<small>−1.200 €</small></div>
+          </div>
+          <div class="calc-price-range">
+            <div class="calc-range-label">Geschätzter Preis – Haushaltsauflösung Hannover</div>
+            <div class="calc-range-value" id="calcRangeDisplay">Wird berechnet …</div>
+            <div class="calc-range-note">Unverbindliche Orientierung · Entrümpelung Hannover · Endpreis nach Besichtigung</div>
+          </div>
+          <ul class="calc-benefits">
+            <li>✓ Inkl. Abtransport &amp; fachgerechter Entsorgung</li>
+            <li>✓ Kostenlose Besichtigung vor Ort</li>
+            <li>✓ Festpreis nach Besichtigung — keine versteckten Kosten</li>
+          </ul>
+          <div class="calc-btn-row">
+            <button class="calc-btn-back" id="calcBack4" type="button">← Zurück</button>
+            <a href="#anfrage" class="calc-cta-btn">Jetzt kostenlose Besichtigung anfragen →</a>
+          </div>
+          <p class="calc-disclaimer">Dies ist eine erste Orientierung für Entrümpelung Kosten / Wohnung räumen lassen Preis. Der genaue Preis wird bei der kostenlosen Besichtigung vor Ort ermittelt.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── TRUST STRIP ── -->
+  <div class="trust-strip">
+    <div class="trust-chip">
+      <div class="trust-chip-check">
+        <svg width="11" height="11" fill="none" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      Sofort Preis-Spanne
+    </div>
+    <div class="trust-chip">
+      <div class="trust-chip-check">
+        <svg width="11" height="11" fill="none" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      Keine Anmeldung nötig
+    </div>
+    <div class="trust-chip">
+      <div class="trust-chip-check">
+        <svg width="11" height="11" fill="none" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      Kostenlos &amp; unverbindlich
+    </div>
+  </div>
+
+  <!-- ── EXPLANATION ── -->
+  <section class="explain">
+    <div class="explain-inner fade-up">
+      <span class="section-eyebrow">Wie funktioniert das?</span>
+      <h2>Dein persönlicher Entrümpelung-Kosten­rechner</h2>
+      <p>Mit unserem Kostenrechner erhältst du eine erste Preis-Einschätzung für deine Haushaltsauflösung oder Entrümpelung in Hannover und Umgebung.</p>
+      <p>Der genaue Preis wird bei einer <strong>kostenlosen Besichtigung vor Ort</strong> ermittelt – verbindlich und ohne versteckte Kosten.</p>
+    </div>
+  </section>
+
+  <!-- ── WHY US ── -->
+  <section class="why">
+    <div class="why-inner">
+      <div class="why-header fade-up">
+        <span class="section-eyebrow">Warum wirlösenauf.de?</span>
+        <h2>Haushaltsauflösung Hannover – fair &amp; transparent</h2>
+        <p>Entrümpelung Hannover mit echtem Festpreis und persönlichem Service.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card fade-up">
+          <div class="why-card-icon">🔍</div>
+          <div>
+            <p class="why-card-title">Kostenlose Besichtigung</p>
+            <p class="why-card-text">Wir schauen uns alles vor Ort an – kostenlos und unverbindlich. Erst dann nennen wir dir deinen Festpreis.</p>
+          </div>
+        </div>
+        <div class="why-card fade-up" style="transition-delay:.06s">
+          <div class="why-card-icon">📋</div>
+          <div>
+            <p class="why-card-title">Festpreis ohne Überraschungen</p>
+            <p class="why-card-text">Was wir anbieten, das gilt. Kein Nachverhandeln, keine Zusatzkosten – Haushaltsauflösung Hannover Kosten transparent.</p>
+          </div>
+        </div>
+        <div class="why-card fade-up" style="transition-delay:.12s">
+          <div class="why-card-icon">♻️</div>
+          <div>
+            <p class="why-card-title">Fachgerechte Entsorgung</p>
+            <p class="why-card-text">Brauchbares geht an Bedürftige, der Rest wird umweltgerecht entsorgt. Wertanrechnung möglich.</p>
+          </div>
+        </div>
+        <div class="why-card fade-up" style="transition-delay:.18s">
+          <div class="why-card-icon">⚡</div>
+          <div>
+            <p class="why-card-title">Schnelle Termine</p>
+            <p class="why-card-text">Wir sind innerhalb von 24&nbsp;h einsatzbereit. Kurzfristige Entrümpelung Hannover – auch bei dringenden Fällen.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROCESS ── -->
+  <section class="process">
+    <div class="process-inner">
+      <div class="process-header fade-up">
+        <span class="section-eyebrow">Unser Ablauf</span>
+        <h2>Von der Anfrage bis zur besenreinen Übergabe</h2>
+        <p>Einfach, transparent und ohne Stress.</p>
+      </div>
+      <div class="process-steps">
+        <div class="process-step fade-up">
+          <div class="process-step-num">
+            🖥️
+            <div class="process-step-badge">1</div>
+          </div>
+          <p class="process-step-title">Anfrage stellen</p>
+          <p class="process-step-text">Rechner nutzen oder direkt anrufen – wir melden uns innerhalb weniger Stunden.</p>
+        </div>
+        <div class="process-step fade-up" style="transition-delay:.08s">
+          <div class="process-step-num">
+            🔍
+            <div class="process-step-badge">2</div>
+          </div>
+          <p class="process-step-title">Kostenlose Besichtigung</p>
+          <p class="process-step-text">Wir besichtigen die Räumlichkeiten und erfassen alles genau – kostenlos vor Ort.</p>
+        </div>
+        <div class="process-step fade-up" style="transition-delay:.16s">
+          <div class="process-step-num">
+            📄
+            <div class="process-step-badge">3</div>
+          </div>
+          <p class="process-step-title">Festpreis-Angebot</p>
+          <p class="process-step-text">Du erhältst ein verbindliches Angebot ohne versteckte Kosten – Haushaltsauflösung Kosten klar und fair.</p>
+        </div>
+        <div class="process-step fade-up" style="transition-delay:.24s">
+          <div class="process-step-num">
+            🏠
+            <div class="process-step-badge">4</div>
+          </div>
+          <p class="process-step-title">Professionelle Durchführung</p>
+          <p class="process-step-text">Unser Team räumt alles – besenrein, pünktlich und diskret. Wohnung räumen lassen – fertig.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FINAL CTA ── -->
+  <section class="final-cta" id="anfrage">
+    <div class="final-cta-inner">
+      <h2 class="fade-up">Jetzt kostenlose Besichtigung anfragen</h2>
+      <p class="fade-up" style="transition-delay:.08s">
+        Bereit für dein Festpreisangebot zur Haushaltsauflösung oder Entrümpelung in Hannover?
+        Ruf uns an oder schreib uns – komplett kostenlos &amp; unverbindlich.
+      </p>
+      <div class="final-actions fade-up" style="transition-delay:.16s">
+        <a href="tel:+4917260309946" class="btn-primary-lg">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 5.12 12.5 19.79 19.79 0 0 1 2 3.82 2 2 0 0 1 3.98 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Besichtigung anfragen – 0172 6030946
+        </a>
+        <a href="https://wa.me/4917260309946?text=Hallo%2C%20ich%20m%C3%B6chte%20eine%20kostenlose%20Besichtigung%20f%C3%BCr%20eine%20Haushaltsaufl%C3%B6sung%20anfragen."
+           target="_blank" rel="noopener" class="btn-wa-cta">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.118 1.533 5.845L.057 23.617a.5.5 0 0 0 .614.644l5.897-1.514A11.954 11.954 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.886 0-3.65-.52-5.158-1.424l-.37-.217-3.836.985.993-3.73-.241-.386A9.978 9.978 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          Oder per WhatsApp anfragen
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <p>
+      &copy; 2024 Wirlösenauf.de –
+      <a href="../">Haushaltsauflösung Hannover</a> ·
+      <a href="../">Entrümpelung Hannover</a> ·
+      Wohnung räumen lassen Preis · Haushaltsauflösung Kosten
+    </p>
+  </footer>
+
+  <!-- ── FLOATING WA ── -->
+  <a href="https://wa.me/4917260309946?text=Hallo%2C%20ich%20m%C3%B6chte%20eine%20Haushaltsaufl%C3%B6sung%20anfragen%20und%20habe%20den%20Kostenrechner%20genutzt."
+     target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp schreiben">
+    <span class="wa-float-label">💬 WhatsApp schreiben</span>
+    <div class="wa-float-btn">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.118 1.533 5.845L.057 23.617a.5.5 0 0 0 .614.644l5.897-1.514A11.954 11.954 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.886 0-3.65-.52-5.158-1.424l-.37-.217-3.836.985.993-3.73-.241-.386A9.978 9.978 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+    </div>
+  </a>
+
+  <script>
+    /* ── FADE-UP ── */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    /* ── KOSTENKALKULATOR WIZARD ── */
+    (function () {
+      'use strict';
+
+      const OBJ_CONFIG = {
+        wohnung:   {areaMin:10,areaMax:200,areaStep:5,areaDefault:70,areaLabel:'Wohnfläche',quickBtns:[{l:'Bis 40 m²',val:30},{l:'40–80 m²',val:60},{l:'80–120 m²',val:100},{l:'Über 120 m²',val:150}]},
+        haus:      {areaMin:40,areaMax:400,areaStep:10,areaDefault:120,areaLabel:'Wohnfläche',quickBtns:[{l:'Bis 100 m²',val:80},{l:'100–160 m²',val:130},{l:'160–250 m²',val:200},{l:'Über 250 m²',val:300}]},
+        garage:    {areaMin:10,areaMax:60,areaStep:2,areaDefault:20,areaLabel:'Grundfläche',quickBtns:[{l:'Kleine Garage',val:14},{l:'Standard (~22 m²)',val:22},{l:'Doppelgarage',val:40}]},
+        keller:    {areaMin:5,areaMax:80,areaStep:5,areaDefault:20,areaLabel:'Kellerfläche',quickBtns:[{l:'Bis 15 m²',val:10},{l:'15–30 m²',val:22},{l:'Über 30 m²',val:45}]},
+        dachboden: {areaMin:10,areaMax:120,areaStep:5,areaDefault:40,areaLabel:'Grundfläche',quickBtns:[{l:'Bis 30 m²',val:20},{l:'30–60 m²',val:45},{l:'Über 60 m²',val:80}]},
+        buero:     {areaMin:50,areaMax:500,areaStep:10,areaDefault:150,areaLabel:'Bürofläche',quickBtns:[{l:'Bis 100 m²',val:80},{l:'100–200 m²',val:150},{l:'Über 200 m²',val:280}]},
+        lagerhalle:{areaMin:200,areaMax:2000,areaStep:50,areaDefault:500,areaLabel:'Hallenfläche',quickBtns:[{l:'Bis 500 m²',val:350},{l:'500–1.000 m²',val:750},{l:'Über 1.000 m²',val:1400}]},
+        gartenhaus:{areaMin:5,areaMax:40,areaStep:1,areaDefault:15,areaLabel:'Grundfläche',quickBtns:[{l:'Bis 10 m²',val:8},{l:'10–20 m²',val:15},{l:'Über 20 m²',val:28}]},
+        gewerbe:   {areaMin:30,areaMax:300,areaStep:10,areaDefault:80,areaLabel:'Gewerbefläche',quickBtns:[{l:'Bis 60 m²',val:45},{l:'60–120 m²',val:90},{l:'Über 120 m²',val:180}]}
+      };
+
+      const BASE_RATE = {
+        wohnung:   {wenig:18,normal:25,sehr_voll:35,extrem_voll:50},
+        haus:      {wenig:15,normal:22,sehr_voll:30,extrem_voll:44},
+        garage:    {normal:18,sehr_voll:28,extrem_voll:40},
+        keller:    {normal:20,sehr_voll:30,extrem_voll:42},
+        dachboden: {normal:22,sehr_voll:32,extrem_voll:45},
+        buero:     {wenig:15,normal:22,viel:32},
+        lagerhalle:{normal:10,sehr_voll:14,extrem_voll:18},
+        gartenhaus:{normal:20,sehr_voll:30,extrem_voll:42},
+        gewerbe:   {normal:18,sehr_voll:26,extrem_voll:38}
+      };
+
+      const state = {obj:'wohnung',area:70,fill:'normal',floor:1.00,hausStockwerke:'1',hausKeller:false,hausDachboden:false,zugang:1.00,bueroMoebel:'normal',bueroElektronik:false,schwerlast:false,ladeneinricht:false,lkw:false,extras:0,mattress:0,wa:0};
+
+      function recalc() {
+        const rates=BASE_RATE[state.obj]||BASE_RATE.wohnung;
+        const fillKey=state.obj==='buero'?state.bueroMoebel:state.fill;
+        const base=rates[fillKey]||rates.normal;
+        let accessFactor=1.00;
+        if(state.obj==='wohnung') accessFactor=state.floor;
+        else if(state.obj==='haus'){const sfMap={'1':1.00,'2':1.10,'3+':1.22};accessFactor=sfMap[state.hausStockwerke]||1.00;}
+        else if(state.obj==='keller'||state.obj==='dachboden') accessFactor=state.zugang;
+        if(state.lkw) accessFactor*=1.15;
+        let effectiveArea=state.area;
+        if(state.obj==='haus'){if(state.hausKeller)effectiveArea+=18;if(state.hausDachboden)effectiveArea+=25;}
+        let surcharge=0;
+        if(state.obj==='buero'&&state.bueroElektronik)surcharge+=200;
+        if(state.obj==='lagerhalle'&&state.schwerlast)surcharge+=500;
+        if(state.obj==='gewerbe'&&state.ladeneinricht)surcharge+=300;
+        let mid=(base*effectiveArea*accessFactor)+surcharge+state.extras+state.mattress*25-state.wa;
+        mid=Math.max(320,mid);
+        const lo=Math.max(320,Math.round(mid*0.85/10)*10);
+        const hi=Math.round(mid*1.15/10)*10;
+        const el=document.getElementById('calcRangeDisplay');
+        if(!el)return;
+        el.classList.add('updating');
+        setTimeout(()=>{el.textContent=lo.toLocaleString('de-DE')+' \u2013 '+hi.toLocaleString('de-DE')+' \u20AC';el.classList.remove('updating');},160);
+      }
+
+      function goTo(step) {
+        for(let i=1;i<=4;i++){
+          const p=document.getElementById('calcPanel'+i);const s=document.getElementById('cps'+i);
+          if(p)p.classList.toggle('active',i===step);if(s)s.classList.toggle('active',i<=step);
+        }
+        if(step===4)recalc();
+      }
+
+      function configureStep2() {
+        const cfg=OBJ_CONFIG[state.obj];const slider=document.getElementById('calcAreaSlider');const valEl=document.getElementById('calcAreaVal');
+        slider.min=cfg.areaMin;slider.max=cfg.areaMax;slider.step=cfg.areaStep;slider.value=cfg.areaDefault;state.area=cfg.areaDefault;valEl.textContent=cfg.areaDefault;
+        document.getElementById('calcPanel2Label').textContent='Schritt 2 — '+cfg.areaLabel+' (m²)';
+        document.getElementById('calcQuickBtns').innerHTML=cfg.quickBtns.map(b=>'<button class="calc-quick-btn" type="button" data-area="'+b.val+'">'+b.l+'</button>').join('');
+      }
+
+      function fillCards(opts,activeKey){return opts.map(o=>'<div class="calc-cond-card'+(o.key===activeKey?' active':'')+'" role="button" tabindex="0" data-fill="'+o.key+'"><span class="cond-icon">'+o.icon+'</span>'+o.label+'<small>'+o.sub+'</small></div>').join('');}
+
+      function renderStep3() {
+        const container=document.getElementById('calcStep3Content');const obj=state.obj;let html='';
+        const fuell3=fillCards([{key:'normal',icon:'📦',label:'Normal',sub:'Standard'},{key:'sehr_voll',icon:'📚',label:'Sehr voll',sub:'Jahrelang befüllt'},{key:'extrem_voll',icon:'🏚️',label:'Vollgestopft',sub:'Kaum noch Platz'}],state.fill);
+        const fuell4=fillCards([{key:'wenig',icon:'📭',label:'Wenig',sub:'Kaum Gegenstände'},{key:'normal',icon:'📦',label:'Normal',sub:'Standard Haushalt'},{key:'sehr_voll',icon:'📚',label:'Sehr voll',sub:'Jahrzehnte angesammelt'},{key:'extrem_voll',icon:'🏚️',label:'Extrem voll',sub:'Messie-Situation'}],state.fill);
+        const lkwBtn=()=>'<button class="calc-lkw-toggle'+(state.lkw?' active':'')+'" id="calcLkwBtn" type="button" aria-pressed="'+state.lkw+'" style="margin-top:8px;width:100%"><span id="calcLkwIcon">'+(state.lkw?'☑':'☐')+'</span> Kein direkter LKW-Zugang (+15 %)</button>';
+        if(obj==='wohnung'){html='<p class="calc-section-sub">Welches Stockwerk?</p><div class="calc-floor-grid" role="group" aria-label="Stockwerk"><div class="calc-floor-card'+(state.floor===1.00?' active':'')+'" role="button" tabindex="0" data-floor="1.00">EG / Aufzug</div><div class="calc-floor-card'+(state.floor===1.10?' active':'')+'" role="button" tabindex="0" data-floor="1.10">1.–2. OG</div><div class="calc-floor-card'+(state.floor===1.20?' active':'')+'" role="button" tabindex="0" data-floor="1.20">3.–4. OG</div><div class="calc-floor-card'+(state.floor===1.35?' active':'')+'" role="button" tabindex="0" data-floor="1.35">5. OG+</div></div><p class="calc-section-sub">Wie ist der Füllstand?</p><div class="calc-cond-grid" role="group" aria-label="Füllstand">'+fuell4+'</div>'+lkwBtn();}
+        else if(obj==='haus'){html='<p class="calc-section-sub">Anzahl Stockwerke?</p><div class="calc-floor-grid calc-floor-grid--3col" role="group"><div class="calc-floor-card'+(state.hausStockwerke==='1'?' active':'')+'" role="button" tabindex="0" data-stockwerke="1">1 Stockwerk</div><div class="calc-floor-card'+(state.hausStockwerke==='2'?' active':'')+'" role="button" tabindex="0" data-stockwerke="2">2 Stockwerke</div><div class="calc-floor-card'+(state.hausStockwerke==='3+'?' active':'')+'" role="button" tabindex="0" data-stockwerke="3+">3+ Stockwerke</div></div><p class="calc-section-sub">Was ist noch vorhanden?</p><div style="display:flex;gap:6px;margin-bottom:12px"><button class="calc-lkw-toggle'+(state.hausKeller?' active':'')+'" id="hausKellerBtn" type="button" aria-pressed="'+state.hausKeller+'" style="flex:1"><span id="hausKellerIcon">'+(state.hausKeller?'☑':'☐')+'</span> Keller vorhanden (+18 m²)</button><button class="calc-lkw-toggle'+(state.hausDachboden?' active':'')+'" id="hausDachbodenBtn" type="button" aria-pressed="'+state.hausDachboden+'" style="flex:1"><span id="hausDachbodenIcon">'+(state.hausDachboden?'☑':'☐')+'</span> Dachboden (+25 m²)</button></div><p class="calc-section-sub">Wie ist der Füllstand?</p><div class="calc-cond-grid" role="group">'+fuell4+'</div>';}
+        else if(obj==='garage'){html='<p class="calc-section-sub">Wie gefüllt ist die Garage?</p><div class="calc-cond-grid" role="group">'+fillCards([{key:'normal',icon:'🚗',label:'Normal',sub:'Fahrzeug + etwas'},{key:'sehr_voll',icon:'📦',label:'Sehr voll',sub:'Voll eingelagert'},{key:'extrem_voll',icon:'🏚️',label:'Vollgestopft',sub:'Jahrzehntelang'}],state.fill)+'</div>';}
+        else if(obj==='keller'){html='<p class="calc-section-sub">Wie ist der Zugang?</p><div class="calc-floor-grid" role="group"><div class="calc-floor-card'+(state.zugang===1.00?' active':'')+'" role="button" tabindex="0" data-zugang="1.00">Ebenerdig / breite Treppe</div><div class="calc-floor-card'+(state.zugang===1.15?' active':'')+'" role="button" tabindex="0" data-zugang="1.15">Enge Kellertreppe</div></div><p class="calc-section-sub">Wie ist der Füllstand?</p><div class="calc-cond-grid" role="group">'+fuell3+'</div>';}
+        else if(obj==='dachboden'){html='<p class="calc-section-sub">Wie ist der Zugang?</p><div class="calc-floor-grid" role="group"><div class="calc-floor-card'+(state.zugang===1.00?' active':'')+'" role="button" tabindex="0" data-zugang="1.00">Treppe / gut erreichbar</div><div class="calc-floor-card'+(state.zugang===1.20?' active':'')+'" role="button" tabindex="0" data-zugang="1.20">Dachluke / beengt</div></div><p class="calc-section-sub">Wie ist der Füllstand?</p><div class="calc-cond-grid" role="group">'+fuell3+'</div>';}
+        else if(obj==='buero'){html='<p class="calc-section-sub">Wie viel Mobiliar / Inventar?</p><div class="calc-cond-grid" role="group"><div class="calc-cond-card'+(state.bueroMoebel==='wenig'?' active':'')+'" role="button" tabindex="0" data-bueromoebel="wenig"><span class="cond-icon">📋</span>Wenig<small>Kaum Mobiliar</small></div><div class="calc-cond-card'+(state.bueroMoebel==='normal'?' active':'')+'" role="button" tabindex="0" data-bueromoebel="normal"><span class="cond-icon">🖥️</span>Normal<small>Standard Büro</small></div><div class="calc-cond-card'+(state.bueroMoebel==='viel'?' active':'')+'" role="button" tabindex="0" data-bueromoebel="viel"><span class="cond-icon">🗂️</span>Sehr viel<small>Großes Inventar</small></div></div><button class="calc-lkw-toggle'+(state.bueroElektronik?' active':'')+'" id="bueroElektronikBtn" type="button" aria-pressed="'+state.bueroElektronik+'" style="width:100%"><span id="bueroElektronikIcon">'+(state.bueroElektronik?'☑':'☐')+'</span> Viel Elektronik / IT-Geräte (+200 €)</button>'+lkwBtn();}
+        else if(obj==='lagerhalle'){html='<p class="calc-section-sub">Wie voll ist die Halle?</p><div class="calc-cond-grid" role="group">'+fillCards([{key:'normal',icon:'🏭',label:'Normal gefüllt',sub:'Bis ca. 50 %'},{key:'sehr_voll',icon:'📦',label:'Sehr voll',sub:'Über 75 %'},{key:'extrem_voll',icon:'🏗️',label:'Komplett voll',sub:'Bis unter die Decke'}],state.fill)+'</div><button class="calc-lkw-toggle'+(state.schwerlast?' active':'')+'" id="schwerlastBtn" type="button" aria-pressed="'+state.schwerlast+'" style="width:100%"><span id="schwerlastIcon">'+(state.schwerlast?'☑':'☐')+'</span> Schwerlast / Maschinen vorhanden (+500 €)</button>';}
+        else if(obj==='gartenhaus'){html='<p class="calc-section-sub">Wie ist der Füllstand?</p><div class="calc-cond-grid" role="group">'+fillCards([{key:'normal',icon:'🌱',label:'Normal',sub:'Gartenwerkzeug etc.'},{key:'sehr_voll',icon:'📦',label:'Sehr voll',sub:'Viel Eingelagertes'},{key:'extrem_voll',icon:'🏚️',label:'Vollgestopft',sub:'Kaum noch Platz'}],state.fill)+'</div>';}
+        else if(obj==='gewerbe'){html='<p class="calc-section-sub">Wie ist der Füllstand?</p><div class="calc-cond-grid" role="group">'+fillCards([{key:'normal',icon:'🏪',label:'Normal',sub:'Normaler Betrieb'},{key:'sehr_voll',icon:'📦',label:'Sehr voll',sub:'Viel Inventar'},{key:'extrem_voll',icon:'🏗️',label:'Vollgestopft',sub:'Großes Lager'}],state.fill)+'</div><button class="calc-lkw-toggle'+(state.ladeneinricht?' active':'')+'" id="ladeneinrichtBtn" type="button" aria-pressed="'+state.ladeneinricht+'" style="width:100%"><span id="ladeneinrichtIcon">'+(state.ladeneinricht?'☑':'☐')+'</span> Ladeneinrichtung / Regale (+300 €)</button>';}
+        container.innerHTML=html;
+        bindStep3Events();
+      }
+
+      function bindStep3Events() {
+        const c=document.getElementById('calcStep3Content');
+        c.querySelectorAll('[data-floor]').forEach(el=>el.addEventListener('click',function(){c.querySelectorAll('[data-floor]').forEach(x=>x.classList.remove('active'));this.classList.add('active');state.floor=parseFloat(this.dataset.floor);recalc();}));
+        c.querySelectorAll('[data-stockwerke]').forEach(el=>el.addEventListener('click',function(){c.querySelectorAll('[data-stockwerke]').forEach(x=>x.classList.remove('active'));this.classList.add('active');state.hausStockwerke=this.dataset.stockwerke;recalc();}));
+        c.querySelectorAll('[data-zugang]').forEach(el=>el.addEventListener('click',function(){c.querySelectorAll('[data-zugang]').forEach(x=>x.classList.remove('active'));this.classList.add('active');state.zugang=parseFloat(this.dataset.zugang);recalc();}));
+        c.querySelectorAll('[data-fill]').forEach(el=>el.addEventListener('click',function(){c.querySelectorAll('[data-fill]').forEach(x=>x.classList.remove('active'));this.classList.add('active');state.fill=this.dataset.fill;recalc();}));
+        c.querySelectorAll('[data-bueromoebel]').forEach(el=>el.addEventListener('click',function(){c.querySelectorAll('[data-bueromoebel]').forEach(x=>x.classList.remove('active'));this.classList.add('active');state.bueroMoebel=this.dataset.bueromoebel;recalc();}));
+        const makeToggle=(id,stateKey,iconId)=>{const btn=document.getElementById(id);if(!btn)return;btn.addEventListener('click',function(){state[stateKey]=!state[stateKey];this.classList.toggle('active',state[stateKey]);this.setAttribute('aria-pressed',String(state[stateKey]));const icon=document.getElementById(iconId);if(icon)icon.textContent=state[stateKey]?'☑':'☐';recalc();});};
+        makeToggle('calcLkwBtn','lkw','calcLkwIcon');makeToggle('hausKellerBtn','hausKeller','hausKellerIcon');makeToggle('hausDachbodenBtn','hausDachboden','hausDachbodenIcon');makeToggle('bueroElektronikBtn','bueroElektronik','bueroElektronikIcon');makeToggle('schwerlastBtn','schwerlast','schwerlastIcon');makeToggle('ladeneinrichtBtn','ladeneinricht','ladeneinrichtIcon');
+        c.querySelectorAll('[role="button"]').forEach(el=>{el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();el.click();}});});
+      }
+
+      const w=document.getElementById('calcWizard');if(!w)return;
+      const objGrid=w.querySelector('.calc-obj-grid');
+      objGrid.addEventListener('click',e=>{const card=e.target.closest('[data-obj]');if(!card)return;objGrid.querySelectorAll('[data-obj]').forEach(c=>c.classList.remove('active'));card.classList.add('active');state.obj=card.dataset.obj;state.fill='normal';state.floor=1.00;state.hausStockwerke='1';state.hausKeller=false;state.hausDachboden=false;state.zugang=1.00;state.bueroMoebel='normal';state.bueroElektronik=false;state.schwerlast=false;state.ladeneinricht=false;state.lkw=false;});
+      objGrid.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const card=e.target.closest('[data-obj]');if(card){e.preventDefault();card.click();}}});
+      document.getElementById('calcNext1').addEventListener('click',()=>{configureStep2();renderStep3();goTo(2);});
+      const slider=document.getElementById('calcAreaSlider');const areaVal=document.getElementById('calcAreaVal');
+      slider.addEventListener('input',function(){state.area=parseInt(this.value,10);areaVal.textContent=this.value;});
+      document.getElementById('calcQuickBtns').addEventListener('click',e=>{const btn=e.target.closest('[data-area]');if(!btn)return;const cfg=OBJ_CONFIG[state.obj];const v=Math.min(cfg.areaMax,Math.max(cfg.areaMin,parseInt(btn.dataset.area,10)));state.area=v;slider.value=v;areaVal.textContent=v;});
+      document.getElementById('calcBack2').addEventListener('click',()=>goTo(1));
+      document.getElementById('calcNext2').addEventListener('click',()=>goTo(3));
+      document.getElementById('calcBack3').addEventListener('click',()=>goTo(2));
+      document.getElementById('calcNext3').addEventListener('click',()=>goTo(4));
+      document.getElementById('calcBack4').addEventListener('click',()=>goTo(3));
+      const extraGrid=w.querySelector('.calc-extra-grid');
+      extraGrid.addEventListener('click',e=>{const check=e.target.closest('[data-extra]');if(!check)return;const isActive=check.classList.toggle('active');check.setAttribute('aria-checked',String(isActive));state.extras+=isActive?parseInt(check.dataset.extra,10):-parseInt(check.dataset.extra,10);recalc();});
+      extraGrid.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const check=e.target.closest('[data-extra]');if(check){e.preventDefault();check.click();}}});
+      document.getElementById('calcMatMinus').addEventListener('click',()=>{if(state.mattress>0){state.mattress--;document.getElementById('calcMattressCount').textContent=state.mattress;recalc();}});
+      document.getElementById('calcMatPlus').addEventListener('click',()=>{state.mattress++;document.getElementById('calcMattressCount').textContent=state.mattress;recalc();});
+      const waGrid=w.querySelector('.calc-wa-grid');
+      waGrid.addEventListener('click',e=>{const btn=e.target.closest('[data-wa]');if(!btn)return;waGrid.querySelectorAll('[data-wa]').forEach(b=>b.classList.remove('active'));btn.classList.add('active');state.wa=parseInt(btn.dataset.wa,10);recalc();});
+      waGrid.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const btn=e.target.closest('[data-wa]');if(btn){e.preventDefault();btn.click();}}});
+      configureStep2();renderStep3();goTo(1);
+    })();
+  </script>
+</body>
+</html>
