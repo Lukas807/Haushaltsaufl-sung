@@ -139,6 +139,7 @@
     .nav-logo {
       display: flex;
       align-items: center;
+      gap: 10px;
       text-decoration: none;
       flex-shrink: 0;
     }
@@ -150,6 +151,14 @@
       max-height: 60px;
       width: auto;
       height: auto;
+    }
+    .nav-brand-name {
+      display: none;
+      font-size: 17px;
+      font-weight: 900;
+      color: var(--green-deep);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
     }
 
     .nav-links {
@@ -2026,7 +2035,7 @@
       display: none; /* hidden on desktop */
     }
     .mobile-nav.open {
-      max-height: 480px;
+      max-height: 560px;
       opacity: 1;
       pointer-events: auto;
     }
@@ -2070,21 +2079,29 @@
     .btn-primary, .btn-secondary, .btn-whatsapp, .calc-cta-btn { min-height: 48px; }
 
     @media (max-width: 1024px) {
-      nav { padding: 0 20px; }
+      nav { padding: 0 16px; height: 64px; }
       .nav-links { display: none; }
       .nav-hamburger { display: block; }
-      .nav-cta { display: none; } /* hidden on tablet/mobile — appears in mobile menu */
-      .mobile-nav { display: block; } /* visible on tablet/mobile */
+      .nav-cta { display: none; }
+      .mobile-nav { display: block; top: 64px; }
+      .nav-logo img { max-height: 36px; }
+      .nav-brand-name { display: block; }
 
-      .hero-content { padding-left: 20px; padding-right: 20px; padding-top: 48px; padding-bottom: 48px; }
-      .intro, .services, .stats, .process, .why, .testimonials, .referenzen, .cta-section, footer { padding-left: 20px; padding-right: 20px; }
-
-      /* Hero H1 max 2rem on mobile */
-      .hero h1 { font-size: clamp(28px, 8vw, 36px); letter-spacing: -0.02em; }
+      .hero { padding-top: 64px; min-height: auto; }
+      .hero-content { padding: 28px 20px 32px; gap: 28px; }
+      .hero-badge { padding: 6px 14px; font-size: 12px; margin-bottom: 16px; }
+      .hero h1 { font-size: clamp(26px, 7.5vw, 34px); letter-spacing: -0.02em; margin-bottom: 14px; }
       .hero h1 .accent { font-size: inherit; }
-      .hero-sub { font-size: 16px; margin-bottom: 32px; }
-      .hero-phone { margin-top: 36px; }
-      .hero-phone-number { font-size: 22px; }
+      .hero-sub { font-size: 15px; margin-bottom: 20px; line-height: 1.55; }
+      .hero-phone { display: none; }
+
+      /* Hero actions: 2-column grid on mobile */
+      .hero-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: stretch; }
+      .hero-actions .btn-primary { grid-column: 1 / -1; font-size: 17px; padding: 15px 28px; justify-content: center; }
+      .hero-actions .btn-secondary { font-size: 14px; padding: 12px 16px; justify-content: center; }
+      .hero-actions .btn-whatsapp { font-size: 14px; padding: 12px 16px; justify-content: center; }
+
+      .intro, .services, .stats, .process, .why, .testimonials, .referenzen, .cta-section, footer { padding-left: 20px; padding-right: 20px; }
 
       .ba-grid { grid-template-columns: 1fr; }
       .services-featured { grid-template-columns: 1fr; }
@@ -2092,29 +2109,32 @@
       .testimonials-grid { grid-template-columns: 1fr; }
       .testi-google { flex-direction: column; align-items: flex-start; padding: 22px 20px; }
       .testi-google-btn { width: 100%; justify-content: center; }
-      .svc-feature { padding: 28px; }
+      .svc-feature { padding: 24px; }
       .process-steps { grid-template-columns: 1fr; }
       .process-trust-grid { flex-direction: column; align-items: flex-start; gap: 14px; }
       .process-trust { padding: 20px 22px; }
-      .stats-inner { grid-template-columns: 1fr 1fr; gap: 20px; }
-      .trust-bar { gap: 20px; padding: 20px 20px; }
+      .stats-inner { grid-template-columns: 1fr 1fr; gap: 16px; }
+      .trust-bar { gap: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; }
+      .trust-item { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.1); justify-content: flex-start; }
+      .trust-item span { font-size: 13px; }
+      .trust-item-icon { width: 30px; height: 30px; flex-shrink: 0; }
       .footer-top { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
-      .hero-actions { flex-direction: column; align-items: flex-start; gap: 12px; }
-      .hero-actions .btn-primary, .hero-actions .btn-secondary, .hero-actions .btn-whatsapp { width: 100%; justify-content: center; }
       .calc-fill-grid { grid-template-columns: repeat(4, 1fr); }
 
-      /* Prevent any horizontal overflow */
       .blob-1, .blob-2 { display: none; }
       .intro-image { order: -1; }
+      .intro-values-grid { grid-template-columns: 1fr 1fr; }
     }
 
     @media (max-width: 480px) {
       .stats-inner { grid-template-columns: 1fr 1fr; }
       .calc-type-grid { gap: 6px; }
-      .intro { padding-top: 60px; padding-bottom: 60px; }
-      .intro-values-grid { grid-template-columns: 1fr; }
+      .intro { padding-top: 48px; padding-bottom: 48px; }
+      .intro-values-grid { grid-template-columns: 1fr 1fr; }
       .intro-photo-placeholder { aspect-ratio: 4/3; }
+      .hero-actions { grid-template-columns: 1fr; }
+      .hero-actions .btn-secondary, .hero-actions .btn-whatsapp { font-size: 15px; padding: 13px 20px; }
     }
 
     /* ──────────────────────────────── SERVICEGEBIET */
@@ -2167,9 +2187,10 @@
   <nav>
     <a href="#" class="nav-logo">
       <picture>
-        <source media="(max-width: 767px)" srcset="brand_assets/Logo/Logo%20Symbol.png" />
+        <source media="(max-width: 1024px)" srcset="brand_assets/Logo/Logo%20Symbol.png" />
         <img src="brand_assets/Logo/Logo%20Font.png" alt="Wirlösenauf.de – Haushaltsauflösung Hannover" style="display:block;" loading="eager" fetchpriority="high" />
       </picture>
+      <span class="nav-brand-name">Wirlösenauf.de</span>
     </a>
     <ul class="nav-links">
       <li><a href="#leistungen">Leistungen</a></li>
@@ -2190,6 +2211,7 @@
   <!-- ── MOBILE NAV MENU ── -->
   <div id="mobile-nav" class="mobile-nav" role="navigation" aria-label="Mobiles Menü">
     <ul>
+      <li><a href="buchen/" class="mobile-nav-cta" style="background:var(--green-light); margin-top:16px; margin-bottom:4px;">📅 Termin buchen</a></li>
       <li><a href="#leistungen">Leistungen</a></li>
       <li><a href="wertanrechnung.html">♻️ Wertanrechnung</a></li>
       <li><a href="#ablauf">Ablauf</a></li>
