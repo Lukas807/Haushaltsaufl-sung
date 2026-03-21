@@ -438,7 +438,7 @@
 
     /* ──────────────────────────────── INTRO */
     .intro {
-      padding: 100px 48px;
+      padding: 64px 48px;
       max-width: 1200px;
       margin: 0 auto;
     }
@@ -643,7 +643,7 @@
     /* ──────────────────────────────── SERVICES */
     .services {
       background: var(--off-white);
-      padding: 120px 48px;
+      padding: 72px 48px;
       position: relative;
     }
     .services-inner {
@@ -654,7 +654,7 @@
     .section-header {
       text-align: center;
       max-width: 700px;
-      margin: 0 auto 72px;
+      margin: 0 auto 48px;
     }
     .section-header h2 {
       font-size: clamp(30px, 4vw, 50px);
@@ -847,10 +847,38 @@
     }
     .svc-card:hover .svc-card-arrow { transform: translateX(5px); }
 
+    /* Services toggle button (mobile only) */
+    .services-toggle {
+      display: none;
+      width: 100%;
+      background: var(--green-bg);
+      border: 2px solid var(--green-pale);
+      border-radius: 50px;
+      padding: 14px 24px;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--green-deep);
+      cursor: pointer;
+      margin-bottom: 0;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+    .services-toggle:hover { background: var(--green-pale); border-color: var(--green-main); }
+    .services-toggle:focus-visible { outline: 2px solid var(--green-main); outline-offset: 2px; }
+
+    /* WhatsApp small variant */
+    .btn-whatsapp-small {
+      font-size: 15px !important;
+      padding: 13px 22px !important;
+      background: #25D366;
+      opacity: 0.92;
+    }
+    .btn-whatsapp-small:hover { opacity: 1; }
+
     /* ──────────────────────────────── STATS */
     .stats {
       background: var(--green-deep);
-      padding: 80px 48px;
+      padding: 56px 48px;
       position: relative;
       overflow: hidden;
     }
@@ -891,7 +919,7 @@
 
     /* ──────────────────────────────── HOW IT WORKS */
     .process {
-      padding: 100px 48px;
+      padding: 64px 48px;
       max-width: 1200px;
       margin: 0 auto;
     }
@@ -900,7 +928,7 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 20px;
-      margin-top: 56px;
+      margin-top: 36px;
       position: relative;
     }
 
@@ -1055,7 +1083,7 @@
     /* ──────────────────────────────── WHY US */
     .why {
       background: var(--green-deep);
-      padding: 100px 48px;
+      padding: 72px 48px;
       position: relative;
       overflow: hidden;
     }
@@ -2114,17 +2142,91 @@
       .process-trust-grid { flex-direction: column; align-items: flex-start; gap: 14px; }
       .process-trust { padding: 20px 22px; }
       .stats-inner { grid-template-columns: 1fr 1fr; gap: 16px; }
-      .trust-bar { gap: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; }
-      .trust-item { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.1); justify-content: flex-start; }
-      .trust-item span { font-size: 13px; }
-      .trust-item-icon { width: 30px; height: 30px; flex-shrink: 0; }
+      .trust-bar { gap: 0; padding: 0; display: flex; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; justify-content: flex-start; }
+      .trust-bar::-webkit-scrollbar { display: none; }
+      .trust-item { padding: 12px 16px; flex-shrink: 0; border-right: 1px solid rgba(255,255,255,0.15); white-space: nowrap; gap: 8px; }
+      .trust-item:last-child { border-right: none; }
+      .trust-item span { font-size: 13px; white-space: nowrap; }
+      .trust-item-icon { width: 26px; height: 26px; flex-shrink: 0; font-size: 13px; }
       .footer-top { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
       .calc-fill-grid { grid-template-columns: repeat(4, 1fr); }
 
       .blob-1, .blob-2 { display: none; }
       .intro-image { order: -1; }
+      .why-image { order: -1; }
       .intro-values-grid { grid-template-columns: 1fr 1fr; }
+      /* Hide photo column on mobile — saves massive vertical space */
+      .intro-photo-col { display: none; }
+      /* Simplify intro CTA row on mobile */
+      .intro-cta-row .btn-secondary { display: none; }
+      .intro-cta-row .btn-primary { font-size: 16px; padding: 14px 28px; }
+      /* Reduce body text on mobile */
+      body { font-size: 15px; line-height: 1.65; }
+      .intro p, .intro .intro-sub { font-size: 15px; line-height: 1.6; }
+      .intro h2 { font-size: clamp(20px, 6vw, 28px); margin-bottom: 12px; }
+      .intro .intro-sub { font-size: 15px; margin-bottom: 14px; }
+      .intro p { margin-bottom: 10px; }
+
+      /* Process steps: timeline layout on mobile */
+      .process-steps::before { display: none; }
+      .step {
+        display: grid;
+        grid-template-columns: 48px 1fr;
+        grid-template-rows: auto auto auto;
+        gap: 0 14px;
+        padding: 20px;
+        align-items: start;
+      }
+      .step-num {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        width: 44px; height: 44px;
+        background: linear-gradient(135deg, var(--green-deep), var(--green-main));
+        color: #fff;
+        border-radius: 50%;
+        font-size: 20px;
+        font-weight: 900;
+        flex-shrink: 0;
+        box-shadow: 0 4px 14px rgba(46,125,50,0.4);
+        grid-row: 1 / 4;
+        grid-column: 1;
+        margin-top: 2px;
+      }
+      .step-header {
+        grid-column: 2;
+        grid-row: 1;
+        margin-bottom: 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .step-big-num { display: none; }
+      .step-icon {
+        width: 36px; height: 36px;
+        font-size: 16px;
+        border-radius: 10px;
+      }
+      .step h3 { grid-column: 2; grid-row: 2; margin-top: 8px; font-size: 15px; }
+      .step p { grid-column: 2; grid-row: 3; font-size: 13px; margin-bottom: 0; }
+      .step-bullets { display: none; }
+
+      /* Extra services toggle */
+      .services-toggle { display: flex; justify-content: center; margin-bottom: 12px; margin-top: 4px; }
+      .services-grid { display: none; }
+      .services-grid.services-grid-open { display: grid; grid-template-columns: 1fr 1fr; }
+
+      /* Sections: tighter vertical padding on mobile */
+      .intro { padding-top: 48px; padding-bottom: 48px; }
+      .services { padding-top: 52px; padding-bottom: 52px; }
+      .stats { padding-top: 40px; padding-bottom: 40px; }
+      .process { padding-top: 52px; padding-bottom: 52px; }
+      .why { padding-top: 52px; padding-bottom: 52px; }
+      .testimonials { padding-top: 48px; padding-bottom: 48px; }
+      .referenzen { padding-top: 48px; padding-bottom: 48px; }
+      .cta-section { padding-top: 52px; padding-bottom: 52px; }
+      .section-header { margin-bottom: 32px; }
     }
 
     @media (max-width: 480px) {
@@ -2134,7 +2236,11 @@
       .intro-values-grid { grid-template-columns: 1fr 1fr; }
       .intro-photo-placeholder { aspect-ratio: 4/3; }
       .hero-actions { grid-template-columns: 1fr; }
-      .hero-actions .btn-secondary, .hero-actions .btn-whatsapp { font-size: 15px; padding: 13px 20px; }
+      .hero-actions .btn-whatsapp { font-size: 15px; padding: 13px 20px; }
+      .services-grid.services-grid-open { grid-template-columns: 1fr; }
+      .sg-pills { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
+      .step { grid-template-columns: 40px 1fr; }
+      .step-num { width: 40px; height: 40px; font-size: 18px; }
     }
 
     /* ──────────────────────────────── SERVICEGEBIET */
@@ -2162,7 +2268,8 @@
     .sg-group-label { display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green-main); margin-bottom: 14px; }
     .sg-group-dot { width: 8px; height: 8px; background: var(--green-main); border-radius: 50%; flex-shrink: 0; }
 
-    .sg-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .sg-pills { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px; }
+    .sg-pill { justify-content: center; text-align: center; }
     .sg-pill { display: inline-flex; align-items: center; background: #fff; border: 2px solid var(--green-pale); color: var(--green-deep); padding: 8px 18px; border-radius: 50px; font-size: 14px; font-weight: 700; text-decoration: none; white-space: nowrap; cursor: pointer; transition: background 0.18s, border-color 0.18s, color 0.18s, transform 0.15s ease, box-shadow 0.18s; }
     .sg-pill:hover { background: var(--green-main); border-color: var(--green-main); color: #fff; transform: translateY(-2px); box-shadow: 0 5px 14px rgba(46,125,50,0.28); }
     .sg-pill.sg-active { background: var(--green-deep); border-color: var(--green-deep); color: #fff; box-shadow: 0 4px 14px rgba(27,94,32,0.35); }
@@ -2250,12 +2357,9 @@
           <a href="buchen/" class="btn-primary">
             📅 Termin buchen
           </a>
-          <a href="wertanrechnung.html" class="btn-secondary">
-            ♻️ Wertanrechnung entdecken →
-          </a>
-          <a href="https://wa.me/4917260309946?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Haushaltsaufl%C3%B6sung." target="_blank" rel="noopener" class="btn-whatsapp">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-            WhatsApp
+          <a href="https://wa.me/4917260309946?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Haushaltsaufl%C3%B6sung." target="_blank" rel="noopener" class="btn-whatsapp btn-whatsapp-small">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            Fragen? WhatsApp
           </a>
         </div>
 
@@ -2537,7 +2641,10 @@
       </div>
 
       <!-- 4 compact cards -->
-      <div class="services-grid">
+      <button class="services-toggle" id="servicesToggle" aria-expanded="false" onclick="var g=document.getElementById('servicesGrid');var open=this.getAttribute('aria-expanded')==='true';this.setAttribute('aria-expanded',open?'false':'true');g.classList.toggle('services-grid-open');this.querySelector('.stoggle-label').textContent=open?'Weitere Leistungen anzeigen ↓':'Weniger anzeigen ↑';">
+        <span class="stoggle-label">Weitere Leistungen anzeigen ↓</span>
+      </button>
+      <div class="services-grid" id="servicesGrid">
         <a href="leistungen/moebeltransport.html" class="svc-card fade-up" style="transition-delay:0.1s">
           <div class="svc-card-body">
             <div class="svc-card-num">03</div>
@@ -2946,12 +3053,9 @@
         <a href="buchen/" class="btn-white">
           📅 Termin buchen
         </a>
-        <a href="tel:+4917260309946" class="btn-white" style="background:rgba(255,255,255,0.15);color:#fff;border:1.5px solid rgba(255,255,255,0.4);">
-          📞 0172 6030946
-        </a>
-        <a href="https://wa.me/4917260309946?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Haushaltsaufl%C3%B6sung." target="_blank" rel="noopener" class="btn-whatsapp">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-          WhatsApp schreiben
+        <a href="https://wa.me/4917260309946?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Haushaltsaufl%C3%B6sung." target="_blank" rel="noopener" class="btn-whatsapp btn-whatsapp-small">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Fragen? WhatsApp
         </a>
       </div>
     </div>
