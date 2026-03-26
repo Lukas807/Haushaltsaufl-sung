@@ -491,7 +491,7 @@ function generatePage(svc) {
       <li><a href="../index.html#vorteile">Vorteile</a></li>
       <li><a href="../index.html#bewertungen">Bewertungen</a></li>
     </ul>
-    <a href="tel:+4917260309946" class="nav-cta">📞 Kostenlos anrufen</a>
+    <a href="tel:+491726030946" class="nav-cta">📞 Kostenlos anrufen</a>
   </nav>
 
   <section class="svc-hero">
@@ -520,7 +520,7 @@ function generatePage(svc) {
         <ul class="svc-bullets">
           ${bulletsHTML}
         </ul>
-        <a href="tel:+4917260309946" class="svc-cta-btn">
+        <a href="tel:+491726030946" class="svc-cta-btn">
           📞 Jetzt kostenlos anfragen
         </a>
       </div>
@@ -545,7 +545,7 @@ function generatePage(svc) {
     <h2>Bereit für Ihre Anfrage?</h2>
     <p>Kostenlose Besichtigung · Unverbindliches Angebot · Faire Festpreise</p>
     <div class="cta-btns">
-      <a href="tel:+4917260309946" class="cta-btn-primary">📞 Jetzt anrufen</a>
+      <a href="tel:+491726030946" class="cta-btn-primary">📞 Jetzt anrufen</a>
       <a href="../index.html" class="cta-btn-sec">Zurück zur Startseite</a>
     </div>
   </section>

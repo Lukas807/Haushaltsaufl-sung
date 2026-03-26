@@ -116,7 +116,7 @@ function generatePage(city) {
     "name": "wirlösenauf.de",
     "description": "Professionelle Entrümpelung und Haushaltsauflösung in ${city.name} und Umgebung",
     "url": "https://wirloesenauf.de",
-    "telephone": "+4917260309946",
+    "telephone": "+491726030946",
     "areaServed": "${city.name}",
     "serviceType": ["Entrümpelung", "Haushaltsauflösung", "Kellerentrümpelung", "Dachbodenräumung"],
     "priceRange": "€€",
@@ -356,7 +356,7 @@ function generatePage(city) {
     <a href="../index.html" class="nav-home">
       <img src="../brand_assets/Logo/logo.png" alt="wirlösenauf.de" />
     </a>
-    <a href="tel:+4917260309946" class="nav-cta">📞 Kostenlos anrufen</a>
+    <a href="tel:+491726030946" class="nav-cta">📞 Kostenlos anrufen</a>
   </nav>
 
   <div class="breadcrumb">
@@ -527,7 +527,7 @@ function generatePage(city) {
         <div class="section-label">Kontakt</div>
         <h2 id="kontakt">Jetzt Angebot anfordern für ${city.name}</h2>
         <p>Rufen Sie uns direkt an oder schreiben Sie uns — wir melden uns innerhalb von 24 Stunden mit einem unverbindlichen Angebot.</p>
-        <a href="tel:+4917260309946" class="btn-primary" style="margin-top:8px; display:inline-flex;">
+        <a href="tel:+491726030946" class="btn-primary" style="margin-top:8px; display:inline-flex;">
           📞 0172 6030946
         </a>
         <p style="margin-top:20px; font-size:15px;">
@@ -566,7 +566,7 @@ function generatePage(city) {
   <section class="cta-section">
     <h2>Bereit für Ihre Entrümpelung in ${city.name}?</h2>
     <p>Kostenlose Besichtigung, transparenter Festpreis, schneller Termin — rufen Sie jetzt an.</p>
-    <a href="tel:+4917260309946" class="btn-primary" style="margin:0 auto;display:inline-flex;">
+    <a href="tel:+491726030946" class="btn-primary" style="margin:0 auto;display:inline-flex;">
       📞 Jetzt kostenlos anrufen
     </a>
   </section>
