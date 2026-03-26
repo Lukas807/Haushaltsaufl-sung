@@ -414,49 +414,103 @@
       font-size: 13px; color: var(--text-muted); line-height: 1.55;
     }
 
-    /* ── FINAL CTA ── */
+    /* ── BOOKING FORM SECTION ── */
     .final-cta {
-      padding: 96px 48px;
+      padding: 80px 48px;
       background: var(--green-deep);
-      text-align: center;
       position: relative;
       overflow: hidden;
     }
     .final-cta::before {
       content: '';
       position: absolute; inset: 0;
-      background: radial-gradient(circle at 50% 0%, rgba(76,175,80,0.2), transparent 65%);
+      background: radial-gradient(circle at 50% 0%, rgba(76,175,80,0.18), transparent 65%);
+      pointer-events: none;
     }
-    .final-cta-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
-    .final-cta h2 {
-      font-size: clamp(26px, 4.5vw, 44px);
-      font-weight: 900; color: #fff; margin-bottom: 16px;
+    .final-cta-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+    .final-cta-header { text-align: center; margin-bottom: 40px; }
+    .final-cta-header h2 {
+      font-size: clamp(24px, 4vw, 40px);
+      font-weight: 900; color: #fff; margin-bottom: 12px; line-height: 1.15;
     }
-    .final-cta p {
-      font-size: 16px; color: rgba(255,255,255,0.7); line-height: 1.65;
-      margin-bottom: 36px; max-width: 460px; margin-left: auto; margin-right: auto;
+    .final-cta-header p {
+      font-size: 16px; color: rgba(255,255,255,0.7); line-height: 1.6; max-width: 460px; margin: 0 auto;
     }
-    .final-actions { display: flex; flex-direction: column; align-items: center; gap: 14px; }
-    .btn-primary-lg {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: #fff; color: var(--green-deep);
-      font-size: 16px; font-weight: 800; padding: 17px 36px; border-radius: 50px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-      transition: background 0.2s, transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s;
+    /* form card */
+    .booking-card {
+      background: #fff; border-radius: 20px;
+      padding: 36px 40px;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.28);
     }
-    .btn-primary-lg:hover { background: var(--green-pale); transform: translateY(-3px); box-shadow: 0 16px 44px rgba(0,0,0,0.28); }
-    .btn-primary-lg:active { transform: translateY(0); }
-    .btn-primary-lg:focus-visible { outline: 2px solid rgba(255,255,255,0.6); outline-offset: 4px; }
-    .btn-wa-cta {
-      display: inline-flex; align-items: center; gap: 10px;
-      background: var(--wa-green); color: #fff;
-      font-size: 15px; font-weight: 700; padding: 15px 30px; border-radius: 50px;
-      box-shadow: 0 6px 24px rgba(37,211,102,0.4);
-      transition: background 0.2s, transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s;
+    .booking-card .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .booking-card .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+    .booking-card .form-group:last-child { margin-bottom: 0; }
+    .booking-card label { font-size: 13px; font-weight: 700; color: #1a3a1c; letter-spacing: 0.02em; }
+    .booking-card label .req { color: #e53935; }
+    .booking-card input[type="text"],
+    .booking-card input[type="tel"],
+    .booking-card input[type="email"],
+    .booking-card input[type="date"],
+    .booking-card textarea {
+      width: 100%; padding: 12px 16px; border: 2px solid #e0e9e1; border-radius: 10px;
+      font-size: 15px; font-family: inherit; color: #1a3a1c; background: #f8faf8;
+      transition: border-color 0.2s, box-shadow 0.2s; outline: none; box-sizing: border-box;
     }
-    .btn-wa-cta:hover { background: #1aab52; transform: translateY(-3px); box-shadow: 0 12px 36px rgba(37,211,102,0.5); }
-    .btn-wa-cta:active { transform: translateY(0); }
-    .btn-wa-cta:focus-visible { outline: 2px solid rgba(255,255,255,0.5); outline-offset: 4px; }
+    .booking-card input:focus, .booking-card textarea:focus {
+      border-color: var(--green-main); box-shadow: 0 0 0 3px rgba(76,175,80,0.12);
+    }
+    .booking-card input.invalid, .booking-card textarea.invalid { border-color: #e53935; }
+    .booking-card textarea { min-height: 80px; resize: vertical; }
+    /* time slots */
+    .bk-time-slots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .bk-time-slot { position: relative; }
+    .bk-time-slot input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
+    .bk-time-slot label {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 10px 8px; border: 2px solid #e0e9e1; border-radius: 10px;
+      cursor: pointer; text-align: center; transition: border-color 0.2s, background 0.2s;
+      background: #f8faf8;
+    }
+    .bk-time-slot label strong { font-size: 13px; font-weight: 800; color: #1a3a1c; line-height: 1.2; }
+    .bk-time-slot label small { font-size: 11px; color: #5a7a5c; margin-top: 2px; }
+    .bk-time-slot input:checked + label { border-color: var(--green-main); background: #e8f5e9; }
+    .bk-time-slot label:hover { border-color: var(--green-main); background: #f0f9f0; }
+    /* divider */
+    .bk-divider { border: none; border-top: 1.5px solid #e8ede8; margin: 20px 0; }
+    /* estimate banner */
+    .bk-estimate-banner {
+      display: none; background: #e8f5e9; border: 2px solid #a5d6a7; border-radius: 12px;
+      padding: 14px 18px; margin-bottom: 20px; align-items: center; gap: 12px;
+    }
+    .bk-estimate-banner .bk-est-icon { font-size: 22px; }
+    .bk-estimate-banner .bk-est-text { font-size: 13px; color: #1a3a1c; line-height: 1.4; }
+    .bk-estimate-banner .bk-est-text strong { display: block; font-size: 16px; font-weight: 900; color: var(--green-deep); }
+    /* submit button */
+    .bk-submit {
+      width: 100%; padding: 16px; background: var(--green-main); color: #fff;
+      font-size: 16px; font-weight: 800; font-family: inherit; border: none; border-radius: 50px;
+      cursor: pointer; margin-top: 8px;
+      box-shadow: 0 6px 24px rgba(76,175,80,0.4);
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .bk-submit:hover { background: var(--green-deep); transform: translateY(-2px); box-shadow: 0 10px 32px rgba(46,125,50,0.45); }
+    .bk-submit:active { transform: translateY(0); }
+    /* error */
+    .bk-error { display: none; background: #ffebee; border: 1.5px solid #ef9a9a; border-radius: 10px; padding: 12px 16px; font-size: 14px; color: #c62828; margin-bottom: 16px; }
+    /* success */
+    .bk-success { display: none; text-align: center; padding: 40px 20px; }
+    .bk-success-icon { font-size: 56px; margin-bottom: 16px; }
+    .bk-success h3 { font-size: 24px; font-weight: 900; color: var(--green-deep); margin-bottom: 8px; }
+    .bk-success p { font-size: 15px; color: #3d5c3f; line-height: 1.6; }
+    @media (max-width: 768px) {
+      .final-cta { padding: 56px 20px; }
+      .booking-card { padding: 24px 20px; }
+      .booking-card .form-row { grid-template-columns: 1fr; }
+      .bk-time-slots { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .bk-time-slots { grid-template-columns: repeat(2, 1fr); }
+    }
 
     /* ── FOOTER ── */
     footer {
@@ -757,24 +811,108 @@
     </div>
   </section>
 
-  <!-- ── FINAL CTA ── -->
+  <!-- ── BOOKING FORM ── -->
   <section class="final-cta" id="anfrage">
     <div class="final-cta-inner">
-      <h2 class="fade-up">Jetzt kostenlose Besichtigung anfragen</h2>
-      <p class="fade-up" style="transition-delay:.08s">
-        Bereit für dein Festpreisangebot zur Haushaltsauflösung oder Entrümpelung in Hannover?
-        Ruf uns an oder schreib uns – komplett kostenlos &amp; unverbindlich.
-      </p>
-      <div class="final-actions fade-up" style="transition-delay:.16s">
-        <a href="tel:+491726030946" class="btn-primary-lg">
-          <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 5.12 12.5 19.79 19.79 0 0 1 2 3.82 2 2 0 0 1 3.98 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          Besichtigung anfragen – 0172 6030946
-        </a>
-        <a href="https://wa.me/491726030946?text=Hallo%2C%20ich%20m%C3%B6chte%20eine%20kostenlose%20Besichtigung%20f%C3%BCr%20eine%20Haushaltsaufl%C3%B6sung%20anfragen."
-           target="_blank" rel="noopener" class="btn-wa-cta">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.118 1.533 5.845L.057 23.617a.5.5 0 0 0 .614.644l5.897-1.514A11.954 11.954 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.886 0-3.65-.52-5.158-1.424l-.37-.217-3.836.985.993-3.73-.241-.386A9.978 9.978 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-          Oder per WhatsApp anfragen
-        </a>
+      <div class="final-cta-header fade-up">
+        <h2>Kostenlose Besichtigung buchen</h2>
+        <p>Termin direkt online sichern — wir melden uns innerhalb von 2 Stunden zur Bestätigung.</p>
+      </div>
+
+      <div class="booking-card fade-up" style="transition-delay:.1s">
+
+        <!-- Estimate banner (filled by JS if calculator was used) -->
+        <div class="bk-estimate-banner" id="bk-estimate-banner">
+          <div class="bk-est-icon">💰</div>
+          <div class="bk-est-text">
+            Ihr Kostenrechner-Ergebnis:<br/>
+            <strong id="bk-est-value">–</strong>
+          </div>
+        </div>
+
+        <div class="bk-error" id="bk-error">Bitte füllen Sie alle Pflichtfelder aus.</div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="bk-vorname">Vorname <span class="req">*</span></label>
+            <input type="text" id="bk-vorname" name="vorname" placeholder="Max" autocomplete="given-name" />
+          </div>
+          <div class="form-group">
+            <label for="bk-nachname">Nachname <span class="req">*</span></label>
+            <input type="text" id="bk-nachname" name="nachname" placeholder="Mustermann" autocomplete="family-name" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="bk-telefon">Telefon <span class="req">*</span></label>
+            <input type="tel" id="bk-telefon" name="telefon" placeholder="0172 000 0000" autocomplete="tel" />
+          </div>
+          <div class="form-group">
+            <label for="bk-email">E-Mail <span class="req">*</span></label>
+            <input type="email" id="bk-email" name="email" placeholder="max@beispiel.de" autocomplete="email" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="bk-adresse">Adresse des Objekts <span class="req">*</span></label>
+          <input type="text" id="bk-adresse" name="adresse" placeholder="Musterstraße 12, 30159 Hannover" autocomplete="street-address" />
+        </div>
+
+        <hr class="bk-divider" />
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="bk-datum">Wunschdatum <span class="req">*</span></label>
+            <input type="date" id="bk-datum" name="datum" />
+          </div>
+          <div class="form-group">
+            <label>Bevorzugte Uhrzeit <span class="req">*</span></label>
+            <div class="bk-time-slots">
+              <div class="bk-time-slot">
+                <input type="radio" name="bk-uhrzeit" id="bk-t1" value="Früh: 07:00 – 09:00 Uhr" />
+                <label for="bk-t1"><strong>07:00 – 09:00</strong><small>Früh</small></label>
+              </div>
+              <div class="bk-time-slot">
+                <input type="radio" name="bk-uhrzeit" id="bk-t2" value="Vormittag: 09:00 – 11:00 Uhr" />
+                <label for="bk-t2"><strong>09:00 – 11:00</strong><small>Vormittag</small></label>
+              </div>
+              <div class="bk-time-slot">
+                <input type="radio" name="bk-uhrzeit" id="bk-t3" value="Mittag: 11:00 – 13:00 Uhr" />
+                <label for="bk-t3"><strong>11:00 – 13:00</strong><small>Mittag</small></label>
+              </div>
+              <div class="bk-time-slot">
+                <input type="radio" name="bk-uhrzeit" id="bk-t4" value="Nachmittag: 13:00 – 15:00 Uhr" />
+                <label for="bk-t4"><strong>13:00 – 15:00</strong><small>Nachmittag</small></label>
+              </div>
+              <div class="bk-time-slot">
+                <input type="radio" name="bk-uhrzeit" id="bk-t5" value="Spätnachmittag: 15:00 – 17:00 Uhr" />
+                <label for="bk-t5"><strong>15:00 – 17:00</strong><small>Spätnachmittag</small></label>
+              </div>
+              <div class="bk-time-slot">
+                <input type="radio" name="bk-uhrzeit" id="bk-t6" value="Flexibel / nach Absprache" />
+                <label for="bk-t6"><strong>Flexibel</strong><small>nach Absprache</small></label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="bk-anmerkung">Anmerkungen <span style="font-weight:400;color:#7a9a7c;">(optional)</span></label>
+          <textarea id="bk-anmerkung" name="anmerkung" placeholder="z. B. 3. OG ohne Aufzug, Keller sehr vollgestellt, Zugang nur nachmittags…"></textarea>
+        </div>
+
+        <button class="bk-submit" onclick="submitBooking()">
+          📅 Termin jetzt anfragen — kostenlos &amp; unverbindlich
+        </button>
+
+        <!-- Success state -->
+        <div class="bk-success" id="bk-success">
+          <div class="bk-success-icon">✅</div>
+          <h3>Terminanfrage erhalten!</h3>
+          <p>Vielen Dank. Wir melden uns innerhalb von 2 Stunden bei Ihnen zur Terminbestätigung.</p>
+        </div>
+
       </div>
     </div>
   </section>
@@ -929,6 +1067,108 @@
       waGrid.addEventListener('click',e=>{const btn=e.target.closest('[data-wa]');if(!btn)return;waGrid.querySelectorAll('[data-wa]').forEach(b=>b.classList.remove('active'));btn.classList.add('active');state.wa=parseInt(btn.dataset.wa,10);recalc();});
       waGrid.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const btn=e.target.closest('[data-wa]');if(btn){e.preventDefault();btn.click();}}});
       configureStep2();renderStep3();goTo(1);
+
+      // Pass estimate to booking form when CTA is clicked
+      document.querySelectorAll('a[href="#anfrage"]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const rangeEl = document.getElementById('calcRangeValue');
+          if (rangeEl) {
+            const txt = rangeEl.textContent.trim();
+            if (txt && txt !== '–') {
+              document.getElementById('bk-est-value').textContent = txt;
+              document.getElementById('bk-estimate-banner').style.display = 'flex';
+            }
+          }
+        });
+      });
+    })();
+
+    /* ── BOOKING FORM ── */
+    (function() {
+      const FORMSPREE = 'https://formspree.io/f/mbdzekdg';
+
+      // Set min date + default to next weekday
+      const dateInput = document.getElementById('bk-datum');
+      const today = new Date();
+      const pad = n => String(n).padStart(2, '0');
+      dateInput.min = `${today.getFullYear()}-${pad(today.getMonth()+1)}-${pad(today.getDate())}`;
+      const next = new Date(today);
+      next.setDate(next.getDate() + (next.getDay() === 6 ? 2 : next.getDay() === 0 ? 1 : 1));
+      dateInput.value = `${next.getFullYear()}-${pad(next.getMonth()+1)}-${pad(next.getDate())}`;
+
+      // Clear red border on time slot select
+      document.querySelectorAll('input[name="bk-uhrzeit"]').forEach(el => {
+        el.addEventListener('change', () => {
+          document.querySelectorAll('.bk-time-slot label').forEach(l => l.style.borderColor = '');
+        });
+      });
+
+      window.submitBooking = async function() {
+        const err = document.getElementById('bk-error');
+        err.style.display = 'none';
+
+        const fields = ['bk-vorname','bk-nachname','bk-telefon','bk-email','bk-adresse','bk-datum'];
+        let valid = true;
+        fields.forEach(id => {
+          const el = document.getElementById(id);
+          if (!el.value.trim()) { el.classList.add('invalid'); valid = false; }
+          else el.classList.remove('invalid');
+        });
+        const uhrzeit = document.querySelector('input[name="bk-uhrzeit"]:checked');
+        if (!uhrzeit) {
+          document.querySelectorAll('.bk-time-slot label').forEach(l => l.style.borderColor = '#e53935');
+          valid = false;
+        }
+        if (!valid) {
+          err.style.display = 'block';
+          err.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          return;
+        }
+
+        const rawDate = document.getElementById('bk-datum').value;
+        const dateObj = new Date(rawDate + 'T12:00:00');
+        const niceDate = dateObj.toLocaleDateString('de-DE', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+
+        const estBanner = document.getElementById('bk-est-value');
+        const estimate = estBanner ? estBanner.textContent : '–';
+
+        const payload = {
+          '📋 BESICHTIGUNGSANFRAGE (Kostenrechner)': '──────────────────────────',
+          'Vorname': document.getElementById('bk-vorname').value.trim(),
+          'Nachname': document.getElementById('bk-nachname').value.trim(),
+          'Telefon': document.getElementById('bk-telefon').value.trim(),
+          'E-Mail': document.getElementById('bk-email').value.trim(),
+          'Adresse des Objekts': document.getElementById('bk-adresse').value.trim(),
+          'Wunschdatum': niceDate,
+          'Bevorzugte Uhrzeit': uhrzeit.value,
+          'Kostenrechner-Schätzung': estimate !== '–' ? estimate : 'Nicht genutzt',
+          'Anmerkungen': document.getElementById('bk-anmerkung').value.trim() || '–',
+        };
+
+        const btn = document.querySelector('.bk-submit');
+        btn.disabled = true;
+        btn.textContent = 'Wird gesendet…';
+
+        try {
+          const res = await fetch(FORMSPREE, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          if (res.ok) {
+            document.querySelector('.booking-card').innerHTML = document.getElementById('bk-success').outerHTML;
+            document.getElementById('bk-success').style.display = 'block';
+            document.querySelector('.final-cta-header').style.display = 'none';
+          } else {
+            throw new Error('server error');
+          }
+        } catch(e) {
+          btn.disabled = false;
+          btn.textContent = '📅 Termin jetzt anfragen — kostenlos & unverbindlich';
+          err.textContent = 'Fehler beim Senden. Bitte versuche es erneut oder ruf uns an: 0172 6030946';
+          err.style.display = 'block';
+        }
+      };
     })();
   </script>
 </body>

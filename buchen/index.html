@@ -163,7 +163,7 @@
     input[type="date"] { cursor: pointer; }
 
     /* ── TIME SLOTS ── */
-    .time-slots { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .time-slots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
     .time-slot { position: relative; }
     .time-slot input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
     .time-slot label {
@@ -469,20 +469,28 @@
             <label>Bevorzugte Uhrzeit <span class="req">*</span></label>
             <div class="time-slots">
               <div class="time-slot">
-                <input type="radio" name="uhrzeit" id="t1" value="Vormittags (8–12 Uhr)" />
-                <label for="t1">Vormittags<small>8:00 – 12:00 Uhr</small></label>
+                <input type="radio" name="uhrzeit" id="t1" value="Früh: 07:00 – 09:00 Uhr" />
+                <label for="t1">07:00 – 09:00<small>Früh</small></label>
               </div>
               <div class="time-slot">
-                <input type="radio" name="uhrzeit" id="t2" value="Nachmittags (12–16 Uhr)" />
-                <label for="t2">Nachmittags<small>12:00 – 16:00 Uhr</small></label>
+                <input type="radio" name="uhrzeit" id="t2" value="Vormittag: 09:00 – 11:00 Uhr" />
+                <label for="t2">09:00 – 11:00<small>Vormittag</small></label>
               </div>
               <div class="time-slot">
-                <input type="radio" name="uhrzeit" id="t3" value="Spätnachmittag (16–18 Uhr)" />
-                <label for="t3">Spätnachmittag<small>16:00 – 18:00 Uhr</small></label>
+                <input type="radio" name="uhrzeit" id="t3" value="Mittag: 11:00 – 13:00 Uhr" />
+                <label for="t3">11:00 – 13:00<small>Mittag</small></label>
               </div>
               <div class="time-slot">
-                <input type="radio" name="uhrzeit" id="t4" value="Flexibel / nach Absprache" />
-                <label for="t4">Flexibel<small>nach Absprache</small></label>
+                <input type="radio" name="uhrzeit" id="t4" value="Nachmittag: 13:00 – 15:00 Uhr" />
+                <label for="t4">13:00 – 15:00<small>Nachmittag</small></label>
+              </div>
+              <div class="time-slot">
+                <input type="radio" name="uhrzeit" id="t5" value="Spätnachmittag: 15:00 – 17:00 Uhr" />
+                <label for="t5">15:00 – 17:00<small>Spätnachmittag</small></label>
+              </div>
+              <div class="time-slot">
+                <input type="radio" name="uhrzeit" id="t6" value="Flexibel / nach Absprache" />
+                <label for="t6">Flexibel<small>nach Absprache</small></label>
               </div>
             </div>
           </div>
