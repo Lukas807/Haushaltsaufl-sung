@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>B2B Partnerschaften – Wirlösenauf.de | Zuverlässige Räumungen für Gewerbepartner</title>
+  <meta name="description" content="Wir sind der verlässliche Räumungspartner für Immobilienmakler, WEG-Verwaltungen, Notare, Bestattungsunternehmen und mehr. Festpreis, Dokumentation, 24h-Reaktion." />
+  <link rel="canonical" href="https://wirlösenauf.de/b2b/" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root {
+      --forest:      #0B2410;
+      --forest-mid:  #12301A;
+      --forest-card: #163D1F;
+      --brand:       #2E7D32;
+      --brand-light: #4CAF50;
+      --gold:        #B8892A;
+      --gold-light:  #E0AD4A;
+      --gold-pale:   #F5E6C0;
+      --cream:       #F5F1E8;
+      --cream-mid:   #EDE7D8;
+      --cream-dark:  #E4DCC8;
+      --text-dark:   #0D1E0F;
+      --text-body:   #2D4830;
+      --text-muted:  #637A66;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 68px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 56px;
+      background: rgba(11,36,16,0.97);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(184,137,42,0.18);
+    }
+    .nav-left { display: flex; align-items: center; gap: 32px; }
+    .nav-logo img { height: 34px; display: block; }
+    .nav-back {
+      font-size: 12px; font-weight: 600; color: rgba(245,241,232,0.5);
+      text-decoration: none; letter-spacing: 0.07em; text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--gold-light); }
+    .nav-b2b-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--gold); background: rgba(184,137,42,0.12); border: 1px solid rgba(184,137,42,0.25);
+      padding: 4px 12px; border-radius: 50px;
+    }
+    .nav-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gold); color: #fff;
+      font-size: 13px; font-weight: 700; padding: 10px 22px; border-radius: 50px;
+      text-decoration: none; letter-spacing: 0.03em;
+      box-shadow: 0 4px 16px rgba(184,137,42,0.35);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      background: var(--forest);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 140px 56px 88px;
+      position: relative; overflow: hidden;
+    }
+    .hero-grain {
+      position: absolute; inset: 0; opacity: 0.04; z-index: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    .hero-gold-line {
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent 5%, var(--gold) 40%, var(--gold-light) 60%, transparent 95%);
+    }
+    .hero-bg-text {
+      position: absolute; bottom: -20px; right: -20px; z-index: 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(180px, 22vw, 340px); font-weight: 700;
+      color: rgba(255,255,255,0.022); line-height: 1;
+      pointer-events: none; user-select: none; letter-spacing: -0.04em;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 1100px; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 14px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 32px;
+    }
+    .hero-eyebrow span { display: inline-block; width: 40px; height: 1.5px; background: var(--gold); opacity: 0.6; }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(52px, 7.5vw, 112px);
+      font-weight: 600; color: var(--cream);
+      line-height: 0.93; letter-spacing: -0.025em;
+    }
+    .hero h1 em { font-style: italic; color: var(--gold-light); }
+    .hero-divider {
+      width: 80px; height: 2px;
+      background: linear-gradient(to right, var(--gold), transparent);
+      margin: 40px 0;
+    }
+    .hero-sub {
+      font-size: 17px; color: rgba(245,241,232,0.62);
+      line-height: 1.72; max-width: 540px;
+    }
+    .hero-actions { margin-top: 48px; display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-gold {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--gold); color: #fff;
+      font-size: 15px; font-weight: 700; padding: 16px 34px; border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 8px 28px rgba(184,137,42,0.45);
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 12px 36px rgba(184,137,42,0.55); }
+    .btn-outline-light {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: transparent; color: rgba(245,241,232,0.8);
+      font-size: 15px; font-weight: 600; padding: 15px 30px; border-radius: 50px;
+      text-decoration: none; border: 1.5px solid rgba(245,241,232,0.22);
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-outline-light:hover { border-color: rgba(245,241,232,0.6); background: rgba(245,241,232,0.06); }
+    .hero-stats {
+      display: flex; gap: 0; margin-top: 64px;
+      border-top: 1px solid rgba(245,241,232,0.08);
+      padding-top: 40px;
+    }
+    .hero-stat {
+      flex: 1; padding-right: 40px; border-right: 1px solid rgba(245,241,232,0.08);
+      margin-right: 40px;
+    }
+    .hero-stat:last-child { border-right: none; margin-right: 0; }
+    .hero-stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 44px; font-weight: 700; color: var(--gold-light); line-height: 1;
+    }
+    .hero-stat-label { font-size: 12px; color: rgba(245,241,232,0.45); letter-spacing: 0.07em; margin-top: 6px; }
+
+    /* ─── STATEMENT BAND ─── */
+    .statement-band {
+      background: var(--gold);
+      padding: 28px 56px;
+      overflow: hidden; position: relative;
+    }
+    .statement-band-inner {
+      display: flex; align-items: center; gap: 24px;
+      max-width: 1200px; margin: 0 auto;
+      white-space: nowrap; overflow: hidden;
+    }
+    .statement-item {
+      display: flex; align-items: center; gap: 10px; flex-shrink: 0;
+      font-size: 14px; font-weight: 700; color: #fff; letter-spacing: 0.04em;
+    }
+    .statement-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.5); flex-shrink: 0; }
+
+    /* ─── INTRO ─── */
+    .intro-section {
+      background: var(--forest-mid);
+      padding: 96px 56px;
+    }
+    .intro-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 96px; align-items: start; }
+    .section-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 24px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-label::after { content: ''; width: 28px; height: 1.5px; background: var(--gold); opacity: 0.45; }
+    .section-label-light { color: var(--gold); }
+    .intro-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(32px, 4vw, 52px); font-weight: 600;
+      color: var(--cream); line-height: 1.1; letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+    .intro-section h2 em { font-style: italic; color: var(--gold-light); }
+    .intro-body { font-size: 16px; color: rgba(245,241,232,0.65); line-height: 1.75; }
+    .intro-body p + p { margin-top: 16px; }
+    .intro-checklist { margin-top: 32px; display: flex; flex-direction: column; gap: 12px; }
+    .intro-check {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 15px; color: rgba(245,241,232,0.8); line-height: 1.5;
+    }
+    .intro-check-icon {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: rgba(184,137,42,0.2); border: 1px solid rgba(184,137,42,0.4);
+      color: var(--gold-light); flex-shrink: 0; margin-top: 1px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 900;
+    }
+    .intro-right-quote {
+      background: rgba(245,241,232,0.04); border: 1px solid rgba(245,241,232,0.08);
+      border-radius: 20px; padding: 48px 40px;
+    }
+    .intro-quote-mark {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 80px; color: var(--gold); opacity: 0.3; line-height: 0.7;
+      margin-bottom: 16px;
+    }
+    .intro-quote-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px; font-style: italic; color: var(--cream); line-height: 1.6;
+    }
+    .intro-quote-sig { margin-top: 28px; font-size: 13px; color: rgba(245,241,232,0.45); letter-spacing: 0.06em; }
+    .intro-stats-row {
+      display: flex; gap: 32px; margin-top: 40px;
+      padding-top: 32px; border-top: 1px solid rgba(245,241,232,0.08);
+    }
+    .intro-stat { flex: 1; }
+    .intro-stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 40px; font-weight: 700; color: var(--gold-light); line-height: 1;
+    }
+    .intro-stat-label { font-size: 12px; color: rgba(245,241,232,0.45); letter-spacing: 0.06em; margin-top: 4px; }
+
+    /* ─── PARTNER TYPES ─── */
+    .partners-section { background: var(--cream); padding: 100px 56px; }
+    .partners-header { max-width: 1200px; margin: 0 auto 0; }
+    .partners-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(34px, 4vw, 56px); font-weight: 600;
+      color: var(--text-dark); line-height: 1.1; letter-spacing: -0.02em;
+      max-width: 700px; margin-bottom: 16px;
+    }
+    .partners-header p { font-size: 16px; color: var(--text-muted); max-width: 560px; line-height: 1.7; margin-bottom: 56px; }
+    .partners-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2px; background: var(--cream-dark); border-radius: 22px; overflow: hidden;
+    }
+    .partner-card {
+      background: #fff; padding: 40px 36px;
+      transition: background 0.28s, box-shadow 0.28s;
+      position: relative; cursor: default;
+    }
+    .partner-card:hover { background: var(--forest-card); }
+    .partner-card-inner { position: relative; z-index: 1; }
+    .partner-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      background: var(--cream-dark); color: var(--brand);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; margin-bottom: 22px;
+      transition: background 0.28s;
+    }
+    .partner-card:hover .partner-icon { background: rgba(184,137,42,0.15); }
+    .partner-title {
+      font-size: 16px; font-weight: 700; color: var(--text-dark);
+      margin-bottom: 10px; transition: color 0.28s;
+    }
+    .partner-card:hover .partner-title { color: var(--cream); }
+    .partner-body {
+      font-size: 13.5px; color: var(--text-body); line-height: 1.68;
+      transition: color 0.28s;
+    }
+    .partner-card:hover .partner-body { color: rgba(245,241,232,0.62); }
+    .partner-usecase {
+      margin-top: 18px; padding-top: 16px;
+      border-top: 1px solid var(--cream-dark);
+      font-size: 12px; font-weight: 700; letter-spacing: 0.06em;
+      color: var(--text-muted); text-transform: uppercase;
+      transition: border-color 0.28s, color 0.28s;
+    }
+    .partner-card:hover .partner-usecase {
+      border-top-color: rgba(245,241,232,0.1);
+      color: var(--gold-light);
+    }
+
+    /* ─── BENEFITS ─── */
+    .benefits-section { background: var(--cream-mid); padding: 100px 56px; }
+    .benefits-inner { max-width: 1200px; margin: 0 auto; }
+    .benefits-header { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; margin-bottom: 64px; }
+    .benefits-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(32px, 4vw, 52px); font-weight: 600;
+      color: var(--text-dark); line-height: 1.1; letter-spacing: -0.02em;
+    }
+    .benefits-header p { font-size: 16px; color: var(--text-muted); line-height: 1.72; }
+    .benefits-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      border: 1.5px solid var(--cream-dark); border-radius: 22px; overflow: hidden;
+    }
+    .benefit-item {
+      padding: 44px 48px; position: relative; overflow: hidden;
+      border-right: 1.5px solid var(--cream-dark);
+      border-bottom: 1.5px solid var(--cream-dark);
+      background: #fff;
+      transition: background 0.2s;
+    }
+    .benefit-item:hover { background: #faf9f6; }
+    .benefit-item:nth-child(2n) { border-right: none; }
+    .benefit-item:nth-last-child(-n+2) { border-bottom: none; }
+    .benefit-bg-num {
+      position: absolute; top: 12px; right: 20px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 80px; font-weight: 700;
+      color: var(--cream-dark); line-height: 1; pointer-events: none; user-select: none;
+    }
+    .benefit-icon { font-size: 28px; margin-bottom: 18px; display: block; }
+    .benefit-title { font-size: 18px; font-weight: 700; color: var(--text-dark); margin-bottom: 10px; }
+    .benefit-body { font-size: 14.5px; color: var(--text-body); line-height: 1.72; max-width: 400px; }
+
+    /* ─── HOW IT WORKS ─── */
+    .howto-section { background: var(--forest); padding: 100px 56px; }
+    .howto-inner { max-width: 1200px; margin: 0 auto; }
+    .howto-section .section-label-dark { color: var(--gold); }
+    .howto-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(32px, 4vw, 54px); font-weight: 600;
+      color: var(--cream); line-height: 1.1; letter-spacing: -0.02em;
+      max-width: 600px; margin-bottom: 64px;
+    }
+    .howto-steps {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: rgba(245,241,232,0.06);
+      border-radius: 18px; overflow: hidden;
+    }
+    .howto-step {
+      padding: 52px 44px;
+      background: rgba(11,36,16,0.45);
+      position: relative; overflow: hidden;
+    }
+    .howto-step::before {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(to right, var(--gold), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .howto-step:hover::before { opacity: 1; }
+    .howto-step-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 88px; font-weight: 700;
+      color: var(--gold); opacity: 0.22;
+      line-height: 1; margin-bottom: 28px;
+      transition: opacity 0.3s;
+    }
+    .howto-step:hover .howto-step-num { opacity: 0.45; }
+    .howto-step-title { font-size: 20px; font-weight: 700; color: var(--cream); margin-bottom: 14px; }
+    .howto-step-body { font-size: 14.5px; color: rgba(245,241,232,0.58); line-height: 1.75; }
+    .howto-step-time {
+      margin-top: 24px; display: inline-flex; align-items: center; gap: 7px;
+      font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
+      color: var(--gold); text-transform: uppercase;
+    }
+    .howto-step-time::before { content: ''; width: 20px; height: 1.5px; background: var(--gold); opacity: 0.5; }
+
+    /* ─── PARTNER OFFERING ─── */
+    .offering-section { background: #fff; padding: 100px 56px; }
+    .offering-inner { max-width: 1200px; margin: 0 auto; }
+    .offering-top { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; margin-bottom: 64px; }
+    .offering-top h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(32px, 4vw, 52px); font-weight: 600;
+      color: var(--text-dark); line-height: 1.1; letter-spacing: -0.02em;
+    }
+    .offering-top p { font-size: 16px; color: var(--text-muted); line-height: 1.72; }
+    .offering-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .offering-card {
+      border: 1.5px solid var(--cream-dark); border-radius: 18px;
+      padding: 32px 28px; background: var(--cream);
+      transition: border-color 0.22s, box-shadow 0.22s, transform 0.22s, background 0.22s;
+    }
+    .offering-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 8px 32px rgba(184,137,42,0.12);
+      transform: translateY(-4px);
+      background: #fff;
+    }
+    .offering-icon { font-size: 30px; margin-bottom: 18px; display: block; }
+    .offering-title { font-size: 15px; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; }
+    .offering-body { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
+
+    /* ─── TESTIMONIALS ─── */
+    .testimonials-section { background: var(--cream-mid); padding: 100px 56px; }
+    .testimonials-inner { max-width: 1200px; margin: 0 auto; }
+    .testimonials-inner h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(32px, 4vw, 52px); font-weight: 600;
+      color: var(--text-dark); line-height: 1.1; letter-spacing: -0.02em;
+      margin-bottom: 56px; max-width: 600px;
+    }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .testimonial-card {
+      background: #fff; border-radius: 18px;
+      padding: 40px 36px;
+      box-shadow: 0 2px 20px rgba(11,36,16,0.06);
+      position: relative;
+    }
+    .testimonial-quote-mark {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 56px; color: var(--gold); opacity: 0.3;
+      line-height: 0.8; margin-bottom: 12px;
+    }
+    .testimonial-text { font-size: 15px; color: var(--text-body); line-height: 1.75; font-style: italic; margin-bottom: 28px; }
+    .testimonial-author { display: flex; align-items: center; gap: 14px; }
+    .testimonial-avatar {
+      width: 46px; height: 46px; border-radius: 50%;
+      background: var(--forest-mid); color: var(--gold-light);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px; font-weight: 700; flex-shrink: 0;
+    }
+    .testimonial-name { font-size: 14px; font-weight: 700; color: var(--text-dark); }
+    .testimonial-role { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+    /* ─── FAQ ─── */
+    .faq-section { background: var(--cream); padding: 100px 56px; }
+    .faq-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 96px; }
+    .faq-left h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(32px, 4vw, 48px); font-weight: 600;
+      color: var(--text-dark); line-height: 1.1; letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+    .faq-left p { font-size: 15px; color: var(--text-muted); line-height: 1.7; }
+    .faq-list { display: flex; flex-direction: column; gap: 0; }
+    .faq-item {
+      border-bottom: 1.5px solid var(--cream-dark); padding: 24px 0;
+    }
+    .faq-item:first-child { border-top: 1.5px solid var(--cream-dark); }
+    .faq-q {
+      font-size: 15px; font-weight: 700; color: var(--text-dark);
+      cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+      gap: 16px; user-select: none;
+    }
+    .faq-q:hover { color: var(--brand); }
+    .faq-toggle {
+      width: 28px; height: 28px; border-radius: 50%;
+      border: 1.5px solid var(--cream-dark); flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; color: var(--text-muted); font-weight: 300;
+      transition: border-color 0.2s, color 0.2s, transform 0.2s;
+    }
+    .faq-item.open .faq-toggle { border-color: var(--brand); color: var(--brand); transform: rotate(45deg); }
+    .faq-a {
+      font-size: 14.5px; color: var(--text-muted); line-height: 1.72;
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.35s ease, padding-top 0.25s;
+    }
+    .faq-item.open .faq-a { max-height: 300px; padding-top: 12px; }
+
+    /* ─── CTA SECTION ─── */
+    .cta-section { background: var(--forest); padding: 100px 56px; position: relative; overflow: hidden; }
+    .cta-section::before {
+      content: '';
+      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 600px; height: 400px;
+      background: radial-gradient(ellipse, rgba(184,137,42,0.1), transparent 70%);
+      pointer-events: none;
+    }
+    .cta-section-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; position: relative; z-index: 1; }
+    .cta-left h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 4.5vw, 60px); font-weight: 600;
+      color: var(--cream); line-height: 1.05; letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+    .cta-left h2 em { font-style: italic; color: var(--gold-light); }
+    .cta-left p { font-size: 16px; color: rgba(245,241,232,0.6); line-height: 1.72; margin-bottom: 36px; }
+    .cta-direct {
+      display: flex; flex-direction: column; gap: 14px;
+    }
+    .cta-direct-btn {
+      display: flex; align-items: center; gap: 14px;
+      background: rgba(245,241,232,0.06); border: 1px solid rgba(245,241,232,0.12);
+      border-radius: 14px; padding: 18px 22px; text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .cta-direct-btn:hover { border-color: var(--gold); background: rgba(184,137,42,0.07); }
+    .cta-direct-icon {
+      width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-size: 20px;
+    }
+    .cta-direct-icon.gold-bg { background: rgba(184,137,42,0.2); }
+    .cta-direct-icon.wa-bg { background: rgba(37,211,102,0.15); }
+    .cta-direct-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,241,232,0.4); }
+    .cta-direct-value { font-size: 16px; font-weight: 700; color: var(--cream); margin-top: 2px; }
+
+    /* contact form on CTA side */
+    .cta-form { background: rgba(245,241,232,0.05); border: 1px solid rgba(245,241,232,0.1); border-radius: 20px; padding: 44px; }
+    .cta-form-title { font-size: 18px; font-weight: 700; color: var(--cream); margin-bottom: 6px; }
+    .cta-form-sub { font-size: 13px; color: rgba(245,241,232,0.5); margin-bottom: 28px; }
+    .cf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+    .cf-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+    .cf-group:last-child { margin-bottom: 0; }
+    .cf-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,241,232,0.4); }
+    .cf-input, .cf-select, .cf-textarea {
+      background: rgba(245,241,232,0.07); border: 1.5px solid rgba(245,241,232,0.1);
+      border-radius: 10px; padding: 12px 16px;
+      font-size: 14px; font-family: inherit; color: var(--cream); outline: none;
+      width: 100%; transition: border-color 0.2s; -webkit-appearance: none;
+    }
+    .cf-input::placeholder, .cf-textarea::placeholder { color: rgba(245,241,232,0.28); }
+    .cf-input:focus, .cf-select:focus, .cf-textarea:focus { border-color: var(--gold); }
+    .cf-select option { background: var(--forest); color: var(--cream); }
+    .cf-textarea { min-height: 90px; resize: vertical; }
+    .cf-error { display: none; background: rgba(229,57,53,0.1); border: 1px solid rgba(229,57,53,0.3); border-radius: 8px; padding: 10px 14px; font-size: 13px; color: #ef9a9a; margin-bottom: 14px; }
+    .cf-submit {
+      width: 100%; padding: 15px; background: var(--gold); color: #fff;
+      font-size: 15px; font-weight: 700; font-family: inherit; border: none; border-radius: 50px;
+      cursor: pointer; transition: background 0.2s, transform 0.2s;
+    }
+    .cf-submit:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .cf-success { display: none; text-align: center; padding: 32px 16px; }
+    .cf-success-icon { font-size: 48px; margin-bottom: 12px; }
+    .cf-success h4 { font-size: 20px; font-weight: 700; color: var(--cream); margin-bottom: 6px; }
+    .cf-success p { font-size: 14px; color: rgba(245,241,232,0.55); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #060d07;
+      padding: 36px 56px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    footer p { font-size: 13px; color: rgba(245,241,232,0.28); }
+    footer a { color: rgba(245,241,232,0.4); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--gold-light); }
+    .footer-links { display: flex; gap: 24px; }
+
+    /* ─── FLOATING WA ─── */
+    .wa-float { position: fixed; bottom: 28px; right: 28px; z-index: 90; display: flex; align-items: center; gap: 0; text-decoration: none; }
+    .wa-float-label { background: #fff; color: #111; font-size: 13px; font-weight: 700; padding: 10px 18px 10px 16px; border-radius: 50px 0 0 50px; box-shadow: 0 4px 20px rgba(0,0,0,0.12); white-space: nowrap; transform: translateX(16px); opacity: 0; transition: transform .3s, opacity .3s; pointer-events: none; }
+    .wa-float:hover .wa-float-label { transform: translateX(0); opacity: 1; }
+    .wa-float-btn { width: 58px; height: 58px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,0.5); position: relative; transition: transform .3s cubic-bezier(0.34,1.56,0.64,1); z-index: 1; }
+    .wa-float:hover .wa-float-btn { transform: scale(1.1); }
+    .wa-float-btn::before { content: ''; position: absolute; inset: -6px; border-radius: 50%; background: rgba(37,211,102,0.25); animation: wa-pulse 2.5s ease-in-out infinite; }
+    @keyframes wa-pulse { 0%,100%{transform:scale(1);opacity:1;} 70%{transform:scale(1.22);opacity:0;} }
+
+    /* ─── FADE UP ─── */
+    .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-up.visible { opacity: 1; transform: none; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1200px) {
+      .offering-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 1024px) {
+      nav { padding: 0 24px; }
+      .nav-b2b-label { display: none; }
+      .hero { padding: 120px 24px 72px; }
+      .hero h1 { font-size: clamp(44px, 9vw, 80px); }
+      .hero-stats { flex-wrap: wrap; gap: 24px; }
+      .hero-stat { border-right: none; margin-right: 0; padding-right: 0; min-width: 120px; }
+      .intro-section { padding: 72px 24px; }
+      .intro-grid { grid-template-columns: 1fr; gap: 48px; }
+      .partners-section, .benefits-section, .howto-section, .offering-section, .testimonials-section, .faq-section, .cta-section { padding: 72px 24px; }
+      .partners-grid { grid-template-columns: repeat(2, 1fr); }
+      .benefits-header { grid-template-columns: 1fr; gap: 24px; }
+      .howto-steps { grid-template-columns: 1fr; }
+      .offering-top { grid-template-columns: 1fr; gap: 24px; }
+      .testimonials-grid { grid-template-columns: 1fr 1fr; }
+      .faq-inner { grid-template-columns: 1fr; gap: 48px; }
+      .cta-section-inner { grid-template-columns: 1fr; gap: 48px; }
+      .statement-band { padding: 24px; }
+    }
+    @media (max-width: 768px) {
+      nav { height: 60px; }
+      .nav-back { display: none; }
+      .hero { padding: 96px 20px 60px; }
+      .hero-stats { padding-top: 28px; }
+      .statement-band-inner { overflow-x: auto; padding-bottom: 4px; }
+      .partners-grid { grid-template-columns: 1fr; }
+      .benefits-grid { grid-template-columns: 1fr; }
+      .benefit-item:nth-child(n) { border-right: none; }
+      .benefit-item:nth-child(n) { border-bottom: 1.5px solid var(--cream-dark); }
+      .benefit-item:last-child { border-bottom: none; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .offering-grid { grid-template-columns: 1fr 1fr; }
+      .cf-row { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 16px; text-align: center; padding: 28px 20px; }
+    }
+    @media (max-width: 480px) {
+      .offering-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAV ─── -->
+  <nav>
+    <div class="nav-left">
+      <a href="../" class="nav-logo">
+        <picture>
+          <source media="(max-width:767px)" srcset="../brand_assets/Logo/Logo%20Symbol.png" />
+          <img src="../brand_assets/Logo/Logo%20Font.png" alt="Wirlösenauf.de" loading="eager" />
+        </picture>
+      </a>
+      <span class="nav-b2b-label">Für Gewerbepartner</span>
+      <a href="../" class="nav-back">← Zur Hauptseite</a>
+    </div>
+    <a href="#kontakt" class="nav-cta">Partnerschaft anfragen</a>
+  </nav>
+
+  <!-- ─── HERO ─── -->
+  <section class="hero">
+    <div class="hero-grain"></div>
+    <div class="hero-gold-line"></div>
+    <div class="hero-bg-text">B2B</div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span></span>
+        Gewerbliche Partnerschaften
+      </div>
+      <h1>
+        Verlässlich.<br>
+        <em>Diskret.</em><br>
+        Professionell.
+      </h1>
+      <div class="hero-divider"></div>
+      <p class="hero-sub">
+        Wir sind der zuverlässige Räumungspartner für Unternehmen, die regelmäßig oder im Einzelfall auf professionelle Haushaltsauflösungen und Entrümpelungen angewiesen sind — mit Festpreis, vollständiger Dokumentation und garantierter Termintreue.
+      </p>
+      <div class="hero-actions">
+        <a href="#kontakt" class="btn-gold">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M17 8l4 4-4 4M3 12h18" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Partnerschaft anfragen
+        </a>
+        <a href="#partner-typen" class="btn-outline-light">Für wen wir arbeiten ↓</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">840+</div>
+          <div class="hero-stat-label">Abgeschlossene Aufträge</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">7+</div>
+          <div class="hero-stat-label">Jahre Erfahrung</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">&lt;24h</div>
+          <div class="hero-stat-label">Reaktionszeit</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">98%</div>
+          <div class="hero-stat-label">Weiterempfehlungsrate</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── STATEMENT BAND ─── -->
+  <div class="statement-band">
+    <div class="statement-band-inner">
+      <div class="statement-item">✓ Festpreisgarantie<div class="statement-dot"></div></div>
+      <div class="statement-item">Entsorgungsnachweis inklusive<div class="statement-dot"></div></div>
+      <div class="statement-item">Fotodokumentation vor &amp; nach<div class="statement-dot"></div></div>
+      <div class="statement-item">Diskret &amp; respektvoll<div class="statement-dot"></div></div>
+      <div class="statement-item">Terminzuverlässigkeit<div class="statement-dot"></div></div>
+      <div class="statement-item">Direkte Ansprechperson</div>
+    </div>
+  </div>
+
+  <!-- ─── INTRO ─── -->
+  <section class="intro-section">
+    <div class="intro-grid">
+      <div>
+        <div class="section-label section-label-light">Über unsere Partnerschaften</div>
+        <h2>
+          Täglich im Einsatz für<br>
+          <em>Profis, die liefern müssen.</em>
+        </h2>
+        <div class="intro-body">
+          <p>Viele Branchen stehen regelmäßig vor der Situation: Eine Immobilie muss geräumt werden — schnell, vollständig und ohne Komplikationen. Ob nach einem Todesfall, einem Mieterwechsel, einem Zwangsauszug oder einem Pflegeheimeinzug: Wer einen zuverlässigen Räumungspartner an seiner Seite hat, spart Zeit, Nerven und Haftungsrisiken.</p>
+          <p>Wir arbeiten ausschließlich mit einem Festpreis. Keine bösen Überraschungen, keine Nachforderungen. Sie beauftragen, wir liefern.</p>
+        </div>
+        <div class="intro-checklist">
+          <div class="intro-check">
+            <div class="intro-check-icon">✓</div>
+            <span>Kein Aufwand für Sie — wir koordinieren alles eigenständig</span>
+          </div>
+          <div class="intro-check">
+            <div class="intro-check-icon">✓</div>
+            <span>Vollständige Haftungsübernahme durch uns während der Räumung</span>
+          </div>
+          <div class="intro-check">
+            <div class="intro-check-icon">✓</div>
+            <span>Rechtssichere Entsorgungsnachweise für alle verwerteten Güter</span>
+          </div>
+          <div class="intro-check">
+            <div class="intro-check-icon">✓</div>
+            <span>Besenreine Übergabe nach jedem Auftrag garantiert</span>
+          </div>
+          <div class="intro-check">
+            <div class="intro-check-icon">✓</div>
+            <span>Auf Wunsch diskret — ohne Beschriftung auf Fahrzeugen oder Material</span>
+          </div>
+        </div>
+        <div class="intro-stats-row">
+          <div class="intro-stat">
+            <div class="intro-stat-num">1 Tag</div>
+            <div class="intro-stat-label">Ø Räumungsdauer</div>
+          </div>
+          <div class="intro-stat">
+            <div class="intro-stat-num">2 Std.</div>
+            <div class="intro-stat-label">Erste Rückmeldung</div>
+          </div>
+          <div class="intro-stat">
+            <div class="intro-stat-num">0 €</div>
+            <div class="intro-stat-label">Besichtigung &amp; Angebot</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="intro-right-quote">
+          <div class="intro-quote-mark">"</div>
+          <div class="intro-quote-text">
+            Wenn eine Wohnung geräumt werden muss, brauchen wir einen Partner, der einfach funktioniert. Termin, Preis, saubere Arbeit, Übergabe. Ohne Rückfragen, ohne Nachforderungen.
+          </div>
+          <div class="intro-quote-sig">— Die Erwartung unserer Partner. Und unsere Selbstverpflichtung.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PARTNER TYPES ─── -->
+  <section class="partners-section" id="partner-typen">
+    <div class="section-inner" style="max-width:1200px; margin:0 auto;">
+      <div class="partners-header fade-up">
+        <div class="section-label" style="color:var(--brand);">Für wen wir arbeiten</div>
+        <h2>Die Branchen, <em style="font-style:italic;">die uns vertrauen</em></h2>
+        <p>Ob regelmäßige Kooperation oder Einzelauftrag — wir passen uns Ihrem Workflow an und werden zum stillen Teil Ihres Netzwerks.</p>
+      </div>
+      <div class="partners-grid fade-up" style="transition-delay:.1s;">
+
+        <div class="partner-card">
+          <div class="partner-card-inner">
+            <div class="partner-icon">🏠</div>
+            <div class="partner-title">Immobilienmakler</div>
+            <div class="partner-body">Vor dem Notartermin muss die Immobilie präsentierbar oder leer sein. Als Makler sind Sie auf schnelle, zuverlässige Räumungen angewiesen — damit keine Verzögerungen beim Verkauf entstehen. Wir koordinieren Termine direkt mit Eigentümern oder Erben, auf Wunsch auch ohne Ihr Zutun.</div>
+            <div class="partner-usecase">Typisch: Erbengemeinschaft, Leerstandsvermarktung</div>
+          </div>
+        </div>
+
+        <div class="partner-card">
+          <div class="partner-card-inner">
+            <div class="partner-icon">🏢</div>
+            <div class="partner-title">WEG-Verwaltungen &amp; Hausverwaltungen</div>
+            <div class="partner-body">Nach einem Mieterwechsel steht die Wohnung oft voller zurückgelassener Gegenstände. Für Verwaltungen bedeutet das Zeitdruck: Die nächste Belegung wartet. Wir räumen schnell, vollständig und übergeben besenrein — mit Protokoll und Fotos, die Sie im Streitfall absichern.</div>
+            <div class="partner-usecase">Typisch: Mieterwechsel, Zwangsräumung, Sondereigentum</div>
+          </div>
+        </div>
+
+        <div class="partner-card">
+          <div class="partner-card-inner">
+            <div class="partner-icon">🔑</div>
+            <div class="partner-title">Schlüsseldienste</div>
+            <div class="partner-body">Sie öffnen die Tür — und dann? Als Schlüsseldienst sind Sie oft der Erste vor Ort, wenn eine Wohnung zugänglich gemacht werden muss. Wir sind Ihr direkter Ansprechpartner für den nächsten Schritt: die vollständige Räumung. Gemeinsam bieten wir eine lückenlose Lösung aus einer Hand.</div>
+            <div class="partner-usecase">Typisch: Wohnungsöffnung, Todesfall, Zwangsmaßnahmen</div>
+          </div>
+        </div>
+
+        <div class="partner-card">
+          <div class="partner-card-inner">
+            <div class="partner-icon">⚖️</div>
+            <div class="partner-title">Nachlassverwalter</div>
+            <div class="partner-body">Bei der Abwicklung eines Nachlasses steht oft eine vollständig eingerichtete Wohnung im Mittelpunkt. Nachlassverwalter brauchen einen Partner, der diskret, terminzuverlässig und rechtssicher dokumentiert. Wir erstellen Fotoberichte, trennen Wertgegenstände von Entsorgungsgut und stellen Verwertungsnachweise aus.</div>
+            <div class="partner-usecase">Typisch: Erbschaftsabwicklung, Wohnungsräumung nach Tod</div>
+          </div>
+        </div>
+
+        <div class="partner-card">
+          <div class="partner-card-inner">
+            <div class="partner-icon">📋</div>
+            <div class="partner-title">Anwälte &amp; Notare</div>
+            <div class="partner-body">Erbschafts- und Nachlassverfahren erfordern oft die schnelle Sicherung und Räumung von Immobilien. Für Kanzleien ist Verlässlichkeit entscheidend: Termine müssen eingehalten, Dokumente müssen korrekt sein. Wir liefern rechtssichere Übergabeprotokolle und arbeiten auch auf Behördenauftrag.</div>
+            <div class="partner-usecase">Typisch: Erbschaftssachen, Insolvenzen, Pflegschaft</div>
+          </div>
+        </div>
+
+        <div class="partner-card">
+          <div class="partner-card-inner">
+            <div class="partner-icon">🕊️</div>
+            <div class="partner-title">Bestattungsunternehmen</div>
+            <div class="partner-body">Familien in Trauer brauchen keine weiteren Belastungen. Viele Bestattungsunternehmen empfehlen uns weiter, weil sie wissen: Wir begegnen jedem Auftrag mit Würde und Respekt. Die Wohnung des Verstorbenen wird diskret, vollständig und besenrein geräumt — so, wie die Familie es sich wünscht.</div>
+            <div class="partner-usecase">Typisch: Wohnungsauflösung nach Trauerfall</div>
+          </div>
+        </div>
+
+        <div class="partner-card">
+          <div class="partner-card-inner">
+            <div class="partner-icon">🏥</div>
+            <div class="partner-title">Altenpflegeeinrichtungen</div>
+            <div class="partner-body">Wenn ein neuer Bewohner in Ihre Einrichtung einzieht, muss oft die bisherige Wohnung zeitnah aufgelöst werden. Angehörige sind überfordert, Zeit ist knapp. Wir nehmen diesen Schritt vollständig ab — koordinieren direkt mit der Familie, räumen die Wohnung und stellen alles für die Rückgabe bereit.</div>
+            <div class="partner-usecase">Typisch: Heimeinzug, betreutes Wohnen, Pflegefall</div>
+          </div>
+        </div>
+
+        <div class="partner-card">
+          <div class="partner-card-inner">
+            <div class="partner-icon">👥</div>
+            <div class="partner-title">Sozialdienste &amp; Sozialämter</div>
+            <div class="partner-body">Verwahrloster Wohnraum, Vermüllung, Zwangsauszüge oder Pflegefälle — soziale Einrichtungen stehen vor Situationen, die schnelles und sensibles Handeln erfordern. Wir arbeiten im Auftrag von Behörden und Trägern, halten uns an behördliche Vorgaben und liefern vollständige Dokumentation für Ihre Akten.</div>
+            <div class="partner-usecase">Typisch: Verwahrlosung, Ordnungsmaßnahmen, Behördenauftrag</div>
+          </div>
+        </div>
+
+        <div class="partner-card">
+          <div class="partner-card-inner">
+            <div class="partner-icon">🏗️</div>
+            <div class="partner-title">Wohnungsbaugesellschaften</div>
+            <div class="partner-body">Soziale Wohnungsbaugesellschaften haben eine hohe Fluktuation und regelmäßigen Räumungsbedarf. Wir bieten Rahmenverträge für wiederkehrende Aufträge, priorisieren Ihre Anfragen und rechnen gebündelt ab. So haben Sie einen verlässlichen Partner für alle anfallenden Räumungen — aus einer Hand.</div>
+            <div class="partner-usecase">Typisch: Sozialwohnungen, hohe Fluktuation, Leerstand</div>
+          </div>
+        </div>
+
+        <div class="partner-card">
+          <div class="partner-card-inner">
+            <div class="partner-icon">🧹</div>
+            <div class="partner-title">Gebäudereiniger &amp; Facility Management</div>
+            <div class="partner-body">Viele Reinigungsunternehmen stoßen bei ihren Aufträgen auf vollgestellte Räume, die zunächst geräumt werden müssen. Als Subunternehmer oder Netzwerkpartner arbeiten wir nahtlos in Ihren Workflow ein — damit Ihre Reinigungskräfte sauber arbeiten können und Sie den Auftrag ohne Unterbrechung liefern.</div>
+            <div class="partner-usecase">Typisch: Gewerbeobjekte, Wohnungsabnahme, Instandsetzung</div>
+          </div>
+        </div>
+
+        <div class="partner-card">
+          <div class="partner-card-inner">
+            <div class="partner-icon">🏦</div>
+            <div class="partner-title">Banken &amp; Kreditinstitute</div>
+            <div class="partner-body">Bei Zwangsversteigerungen oder der Verwertung von Sicherheiten müssen Immobilien oft zügig geräumt werden. Banken und Sparkassen beauftragen uns für die schnelle, dokumentierte Räumung von Pfandimmobilien — diskret, rechtssicher und mit klarer Abrechnung für Ihre Compliance-Anforderungen.</div>
+            <div class="partner-usecase">Typisch: Zwangsversteigerung, Sicherheitenverwertung</div>
+          </div>
+        </div>
+
+        <div class="partner-card">
+          <div class="partner-card-inner">
+            <div class="partner-icon">🏛️</div>
+            <div class="partner-title">Insolvenzverwalter</div>
+            <div class="partner-body">Bei Unternehmens- oder Privatinsolvenzen gehört die Räumung von Betriebs- und Wohnimmobilien zur Standardaufgabe. Wir arbeiten nach Ihrem Zeitplan, stellen lückenlose Verwertungsnachweise aus und übergeben die Immobilie besenrein — damit Sie den Fall sauber abschließen können.</div>
+            <div class="partner-usecase">Typisch: Insolvenzverfahren, Unternehmensschließung</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── BENEFITS ─── -->
+  <section class="benefits-section" id="vorteile">
+    <div class="benefits-inner">
+      <div class="benefits-header fade-up">
+        <div>
+          <div class="section-label" style="color:var(--brand);">Warum mit uns arbeiten</div>
+          <h2>Nur Vorteile.<br>Keine Kompromisse.</h2>
+        </div>
+        <p>Was für Privatkunden gut ist, ist für Geschäftspartner unverzichtbar: Verlässlichkeit, Transparenz und saubere Arbeit — jedes Mal, ohne Ausnahme. Das ist unser Standard.</p>
+      </div>
+      <div class="benefits-grid fade-up" style="transition-delay:.1s;">
+
+        <div class="benefit-item">
+          <div class="benefit-bg-num">01</div>
+          <div class="benefit-icon">📌</div>
+          <div class="benefit-title">Festpreisgarantie</div>
+          <div class="benefit-body">Sie erhalten vor jedem Auftrag ein verbindliches Festpreisangebot nach kostenloser Vor-Ort-Besichtigung. Keine Stundensätze, keine Überraschungen, keine Nachforderungen. Der vereinbarte Preis ist der Endpreis — egal was beim Räumen zum Vorschein kommt.</div>
+        </div>
+
+        <div class="benefit-item">
+          <div class="benefit-bg-num">02</div>
+          <div class="benefit-icon">⚡</div>
+          <div class="benefit-title">Reaktionszeit unter 24 Stunden</div>
+          <div class="benefit-body">Partneranfragen bearbeiten wir mit höchster Priorität. Innerhalb von 2 Stunden melden wir uns zurück, innerhalb von 24 Stunden haben Sie ein Angebot in der Hand. Dringende Fälle — etwa nach einem Todesfall oder bei Zwangsräumungen — koordinieren wir auch kurzfristig.</div>
+        </div>
+
+        <div class="benefit-item">
+          <div class="benefit-bg-num">03</div>
+          <div class="benefit-icon">📸</div>
+          <div class="benefit-title">Vollständige Fotodokumentation</div>
+          <div class="benefit-body">Vor Beginn und nach Abschluss jeder Räumung erstellen wir eine lückenlose Fotodokumentation des Zustands. Diese erhalten Sie als PDF — ideal zur Absicherung gegenüber Eigentümern, Erben, Behörden oder Mietern. Nichts bleibt dem Zufall überlassen.</div>
+        </div>
+
+        <div class="benefit-item">
+          <div class="benefit-bg-num">04</div>
+          <div class="benefit-icon">🤝</div>
+          <div class="benefit-title">Fester Ansprechpartner</div>
+          <div class="benefit-body">Kein Callcenter, kein Ticketsystem. Als unser Partner haben Sie eine direkte Mobilnummer eines festen Ansprechpartners. Sie rufen an, wir sind da. Für Verwaltungen und Kanzleien mit mehreren Objekten bieten wir auch gebündelte Abrechnung und monatliche Reportings.</div>
+        </div>
+
+        <div class="benefit-item">
+          <div class="benefit-bg-num">05</div>
+          <div class="benefit-icon">📄</div>
+          <div class="benefit-title">Entsorgungsnachweis &amp; Rechtssicherheit</div>
+          <div class="benefit-body">Für alle entsorgten Materialien stellen wir offizielle Entsorgungsnachweise aus — entsprechend der Kreislaufwirtschaftsgesetze. Das schützt Sie als Auftraggeber vor Haftungsrisiken und liefert vollständige Unterlagen für behördliche Prüfungen oder Gerichtsverfahren.</div>
+        </div>
+
+        <div class="benefit-item">
+          <div class="benefit-bg-num">06</div>
+          <div class="benefit-icon">💎</div>
+          <div class="benefit-title">Wertanrechnung senkt Ihre Kosten</div>
+          <div class="benefit-body">Verwertbare Gegenstände — Möbel, Elektrogeräte, Sammlerstücke — werden von uns fair bewertet und mit dem Räumungspreis verrechnet. Das bedeutet: In vielen Fällen reduziert sich der Endrechnungsbetrag deutlich. Bei Ihren Empfehlungen ein echtes Verkaufsargument gegenüber dem Auftraggeber.</div>
+        </div>
+
+        <div class="benefit-item">
+          <div class="benefit-bg-num">07</div>
+          <div class="benefit-icon">🔒</div>
+          <div class="benefit-title">Absolute Diskretion</div>
+          <div class="benefit-body">Wir wissen, dass viele unserer Einsätze sensible Situationen berühren. Unser Team ist geschult im respektvollen Umgang mit persönlichem Eigentum Verstorbener oder sozial schwacher Personen. Auf Wunsch arbeiten wir ohne Firmenlogo auf Fahrzeugen — absolut diskret für den Auftraggeber.</div>
+        </div>
+
+        <div class="benefit-item">
+          <div class="benefit-bg-num">08</div>
+          <div class="benefit-icon">🔄</div>
+          <div class="benefit-title">Rahmenverträge &amp; Sammelabrechnung</div>
+          <div class="benefit-body">Für Partner mit regelmäßigem Bedarf bieten wir Rahmenverträge mit bevorzugter Terminvergabe, festen Konditionen und monatlicher Sammelabrechnung. Das spart administrativen Aufwand und schafft Planungssicherheit für Ihre Buchhaltung. Sprechen Sie uns direkt an.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── HOW IT WORKS ─── -->
+  <section class="howto-section" id="ablauf">
+    <div class="howto-inner">
+      <div class="section-label fade-up">Wie die Zusammenarbeit läuft</div>
+      <h2 class="fade-up" style="transition-delay:.06s;">In drei Schritten zum<br><span style="font-style:italic; color:var(--gold-light);">abgeschlossenen Auftrag.</span></h2>
+      <div class="howto-steps fade-up" style="transition-delay:.12s;">
+
+        <div class="howto-step">
+          <div class="howto-step-num">01</div>
+          <div class="howto-step-title">Anfrage &amp; Erstkontakt</div>
+          <div class="howto-step-body">
+            Sie kontaktieren uns per Telefon, WhatsApp oder über das Formular auf dieser Seite. Beschreiben Sie kurz das Objekt und die gewünschten Leistungen. Wir melden uns innerhalb von 2 Stunden zurück und klären erste Fragen.
+          </div>
+          <div class="howto-step-time">Innerhalb 2 Stunden</div>
+        </div>
+
+        <div class="howto-step">
+          <div class="howto-step-num">02</div>
+          <div class="howto-step-title">Besichtigung &amp; Festpreisangebot</div>
+          <div class="howto-step-body">
+            Wir kommen kostenlos zum Objekt, begutachten den Umfang der Räumung und erstellen auf dieser Basis ein verbindliches Festpreisangebot. Kein Schätzwert, kein offenes Ende. Das Angebot liegt Ihnen innerhalb von 24 Stunden vor — schriftlich und klar aufgeschlüsselt.
+          </div>
+          <div class="howto-step-time">Kostenlos, innerhalb 24h</div>
+        </div>
+
+        <div class="howto-step">
+          <div class="howto-step-num">03</div>
+          <div class="howto-step-title">Räumung, Übergabe &amp; Dokumentation</div>
+          <div class="howto-step-body">
+            Nach Auftragserteilung koordinieren wir alles eigenständig. Am vereinbarten Termin räumen wir vollständig, erstellen Fotodokumentation und übergeben die Immobilie besenrein. Sie erhalten danach alle Unterlagen: Protokoll, Fotos, Entsorgungsnachweis und Rechnung.
+          </div>
+          <div class="howto-step-time">Übergabe + vollständige Unterlagen</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PARTNER OFFERING ─── -->
+  <section class="offering-section">
+    <div class="offering-inner">
+      <div class="offering-top fade-up">
+        <div>
+          <div class="section-label" style="color:var(--brand);">Was Sie als Partner erhalten</div>
+          <h2>Mehr als nur<br>eine Dienstleistung.</h2>
+        </div>
+        <p>Als Gewerbepartner profitieren Sie von einem strukturierten Leistungspaket, das weit über den eigentlichen Räumungsauftrag hinausgeht. Wir denken Ihre Anforderungen mit.</p>
+      </div>
+      <div class="offering-grid fade-up" style="transition-delay:.1s;">
+
+        <div class="offering-card">
+          <div class="offering-icon">🎯</div>
+          <div class="offering-title">Priorisierte Terminvergabe</div>
+          <div class="offering-body">Partner erhalten bevorzugte Terminslots — auch kurzfristig. Ihre Anfragen landen direkt beim zuständigen Projektleiter, nicht in einer allgemeinen Warteschlange.</div>
+        </div>
+
+        <div class="offering-card">
+          <div class="offering-icon">👤</div>
+          <div class="offering-title">Fester Ansprechpartner</div>
+          <div class="offering-body">Sie haben eine direkte Mobilnummer. Keine Hotline, kein Ticket-System. Kurze Kommunikationswege bedeuten weniger Aufwand für Sie und schnellere Reaktionen.</div>
+        </div>
+
+        <div class="offering-card">
+          <div class="offering-icon">🧾</div>
+          <div class="offering-title">Flexible Abrechnung</div>
+          <div class="offering-body">Wählen Sie zwischen Einzelabrechnung je Auftrag oder monatlicher Sammelrechnung. Für Verwaltungen mit mehreren Objekten besonders praktisch — ein Beleg, alle Aufträge.</div>
+        </div>
+
+        <div class="offering-card">
+          <div class="offering-icon">📊</div>
+          <div class="offering-title">Auftragsdokumentation</div>
+          <div class="offering-body">Zu jedem Auftrag erhalten Sie: Übergabeprotokoll, Vorher-Nachher-Fotos, Entsorgungsnachweis und eine klare Leistungsaufstellung. Alles revisionssicher und digital verfügbar.</div>
+        </div>
+
+        <div class="offering-card">
+          <div class="offering-icon">🤝</div>
+          <div class="offering-title">Rahmenvertrag möglich</div>
+          <div class="offering-body">Bei regelmäßigem Bedarf schließen wir gerne einen Rahmenvertrag ab — mit vereinbarten Konditionen, garantierter Verfügbarkeit und klar geregelten Abläufen.</div>
+        </div>
+
+        <div class="offering-card">
+          <div class="offering-icon">💰</div>
+          <div class="offering-title">Empfehlungsvergütung</div>
+          <div class="offering-body">Für Netzwerkpartner, die regelmäßig Aufträge an uns vermitteln, bieten wir auf Anfrage ein attraktives Empfehlungsmodell. Sprechen Sie uns unverbindlich darauf an.</div>
+        </div>
+
+        <div class="offering-card">
+          <div class="offering-icon">🚫</div>
+          <div class="offering-title">Null Haftungsrisiko für Sie</div>
+          <div class="offering-body">Wir übernehmen während der Räumung die vollständige Haftung für Schäden, Entsorgung und Personal. Sie sind als Auftraggeber zu jeder Zeit rechtlich abgesichert.</div>
+        </div>
+
+        <div class="offering-card">
+          <div class="offering-icon">🔕</div>
+          <div class="offering-title">Diskreter Außenauftritt</div>
+          <div class="offering-body">Für Partner, die Wert auf Zurückhaltung legen, arbeiten wir auf Wunsch ohne Firmenbeschilderung auf Fahrzeugen — besonders relevant bei Todesfällen, Behördenaufträgen oder sensiblen Objekten.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── TESTIMONIALS ─── -->
+  <section class="testimonials-section">
+    <div class="testimonials-inner">
+      <div class="section-label fade-up" style="color:var(--brand);">Stimmen aus der Praxis</div>
+      <h2 class="fade-up" style="transition-delay:.06s;">Was unsere Partner<br>über uns sagen.</h2>
+      <div class="testimonials-grid fade-up" style="transition-delay:.12s;">
+
+        <div class="testimonial-card">
+          <div class="testimonial-quote-mark">"</div>
+          <div class="testimonial-text">Wir empfehlen Wirlösenauf.de regelmäßig an Familien weiter, die nach einem Trauerfall die Wohnung des Verstorbenen auflösen müssen. Das Team arbeitet immer mit Würde und großem Respekt — das spüren die Angehörigen. Und die Arbeit ist wirklich tadellos.</div>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">MK</div>
+            <div>
+              <div class="testimonial-name">Marcus K.</div>
+              <div class="testimonial-role">Bestattungsunternehmer, Hannover</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-quote-mark">"</div>
+          <div class="testimonial-text">Als WEG-Verwalterin habe ich nach Jahren endlich einen Räumungspartner gefunden, auf den ich mich blind verlassen kann. Festpreis wird eingehalten, Übergabe erfolgt besenrein, Dokumentation kommt am gleichen Tag. Mehr brauche ich nicht.</div>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">SL</div>
+            <div>
+              <div class="testimonial-name">Sandra L.</div>
+              <div class="testimonial-role">WEG-Verwalterin, Region Hannover</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-quote-mark">"</div>
+          <div class="testimonial-text">Ich habe die Zusammenarbeit mehrfach empfohlen und bin noch nie enttäuscht worden. Gerade bei Erbschaftsangelegenheiten ist es wichtig, dass jemand diskret und professionell vorgeht. Wirlösenauf.de macht genau das — ohne großes Tamtam, aber mit echtem Ergebnis.</div>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">TW</div>
+            <div>
+              <div class="testimonial-name">Thomas W.</div>
+              <div class="testimonial-role">Rechtsanwalt, Erbrecht, Hannover</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FAQ ─── -->
+  <section class="faq-section">
+    <div class="faq-inner">
+      <div class="faq-left fade-up">
+        <div class="section-label" style="color:var(--brand);">Häufige Fragen</div>
+        <h2>Was Partner uns am häufigsten fragen.</h2>
+        <p style="margin-top:16px;">Weitere Fragen? Kontaktieren Sie uns direkt — wir antworten innerhalb von 2 Stunden.</p>
+        <div style="margin-top:32px;">
+          <a href="tel:+491726030946" style="display:inline-flex; align-items:center; gap:10px; font-size:14px; font-weight:700; color:var(--brand); text-decoration:none;">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 5.12 12.5 19.79 19.79 0 0 1 2 3.82 2 2 0 0 1 3.98 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            0172 6030946
+          </a>
+        </div>
+      </div>
+      <div class="faq-list fade-up" style="transition-delay:.1s;">
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Wie schnell können Sie nach Auftragserteilung starten?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-a">Nach einem bestätigten Auftrag sind wir in der Regel innerhalb von 2–5 Werktagen einsatzbereit. In dringenden Fällen — bei Todesfällen, Zwangsräumungen oder behördlichen Aufträgen — reagieren wir auch kurzfristiger. Sprechen Sie uns direkt an, wir finden immer eine Lösung.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Wie läuft die Abrechnung bei mehreren Objekten ab?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-a">Für Partner mit mehreren Objekten bieten wir monatliche Sammelrechnungen an. Das bedeutet: Alle Aufträge eines Kalendermonats werden auf einer Rechnung zusammengefasst. Auf Wunsch mit Auftragsnummern, Objektadressen und Einzelaufstellungen — passend für Ihre Buchhaltung.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Was passiert mit Gegenständen, die noch einen Wert haben?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-a">Wir trennen bei jeder Räumung konsequent zwischen Entsorgungsgut und verwertbaren Gegenständen. Werthaltige Möbel, Elektrogeräte, Antiquitäten oder Sammlerstücke werden fair bewertet und mit dem Räumungspreis verrechnet. Das senkt den Endbetrag für Ihre Auftraggeber oft erheblich.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Übernehmen Sie auch Teilräumungen oder Einzelleistungen?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-a">Ja. Wir räumen ganze Haushalte, aber auch einzelne Zimmer, Keller, Garagen oder Dachböden. Ebenso bieten wir Endreinigung, Möbeltransport und fachgerechte Entsorgung als Einzelleistung an. Schildern Sie uns kurz, was benötigt wird — wir erstellen ein passgenaues Angebot.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Ist eine Zusammenarbeit ohne festen Vertrag möglich?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-a">Selbstverständlich. Wir arbeiten sowohl auf Rahmenvertragsbasis als auch auf Einzelauftragsbasis. Viele unserer langfristigen Partner haben ohne Vertrag angefangen und nach den ersten positiven Erfahrungen auf Wunsch eine formale Vereinbarung geschlossen. Der erste Schritt ist immer unverbindlich.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q" onclick="toggleFaq(this)">
+            Wie sind Sie versichert?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-a">Wir sind vollständig betriebshaftpflichtversichert. Schäden an der Immobilie oder am Eigentum Dritter, die während unserer Tätigkeit entstehen, sind über unsere Versicherung gedeckt. Auf Anfrage stellen wir Ihnen eine Versicherungsbestätigung für Ihre Unterlagen aus.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CTA / KONTAKT ─── -->
+  <section class="cta-section" id="kontakt">
+    <div class="cta-section-inner">
+      <div class="cta-left fade-up">
+        <div class="section-label" style="color:var(--gold);">Jetzt Kontakt aufnehmen</div>
+        <h2>Bereit für eine <em>starke Partnerschaft?</em></h2>
+        <p>Wir freuen uns auf jede neue Kooperation — egal ob Einzelauftrag oder langfristige Zusammenarbeit. Schreiben Sie uns, rufen Sie an oder schicken Sie uns direkt eine Nachricht.</p>
+        <div class="cta-direct">
+          <a href="tel:+491726030946" class="cta-direct-btn">
+            <div class="cta-direct-icon gold-bg">📞</div>
+            <div>
+              <div class="cta-direct-label">Direkt anrufen</div>
+              <div class="cta-direct-value">0172 6030946</div>
+            </div>
+          </a>
+          <a href="https://wa.me/491726030946?text=Hallo%2C%20ich%20interessiere%20mich%20für%20eine%20B2B-Partnerschaft%20mit%20Wirlösenauf.de." target="_blank" rel="noopener" class="cta-direct-btn">
+            <div class="cta-direct-icon wa-bg">💬</div>
+            <div>
+              <div class="cta-direct-label">WhatsApp schreiben</div>
+              <div class="cta-direct-value">Direkt anschreiben →</div>
+            </div>
+          </a>
+          <a href="mailto:info@wirlösenauf.de" class="cta-direct-btn">
+            <div class="cta-direct-icon" style="background:rgba(245,241,232,0.1);">✉️</div>
+            <div>
+              <div class="cta-direct-label">Per E-Mail</div>
+              <div class="cta-direct-value">info@wirlösenauf.de</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="fade-up" style="transition-delay:.12s;">
+        <div class="cta-form">
+          <div class="cta-form-title">Partnerschaftsanfrage senden</div>
+          <div class="cta-form-sub">Wir antworten innerhalb von 2 Stunden — garantiert.</div>
+
+          <div class="cf-error" id="cf-error">Bitte füllen Sie alle Pflichtfelder aus.</div>
+
+          <div class="cf-row">
+            <div class="cf-group">
+              <label class="cf-label">Vorname *</label>
+              <input type="text" id="cf-vorname" class="cf-input" placeholder="Max" />
+            </div>
+            <div class="cf-group">
+              <label class="cf-label">Nachname *</label>
+              <input type="text" id="cf-nachname" class="cf-input" placeholder="Mustermann" />
+            </div>
+          </div>
+
+          <div class="cf-group">
+            <label class="cf-label">Unternehmen *</label>
+            <input type="text" id="cf-firma" class="cf-input" placeholder="Mustermann Immobilien GmbH" />
+          </div>
+
+          <div class="cf-group">
+            <label class="cf-label">Branche *</label>
+            <select id="cf-branche" class="cf-select">
+              <option value="" disabled selected>Bitte wählen…</option>
+              <option>Immobilienmakler</option>
+              <option>WEG-Verwaltung / Hausverwaltung</option>
+              <option>Schlüsseldienst</option>
+              <option>Nachlassverwalter</option>
+              <option>Anwaltskanzlei / Notar</option>
+              <option>Bestattungsunternehmen</option>
+              <option>Altenpflegeeinrichtung</option>
+              <option>Sozialdienst / Behörde</option>
+              <option>Wohnungsbaugesellschaft</option>
+              <option>Gebäudereinigung / Facility Management</option>
+              <option>Bank / Insolvenzverwalter</option>
+              <option>Sonstige</option>
+            </select>
+          </div>
+
+          <div class="cf-row">
+            <div class="cf-group">
+              <label class="cf-label">Telefon *</label>
+              <input type="tel" id="cf-telefon" class="cf-input" placeholder="0511 000 0000" />
+            </div>
+            <div class="cf-group">
+              <label class="cf-label">E-Mail *</label>
+              <input type="email" id="cf-email" class="cf-input" placeholder="max@firma.de" />
+            </div>
+          </div>
+
+          <div class="cf-group">
+            <label class="cf-label">Nachricht</label>
+            <textarea id="cf-nachricht" class="cf-textarea" placeholder="Beschreiben Sie kurz Ihren Bedarf oder stellen Sie Ihre Fragen…"></textarea>
+          </div>
+
+          <button class="cf-submit" onclick="submitPartnerForm()">
+            Partnerschaftsanfrage absenden →
+          </button>
+
+          <div class="cf-success" id="cf-success">
+            <div class="cf-success-icon">✅</div>
+            <h4>Anfrage erhalten!</h4>
+            <p>Wir melden uns innerhalb von 2 Stunden bei Ihnen. Wir freuen uns auf die Zusammenarbeit!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer>
+    <p>© 2025 wirlösenauf.de — <a href="../">Haushaltsauflösung Hannover</a></p>
+    <div class="footer-links">
+      <a href="../impressum/">Impressum</a>
+      <a href="../datenschutz/">Datenschutz</a>
+      <a href="../">Zur Hauptseite</a>
+    </div>
+  </footer>
+
+  <!-- ─── FLOATING WA ─── -->
+  <a href="https://wa.me/491726030946?text=Hallo%2C%20ich%20interessiere%20mich%20für%20eine%20B2B-Partnerschaft%20mit%20Wirlösenauf.de."
+     target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp schreiben">
+    <span class="wa-float-label">💬 B2B Anfrage per WhatsApp</span>
+    <div class="wa-float-btn">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.118 1.533 5.845L.057 23.617a.5.5 0 0 0 .614.644l5.897-1.514A11.954 11.954 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.886 0-3.65-.52-5.158-1.424l-.37-.217-3.836.985.993-3.73-.241-.386A9.978 9.978 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+    </div>
+  </a>
+
+  <script>
+    /* ─── FADE UP ─── */
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+    /* ─── FAQ TOGGLE ─── */
+    function toggleFaq(el) {
+      const item = el.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+
+    /* ─── PARTNER FORM ─── */
+    async function submitPartnerForm() {
+      const FORMSPREE = 'https://formspree.io/f/mbdzekdg';
+      const err = document.getElementById('cf-error');
+      err.style.display = 'none';
+
+      const required = { 'cf-vorname': 'Vorname', 'cf-nachname': 'Nachname', 'cf-firma': 'Unternehmen', 'cf-branche': 'Branche', 'cf-telefon': 'Telefon', 'cf-email': 'E-Mail' };
+      let valid = true;
+      Object.keys(required).forEach(id => {
+        const el = document.getElementById(id);
+        if (!el.value.trim() || el.value === '') {
+          el.style.borderColor = 'rgba(229,57,53,0.6)';
+          valid = false;
+        } else {
+          el.style.borderColor = '';
+        }
+      });
+      if (!valid) { err.style.display = 'block'; err.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
+
+      const payload = {
+        '🤝 B2B PARTNERSCHAFTSANFRAGE': '──────────────────────────',
+        'Vorname': document.getElementById('cf-vorname').value.trim(),
+        'Nachname': document.getElementById('cf-nachname').value.trim(),
+        'Unternehmen': document.getElementById('cf-firma').value.trim(),
+        'Branche': document.getElementById('cf-branche').value,
+        'Telefon': document.getElementById('cf-telefon').value.trim(),
+        'E-Mail': document.getElementById('cf-email').value.trim(),
+        'Nachricht': document.getElementById('cf-nachricht').value.trim() || '–',
+        'Quelle': 'B2B Partnerseite (wirlösenauf.de/b2b/)'
+      };
+
+      const btn = document.querySelector('.cf-submit');
+      btn.disabled = true;
+      btn.textContent = 'Wird gesendet…';
+
+      try {
+        const res = await fetch(FORMSPREE, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if (res.ok) {
+          document.querySelector('.cta-form').innerHTML = document.getElementById('cf-success').outerHTML;
+          document.getElementById('cf-success').style.display = 'block';
+        } else { throw new Error(); }
+      } catch {
+        btn.disabled = false;
+        btn.textContent = 'Partnerschaftsanfrage absenden →';
+        err.textContent = 'Fehler beim Senden. Bitte rufen Sie uns direkt an: 0172 6030946';
+        err.style.display = 'block';
+      }
+    }
+  </script>
+
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+
+</body>
+</html>
