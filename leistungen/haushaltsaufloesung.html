@@ -76,6 +76,16 @@
     .svc-imgmod-inner.reverse > * { direction: ltr; }
     .svc-imgmod-img-wrap { border-radius: 20px; overflow: hidden; aspect-ratio: 4/3; background: linear-gradient(135deg, var(--green-pale) 0%, #a5d6a7 100%); position: relative; box-shadow: 0 16px 48px rgba(46,125,50,0.14), 0 4px 12px rgba(0,0,0,0.06); }
     .svc-imgmod-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+    /* before/after slider */
+    .ba-outer { position: relative; width: 100%; height: 100%; cursor: ew-resize; user-select: none; touch-action: pan-y; }
+    .ba-outer img { display: block; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+    .ba-after-img { position: relative; z-index: 1; }
+    .ba-before-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; clip-path: inset(0 50% 0 0); }
+    .ba-divider { position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: #fff; z-index: 3; transform: translateX(-50%); pointer-events: none; }
+    .ba-handle { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 48px; height: 48px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(0,0,0,0.4); z-index: 4; pointer-events: none; }
+    .ba-label { position: absolute; top: 14px; background: rgba(0,0,0,0.55); color: #fff; padding: 5px 14px; border-radius: 50px; font-size: 12px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; z-index: 5; backdrop-filter: blur(6px); border: 1px solid rgba(255,255,255,0.12); pointer-events: none; }
+    .ba-label-before { left: 14px; }
+    .ba-label-after { right: 14px; }
     .imgmod-caption { position: absolute; bottom: 16px; left: 16px; right: 16px; background: rgba(27,94,32,0.88); backdrop-filter: blur(8px); border-radius: 10px; padding: 10px 14px; font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.9); }
     .svc-imgmod-text .section-label { text-align: left; }
     .svc-imgmod-text h2 { font-size: clamp(22px, 2.5vw, 32px); font-weight: 900; letter-spacing: -0.025em; color: var(--text-dark); margin-bottom: 20px; }
@@ -384,8 +394,16 @@
   <div class="svc-imgmod">
     <div class="svc-imgmod-inner">
       <div class="svc-imgmod-img-wrap">
-        <img src="https://placehold.co/640x480/c8e6c9/2e7d32?text=Vorher+%2F+Nachher" alt="Vorher und nachher: Wohnungsauflösung in Hannover – Wohnung leer geräumt und sauber übergeben" />
-        <div class="imgmod-caption">📸 Platzhalter · Echte Vorher/Nachher-Fotos folgen</div>
+        <div class="ba-outer">
+          <img class="ba-after-img" src="../brand_assets/Referenzen/WOHNZIMMER%20Hannover%20-%20Misburg/leer.jpg" alt="Haushaltsauflösung Hannover Nachher – geräumtes Wohnzimmer Misburg" loading="lazy" />
+          <img class="ba-before-img" src="../brand_assets/Referenzen/WOHNZIMMER%20Hannover%20-%20Misburg/voll.jpg" alt="Haushaltsauflösung Hannover Vorher – vollständiges Wohnzimmer Misburg" loading="lazy" />
+          <div class="ba-divider">
+            <div class="ba-handle"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2E7D32" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l-6-6 6-6M15 6l6 6-6 6"/></svg></div>
+          </div>
+          <div class="ba-label ba-label-before">Vorher</div>
+          <div class="ba-label ba-label-after">Nachher</div>
+        </div>
+        <div class="imgmod-caption">🏠 Wohnzimmer · Hannover – Misburg · Regler ziehen zum Vergleichen</div>
       </div>
       <div class="svc-imgmod-text">
         <div class="section-label">Das Ergebnis</div>
@@ -857,6 +875,26 @@
       });
     });
   })();
+  </script>
+  <script>
+    (function() {
+      document.querySelectorAll('.ba-outer').forEach(function(outer) {
+        var beforeImg = outer.querySelector('.ba-before-img');
+        var divider = outer.querySelector('.ba-divider');
+        var dragging = false;
+        function setPos(clientX) {
+          var rect = outer.getBoundingClientRect();
+          var pos = Math.min(Math.max((clientX - rect.left) / rect.width * 100, 2), 98);
+          beforeImg.style.clipPath = 'inset(0 ' + (100 - pos) + '% 0 0)';
+          divider.style.left = pos + '%';
+        }
+        outer.addEventListener('mousedown', function(e) { dragging = true; setPos(e.clientX); e.preventDefault(); });
+        window.addEventListener('mousemove', function(e) { if (dragging) setPos(e.clientX); });
+        window.addEventListener('mouseup', function() { dragging = false; });
+        outer.addEventListener('touchstart', function(e) { setPos(e.touches[0].clientX); }, { passive: true });
+        outer.addEventListener('touchmove', function(e) { setPos(e.touches[0].clientX); e.preventDefault(); }, { passive: false });
+      });
+    })();
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
   <script defer src="/_vercel/speed-insights/script.js"></script>
