@@ -2157,8 +2157,9 @@
       .intro-image { order: -1; }
       .why-image { order: -1; }
       .intro-values-grid { grid-template-columns: 1fr 1fr; }
-      /* Hide photo column on mobile — saves massive vertical space */
-      .intro-photo-col { display: none; }
+      /* Show photo column on mobile as full-width below text */
+      .intro-photo-col { display: block; width: 100%; margin-top: 28px; }
+      .intro-photo-placeholder { aspect-ratio: 16/9; border-radius: 16px; }
       /* Simplify intro CTA row on mobile */
       .intro-cta-row .btn-secondary { display: none; }
       .intro-cta-row .btn-primary { font-size: 16px; padding: 14px 28px; }
@@ -2870,7 +2871,7 @@
         </a>
       </div>
       <div class="why-image fade-up" style="transition-delay:0.15s">
-        <img src="brand_assets/Bilder/bettabbau.png" alt="Professioneller Bettabbau bei Haushaltsauflösung – wirlösenauf.de" loading="eager" />
+        <img src="brand_assets/Bilder/haushaltsaufloesung-nach-todesfall-hannover.jpg" alt="Professionelle Haushaltsauflösung in Hannover – wirlösenauf.de" loading="lazy" />
       </div>
     </div>
   </section>
